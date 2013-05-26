@@ -22,4 +22,16 @@ method(site, sel, @"sitename", @"name");//在site对象上，以sitename和name�
 
 所谓的KVO就是在对象的属性被修改的时候，允许注册的对象的特定函数被调用的机制。（可以用来实现数据绑定）
 
+```objective-c
+[bankInstance addObserver:personInstance
+  forKeyPath:@"accountBalance"
+    option:NSKeyValueObservingOptionNew
+      context:NULL];
+      
+addObserver:forKeyPath:option:context
+
+//opersonInstance需要实现
+observeValueForKeyPath:ofObject:change:context
+```
+
 
