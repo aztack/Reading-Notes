@@ -1,4 +1,2 @@
-tech-notes
-==========
-
-some technical notes
+My Reading Notes
+================
