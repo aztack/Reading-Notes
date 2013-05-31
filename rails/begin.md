@@ -10,6 +10,22 @@
 * rails destroy controller NAME
 * rails destroy model NAME
 * rails destroy scaffold NAME
+* rails server --debug 调试，需要`gem install ruby-debug`
+
+调试
+====
+
+[Debugging Rails Application](http://guides.rubyonrails.org/debugging_rails_applications.html)
+
+`rails server --debug` 调试，需要`gem install ruby-debug`
+
+.rdebugrc
+```
+  set reload
+  set autolist
+  set autoeval
+  set history save
+```
 
 疑惑
 ====
