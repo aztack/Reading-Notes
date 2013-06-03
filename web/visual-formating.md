@@ -27,6 +27,18 @@
 -----------------------------------
 TODO:
 
+[Only the following properties change the standard element's flow](http://stackoverflow.com/posts/11917186/edit):
+
+ - `float: right|left`
+ - `position: absolute|fixed`
+
+Just for completeness: 
+
+ - `position: relative` does not change the flow order of the element, but changes the element position relative to the normal flow position.
+ - `display: none` removes the element of the flow (strictly speaking it does no change the element flow order because the element will not have a flow order at all)
+ - `visibility: hidden` will maintain the element on the flow but will not display it.
+
+
 > 9.1 Introduction to the visual formatting model
 > -----------------------------------------------
 
@@ -333,8 +345,17 @@ A float is a box that is shifted to the left or right on the current line, The m
   
   If there is not enough horizontal room for the float, it is shifted downward until either it fits or there are no more floats presents.
 
-  Since a float is not in the flow, non-positioned block boxes created before and after the float box flow vertically as if the float did not exist. However, the current and subsequent line boxes created next to the float are shortened as necessary to make room for the margin box of the float.
+  Since a float is not in the flow, non-positioned block boxes created before and after the float box flow vertically as if the float did not exist. However, the current and subsequent line boxes created next to the float are *shortened* as necessary to make room for the margin box of the float.
   
-(to be continue...)
+  A line box is next to a float when there exists a vertical position that satisfies all of theses four conditions:
+  - at or below the top of the line box
+  - at or above the bottom of the line box
+  - below the top margin edge of the float, and
+  - above the bottom margin edge of the float
+
+  Note: this means that *floats with zero outer height or negative outer height do not shorten line boxes*.
   
+  If a shortened line box is too small to contain any content, then the line box is shifted downward (and its width recomputed) until either some content fits or there are no more floats presents. Any content in the current line before a float box is `reflowed` in the same line on the other side of the float. In other words, if inline-level boxes are placed on the line before a left float is encountered that fits in the remaining line box space, the left float is placed on that line, aligned with the top of the line, and then the inline-level boxes already on the line are moved accordingly to the right of the float (the right being the other side of the left float) and vice versa for rtl and right float.
+  
+  The border box of a table, a block-level replaced element, or an element in the normal flow that establishes a new `block formatting context`[p.138](such as an element with 'overflow' other than 'visible') must not overlap the margin box of any floats in the same block formatting context as the element itself. If necessary, implementations should clear the said element by placing it below any preceding floats, but may place it adjacent to such floats if there is sufficient space. They may even make the border box of said element narrower than defined by `section 10.3.3`[p.176]. CSS2 does not define when a UA may put said element next to the float or by how much said element may become narrower.
   
