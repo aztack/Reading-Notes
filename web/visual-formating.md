@@ -57,15 +57,8 @@ viewport per canvas [p. 40] , but user agents may render to more than one canvas
 9.1.2 Containing blocks
 -----------------------
 
-In CSS 2.1, many box positions and sizes are calculated with respect to the edges of
-a rectangular box called a containing block. In general, generated boxes act as
-containing blocks for descendant boxes; we say that a box "establishes" the containing
-block for its descendants. The phrase "a box’s containing block" means "the
-containing block in which the box lives," not the one it generates.
-**Each box is given a position with respect to its containing block, but it is not
-confined by this containing block; it may overflow** [p. 195] .
-The details [p. 171] of how a containing block’s dimensions are calculated are
-described in the next chapter [p. 171] .
+In CSS 2.1, many box positions and sizes are calculated with respect to the edges of a rectangular box called a containing block. In general, generated boxes act as containing blocks for descendant boxes; we say that a box "establishes" the containing block for its descendants. The phrase "a box’s containing block" means "the
+containing block in which the box lives," not the one it generates. *Each box is given a position with respect to its containing block, but it is not confined by this containing block; it may overflow* [p. 195] . The details [p. 171] of how a containing block’s dimensions are calculated are described in the next chapter [p. 171] .
 
 9.1.2 包含块
 ------------
@@ -77,9 +70,7 @@ described in the next chapter [p. 171] .
 9.2 Controlling box generation
 ------------------------------
 
-The following sections describe the types of boxes that may be generated in
-CSS 2.1. A box’s type affects, in part, its behavior in the visual formatting model. The
-’display’ property, described below, specifies a box’s type.
+The following sections describe the types of boxes that may be generated in CSS 2.1. A box’s type affects, in part, its behavior in the visual formatting model. The ’display’ property, described below, specifies a box’s type.
 
 9.2 控制Box的生成
 ----------------
@@ -89,33 +80,24 @@ CSS 2.1. A box’s type affects, in part, its behavior in the visual formatting 
 9.2.1 Block-level elements and block boxes
 ------------------------------------------
 
-Block-level elements are those elements of the source document that are formatted
-visually as blocks (e.g., paragraphs). The following values of the ’display’ property
-make an element block-level: ’block’, ’list-item’, and ’table’.
+Block-level elements are those elements of the source document that are formatted visually as blocks (e.g., paragraphs). The following values of the ’display’ property make an element block-level: ’block’, ’list-item’, and ’table’.
 
-Block-level boxes are boxes that participate in a block formatting context. [p. 138]
-Each block-level element generates a principal block-level box that contains descendant
-boxes and generated content and is also the box involved in any positioning
-scheme.Some block-level elements may generate additional boxes in addition to the
-principal box: ’list-item’ elements. These additional boxes are placed with respect to
-the principal box. Except for table boxes, which are described in a later chapter, and replaced
-elements, a block-level box is also a block container box.
+*Block-level boxes are boxes that participate in a block formatting context*. [p. 138] Each block-level element generates a principal block-level box that contains descendant boxes and generated content and is also the box involved in any positioning scheme.Some block-level elements may generate additional boxes in addition to the
+principal box: ’list-item’ elements. These additional boxes are placed with respect to the principal box. Except for table boxes, which are described in a later chapter, and replaced elements, a block-level box is also a block container box. 
 
-A block container box either contains only block-level boxes or establishes an inline formatting context and
-thus contains only inline-level boxes. 
+A block container box either contains only block-level boxes or establishes an inline formatting context and thus contains only inline-level boxes. 
 
-Not all block container boxes are block-level
-boxes: non-replaced inline blocks and non-replaced table cells are block containers
-but not block-level boxes. Block-level boxes that are also block containers are called block boxes. 
+*Not all block container boxes are block-level boxes*: non-replaced inline blocks and non-replaced table cells are block containers but not block-level boxes. Block-level boxes that are also block containers are called block boxes. 
 
-The three terms "block-level box," "block container box," and "block box" are
-sometimes abbreviated as "block" where unambiguous. 
+The three terms "block-level box," "block container box," and "block box" are sometimes abbreviated as "block" where unambiguous. 
 
 9.2.1 块级元素和块Box
-“块级元素”是指源文档中被格式化为“可见块”的元素（比如,段落&lt;p&gt;)。元素的display被设置为
+“块级元素”是指源文档中被"绘制”成“块”的元素（比如,段落&lt;p&gt;)。元素的display被设置为
 'block','list-item','table'时，该元素就成为了块级元素。
 
-“块级Box”参与“块级格式化(环境)”的Box。
+> 下面这段翻译中的box相关名词相当‘混乱’，得结合英文读好几遍才好理解...
+
+“块级Box”参与“块级格式化(环境)”。
 每个块级元素都会生成一个“主块级Box”，其中包含这个元素的后代的Box和这个元素生成的内容。同时，
 这个“主块级Box”也参与元素的定位。一些块级元素在生成“主Box”的基础上，还会生成“额外的Box”：
 比如'list-item'元素。这些额外的Box会根据“主Box”进行定位。除了table生成的Box和replaced elements &?
@@ -124,6 +106,4 @@ sometimes abbreviated as "block" where unambiguous.
 table cells都是“块包含Box”，但不是“块级Box”。如果“块级Box”同时也是“块包含Box”，称作“块Box”&?
 目前有三个Box属于需要区分：“块级Box”，“块包含Box”和“块Box”。如果没有歧义，都简称为“块”。
 
-块级元素 --生成--> 主块级Box [+ 额外Box] --同时也是--> 块包含Box
-                  块级Box              <--不一定是-- 块包含Box
-                  块级Box <----> 包含块 => 叫做"块Box"
+
