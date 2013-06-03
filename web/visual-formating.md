@@ -106,4 +106,42 @@ The three terms "block-level box," "block container box," and "block box" are so
 table cells都是“块包含Box”，但不是“块级Box”。如果“块级Box”同时也是“块包含Box”，称作“块Box”&?
 目前有三个Box属于需要区分：“块级Box”，“块包含Box”和“块Box”。如果没有歧义，都简称为“块”。
 
+9.2.1.1 Anonymouse block boxes
 
+in a document like this:
+
+```html
+  <div>
+    Some text
+    <p>More text</p>
+  </div>
+```
+
+(and assuming the `<div>` and the `<p>` have `display:block`), the `<div>` appears to have both inline content and block content. To make it easier to define the formatting, we assume that there is an anonymouse block box around "Some text".
+
+[Figure in page 130 top]
+
+Diagram showing the three boxes of which one is anonymouse, for the example above.
+
+  In other words: if a block container box (such as that generated for the `<div>` above) has a block-level box inside it (such as the `<p>` above), then we force it to have only block-level boxes inside it.
+  
+  When an inline box contains an in-flow block-level box, the inline box (and its inline ancestors within the same line box) are broken around the block-level box (and any block-level siblings that are consecutive or sparated only by collapsible whitespace and/or out-of-flow elements), splitting the inline box into two boxes (even if either side is empty), one on each side of the block-level box(es). The line boxes before the break and after the break are enclosed in anonymouse block, and the block-level blox becomes a sibling of those anonymouse boxes. When such an inline box is affected by relative positioning, any resulting translation also affects the block-level box contained in the inline box.
+  
+  Example(s):
+  This model would apply in the following example if the following rules:
+  
+  wre used with this HTML document:
+  
+```html
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<head>
+  <title>Anonymouse text interrupted by a block</title>
+</head>
+<body>
+  <p>
+    This is anonymosue text before the SPAN.
+    <span>This is the content of SPAN</span>
+    This is anonymouse text after the SPAN
+  </p>
+</body>
+```
