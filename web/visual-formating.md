@@ -1,13 +1,13 @@
 以下一些问题需要明确：
 
 - 文档元素生成的`盒`，即Box。`盒`是css布局的对象（target）和基本单位
-- `盒`分为`块级` (block level)和`行内` (inline)2种
+- `盒`分为`块级` (block level)和`行内` (inline)2种。
 - `盒`内部会生成一个看不见的`格式化上下文`。这个`格式化上下文`会控制`盒`内部如何布局。
 `格式化上下文`不限于`块级格式化上下文`和`行内格式化上下文`两种，还有`table格式化上下文`，`grid格式化上下文`，`flex格式化上下文`。
 以后随着标准的发展可能还会有新的格式化上下文出现。但是，`盒`只有block和inline两种。
 - `盒`+`格式化上下文`，作用于`盒`包含的元素，实现布局。
-- HTML元素有默认的display属性，决定了其默认的是块级元素还是行内元素。可以通过修改display属性来改变。
-- `盒`产生的`格式化上下文`会收到display、float、position的影响：比如，position为absolute、设置了float的属性的元素都会创建新的`块级格式化上下文`
+- HTML元素有默认的display属性，决定了其默认的是块级元素还是行内元素。可以通过修改display属性来改变。`display`为`none`的元素不产生`盒`
+- `盒`产生的`格式化上下文`会受到display、float、position的影响：比如，position为absolute、设置了float的属性的元素都会创建新的`块级格式化上下文`
 
 9.1 Introduction to the visual formatting model
 -----------------------------------------------
@@ -62,17 +62,17 @@ a rectangular box called a containing block. In general, generated boxes act as
 containing blocks for descendant boxes; we say that a box "establishes" the containing
 block for its descendants. The phrase "a box’s containing block" means "the
 containing block in which the box lives," not the one it generates.
-Each box is given a position with respect to its containing block, but it is not
-confined by this containing block; it may overflow [p. 195] .
+**Each box is given a position with respect to its containing block, but it is not
+confined by this containing block; it may overflow** [p. 195] .
 The details [p. 171] of how a containing block’s dimensions are calculated are
 described in the next chapter [p. 171] .
 
 9.1.2 包含块
 ------------
-在CSS2.1中，许多Box的定位，尺寸的计算都是与一个正方形的叫做包含块的边沿有关的。
-通常，Box的父Box就是它的包含块；换句话说就是，父Box为其后代Box“创建”了包含块。
-如果提到一个“Box”的包含块，指的就是其父Box为其“创建”的那个包含块，而不是指它为它的后代创建的包含块。
-每个Box都被定位在它的包含块中，但并不是说它被限制在包含框内,它有可能从包含块中“溢出”。
+在CSS2.1中，Box的定位、尺寸的计算都是与一个正方形的叫做包含块的四边有关的。
+通常，元素的`父节点生成的Box`就是该元素的Box的`包含块`；换句话说就是，父Box为其后代Box“创建”了`包含块`。
+如果提到一个“Box”的`包含块`，指的就是其父Box为其“创建”的那个`包含块`，而不是指它为它的后代创建的`包含块`。
+每个Box都被定位在它的`包含块`中，但并不是说它被限制在包含框内,它有可能从包含块中“溢出”。
 
 9.2 Controlling box generation
 ------------------------------
