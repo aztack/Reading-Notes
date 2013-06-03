@@ -145,3 +145,9 @@ Diagram showing the three boxes of which one is anonymouse, for the example abov
   </p>
 </body>
 ```
+
+The `<p>` element contains a chunk(C1) of anonymouse text followed by a block-level element followed by another chunk(C2) of anonymouse text. The resulting boxes would be a block box representing the `<body>`, containing an anonymouse block box around C1, the `<span>` block box, and another anonymouse block box around C2.
+
+  The properties of anonymouse boxes are inherited from the enclosing non-anonymosue box (e.g., in the example just below the subsection heading "Anonymosue block boxes", the one for `<div>`). Non-inherited properties have their initial value. For example, the font of the anonymouse box is inherited from the `<div>`, but the margins will be 0.
+  
+  Properties set on elements that cause anonymosue block boxes to be generated still apply to the boxes and content of that elemnt. For example, if a border had been set on the `<p>` element in the above example, the border would be drawn around C1(open at the end of the line and C2(open at the start of the line).
