@@ -4,16 +4,26 @@
 
 首先需要明确的知识点：
 
-- 文档元素生成的`盒`，即Box。`盒`是css布局的对象（target）和基本单位
-- `盒`分为`块级` (block level)和`行内` (inline)2种。
+各种盒子
+--------
+
+- 文档元素会生成`盒`，即Box。`盒`是css布局的对象（target）和基本单位。
+- `盒`分为`块级` (block level)和`行内` (inline)。(Run-in box?)
 - `盒`内部会生成一个看不见的`格式化上下文`。这个`格式化上下文`会控制`盒`内部如何布局。
 `格式化上下文`不限于`块级格式化上下文`和`行内格式化上下文`两种，还有`table格式化上下文`，`grid格式化上下文`，`flex格式化上下文`。
 以后随着标准的发展可能还会有新的格式化上下文出现。但是，`盒`只有block和inline两种。
 - `盒`+`格式化上下文`，作用于其包含的`盒`，实现布局。
 - HTML元素有默认的display属性，决定了其默认的是块级元素还是行内元素。可以通过修改display属性来改变。`display`为`none`的元素不产生`盒`
 - `盒`产生的`格式化上下文`会受到display、float、position的影响：比如，position为absolute、设置了float的属性的元素都会创建新的`块级格式化上下文`
+- 请区分`块级元素`和`块级盒`。因为`块级元素`被设置为`display:inline`后，也可以产生`块级盒`
 
-`非替换的元素`和`替换了的元素`
+`非替换的元素`和`替换了的元素`?
+-------------------------------
+
+谁会产生`格式化上下文`?
+---------------------
+TODO:
+
 - Non-replaced elements: 大多数HTML元素都是非替换的，包括起始标签和结束标签，中间的内容就是最终显示的内容。没有被外部其他内容`替换`
 - Replaced elements: 典型的`替换了的`的元素有`<img>`,`<input>`，`<object>`,`<button>`,`<select>`，他们没有结束标签。它们显示的内容是从外部加载的。
 
@@ -103,7 +113,7 @@ principal box: ’list-item’ elements. These additional boxes are placed with 
 “块级Box”参与“块级格式化(环境)”。
 每个块级元素都会生成一个“主块级Box”，其中包含这个元素的后代的Box和这个元素生成的内容。同时，
 这个“主块级Box”也参与元素的定位。一些块级元素在生成“主Box”的基础上，还会生成“额外的Box”：
-比如'list-item'元素。这些额外的Box会根据“主Box”进行定位。除了table生成的Box和replaced elements &?
+比如'list-item'元素。这些额外的Box会根据“主Box”进行定位。除了table生成的Box和`替换了的元素`
 ,“块级Box”同时也是一个“块包含Box”。“块包含Box”要么只包含“块级Box”，要么建立一个“行内格式化环境”并
 只包含“行内Box”。并不是所有的“块包含Box”都是“块级Box”：non-replaced inline blocks和non-replaced
 table cells都是“块包含Box”，但不是“块级Box”。如果“块级Box”同时也是“块包含Box”，称作“块Box”&?
@@ -174,8 +184,41 @@ table cells都是“块包含Box”，但不是“块级Box”。如果“块级
   - `inline-block`
 Inline-level elements generate _inline-level boxes_, which are boxes that participate in an inline formatting context.
 
-  An inline box is one that is both inline-level and whose contents participate in its containing inline formatting context. A non-replaced element with a `display` value of `inline` generates an inline box.
+  An _inline box_ is one that is both inline-level and whose contents participate in its containing inline formatting context. A non-replaced element with a `display` value of `inline` generates an inline box. Inline-level boxes that are not inline boxes(such as replaced inline-level elements, inline-block elements, and inline-table elements) are called _atomic inline-level boxes_ because they participate in their inline formating context as a single opaque box.
 
 9.2.2 行级元素和行盒
 --------------------
+
+（暂时略过）
+
+9.4 Normal flow
+---------------
+
+  Boxes in the normal flow belong to a formatting context, which may be block or inline, but not both simultaneously.`Block-level`[p. 129] boxes participate in a `block foramtting`[p. 138] context. `Inline-level boxes`[p. 131] participate in an `inline formatting` [p. 138] context.
+
+9.4.1 Block formatting contexts
+-------------------------------
+
+ *`Floats`, `absolutely positioned elements`,`block containers`* (such as inline-blocks, table-cells, and table-captions) that are not block boxes, and block boxes with 'overflow' other than 'visible' (except when that value has been propagated to the viewprot) *establish new block formatting contexts for their contents*.
+ 
+ In a block formatting context,boxes are laid out one after the other, vertically, beginning at the top of a containing block. The vertical distance between two sibling boxes is determined byh the `margin` properties. *Vertical margins between adjacent block-level boxes in a block formatting context collapse*[p. 117].
+ 
+ In a block formatting context, each box's left outer edge touches the left edge of the containing block (for right-to-left formatting, right edges touch). This is true even in the presence of floats (alghough a box's _line boxes_ may shrink due to the floats), unless the box establishes a new block formatting context (in which case the box itself `may become narrower`[p.142] due to the floats).
+ 
+ For information about page breaks in paged media, please consult the section on `allowed page break`[p. 229].
+ 
+9.4.1 块级格式化上下文--BFC
+---------------------------
+暂略
+
+9.4.2 Inline formatting contexts
+--------------------------------
+In an inline formatting context, boxes are laid out horizontally, one after the other, beginning at the top of a containing block. Horizontal margins, borders, and padding are respected between these boxes. The boxes may be aligned vertically in different ways: their bottoms or tops may be aligned, or the baselines of text within them may be aligned. The rectangular area that contains the boxes that form a line is called a _line box_.
+
+  The width of a line box is determined by a `containing block`[p.128] and the presence of floats. The height of a line box is determined by the rules given in the section on `line height calculations`[p.189].
+  
+  A line box is always tall enough for all of the boxes it contains.
+ 
+ 
+
 
