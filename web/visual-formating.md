@@ -357,5 +357,25 @@ A float is a box that is shifted to the left or right on the current line, The m
   
   If a shortened line box is too small to contain any content, then the line box is shifted downward (and its width recomputed) until either some content fits or there are no more floats presents. Any content in the current line before a float box is `reflowed` in the same line on the other side of the float. In other words, if inline-level boxes are placed on the line before a left float is encountered that fits in the remaining line box space, the left float is placed on that line, aligned with the top of the line, and then the inline-level boxes already on the line are moved accordingly to the right of the float (the right being the other side of the left float) and vice versa for rtl and right float.
   
-  The border box of a table, a block-level replaced element, or an element in the normal flow that establishes a new `block formatting context`[p.138](such as an element with 'overflow' other than 'visible') must not overlap the margin box of any floats in the same block formatting context as the element itself. If necessary, implementations should clear the said element by placing it below any preceding floats, but may place it adjacent to such floats if there is sufficient space. They may even make the border box of said element narrower than defined by `section 10.3.3`[p.176]. CSS2 does not define when a UA may put said element next to the float or by how much said element may become narrower.
+  The border box of a table, a block-level replaced element, or an element in the normal flow that establishes a new `block formatting context`[p.138] (such as an element with 'overflow' other than 'visible') must not overlap the margin box of any floats in the same block formatting context as the element itself. If necessary, implementations should clear the said element by placing it below any preceding floats, but may place it adjacent to such floats if there is sufficient space. They may even make the border box of said element narrower than defined by `section 10.3.3`[p.176]. CSS2 does not define when a UA may put said element next to the float or by how much said element `may become narrower`.
+  Example(s):
+  **Example**. In the following document fragment, the containing block is too narrow to contain the content next to the float, so the content gets moved to below the floats where it is aligned in the line box according to the text-align property.
+  
+```css
+p {width: 10em; border: solid aqua;}
+span {float:left;width:5em;height:5em;border:solid blue;}
+```
+```html
+<p>
+  <span></span>
+  Supercalifragilisticexpialidocious
+</p>
+```
+
+[Figure at page 143]
+
+Several floats may be adjacent, and this model also applies to adjacent floats in the same line.
+
+  Example(s):
+  The following rule floats all `<img>` boxes with class="icon" to the left( and sets the left margin to '0'):
   
