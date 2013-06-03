@@ -255,6 +255,58 @@ In an inline formatting context, boxes are laid out horizontally, one after the 
 > Several _emphasized words_ appears <br/>
 > **in this** sentence, dear.
  
+ Or like this:
  
+> Several _emphasized_ <br/>
+> _words_ appear **in this** <br/>
+> sentence, dear.
 
+  In the previouse example, the `<em>` box was split into two `<em>` boxes (call them "split1" and "split2"). Margins, boarders,padding, or text decorations have no visible effect after split1 or before split2.
+  
+  Consider the following example:
+  
+```html
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0.1//EN">
+<html>
+  <head>
+    <title>Example of inline flow on several lines</title>
+    <style type="text/css">
+      em{
+        padding:2px;
+        margin: 1em;
+        border-width:medium;
+        border-style:dashed;
+        line-height:2.4em;
+      }
+    </style>
+  </head>
+  <body>
+    <p>Several <em>emphasized words</em> appear here.</p>
+  </body>
+</html>
+```
+
+9.4.3 Relative positioning
+--------------------------
+
+  Once a box has been laid out according to the `normal flow`[p.137] or floated, it may be shifted relative to this position. This is called _relative positioning_. Offsetting a box(B1) in this way has no effect on the box(B2) that follows: B2 is given a position as if B1 were not offset and B2 is not re-positioned after B1's offset is applied. This implies that relative positioning may causeboxes to overlap. However, if relative positioning cause an `overflow:auto` or `overflow:scroll` box to have overflow, the UA must allow the user to access this content (at its offset position), which, through the creation of scrollbars, may affect layout.
+  
+  A relatively positioned box keeps its normal flow size, including line breaks and the space originally reserved for it. The section on `containing blocks`[p.128] explains when a relatively positioned box establishes a new containing block.
+  
+  For relatively positioned elements, `left` and `right` move the box(es) horizontally, without changing their size. `left` moves the boxes to the right, and `right` moves them to the left. Since boxes are not split or stretched as a result of `left` or `right`, the used values are always: left = -right;
+  
+  If both 'left' and 'right' are `auto` (their initial values), the used values are `0`(i.e., the boxes stay in their original position).
+  
+  If 'left' is 'auto', its used value is minus the value of 'right'(i.e., the boxes move to the left by the value of 'right').
+  
+  If 'right' is specified as 'auto', its used value is minus the value of 'left'.
+  
+  If neither 'left' nor 'right' is 'auto', the position is over-constrained, and one of them has to be ignored. If the `direction` property of the containing block is `ltr`, the value of 'left' wins and 'right' becomes -'left'. if `direction` of the containing block is `rtl`, 'right' wins and 'left' is ignored.
+
+  Depending on the width of the `<p>`, the boxes may be distributed as follows:
+  
+  [Figure at p.140]
+  
+- The margin is inserted before "emphasized" and after "words".
+- The padding is inserted before, above, and below "emphasized" and after,above,and below "words". A dashed border is rendered on threee sides in each case.
 
