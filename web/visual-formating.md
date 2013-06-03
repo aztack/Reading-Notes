@@ -92,7 +92,7 @@ A block container box either contains only block-level boxes or establishes an i
 The three terms "block-level box," "block container box," and "block box" are sometimes abbreviated as "block" where unambiguous. 
 
 9.2.1 块级元素和块Box
-“块级元素”是指源文档中被"绘制”成“块”的元素（比如,段落&lt;p&gt;)。元素的display被设置为
+“块级元素”是指源文档中被"绘制”成“块”的元素（比如,段落`<p>`;)。元素的display被设置为
 'block','list-item','table'时，该元素就成为了块级元素。
 
 > 下面这段翻译中的box相关名词相当‘混乱’，得结合英文读好几遍才好理解...
@@ -151,3 +151,7 @@ The `<p>` element contains a chunk(C1) of anonymouse text followed by a block-le
   The properties of anonymouse boxes are inherited from the enclosing non-anonymosue box (e.g., in the example just below the subsection heading "Anonymosue block boxes", the one for `<div>`). Non-inherited properties have their initial value. For example, the font of the anonymouse box is inherited from the `<div>`, but the margins will be 0.
   
   Properties set on elements that cause anonymosue block boxes to be generated still apply to the boxes and content of that elemnt. For example, if a border had been set on the `<p>` element in the above example, the border would be drawn around C1(open at the end of the line and C2(open at the start of the line).
+  
+  Some user agents have implemented borders on inlines containing blocks in other ways, e.g., by wrapping such nested blocks inside "anonymouse line boxes" and thus drawing inline borders around such boxes. As CSS1 and CSS2 did not define this behavior, CSS1-only and CSS2-only user agents may implement this alternative model andstill claim conformance to this part of CSS 2.1. This does not apply to UAs developed after this specification was released.
+  
+  Anonymouse block boxes are ignored when resolving percentage values that would refer to it: the closest non-anonymouse ancestor abox is used instead. For example if the child of the anonymouse block box inside the `<div>` above needs to know the height of its containing block to resolve a percentage height, then it will use the height of the containing block formed by the `<div>`, not of the anonymouse block box.
