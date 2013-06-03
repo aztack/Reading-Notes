@@ -20,12 +20,12 @@
 `非替换的元素`和`替换了的元素`?
 -------------------------------
 
-谁会产生`格式化上下文`?
----------------------
-TODO:
-
 - Non-replaced elements: 大多数HTML元素都是非替换的，包括起始标签和结束标签，中间的内容就是最终显示的内容。没有被外部其他内容`替换`
 - Replaced elements: 典型的`替换了的`的元素有`<img>`,`<input>`，`<object>`,`<button>`,`<select>`，他们没有结束标签。它们显示的内容是从外部加载的。
+
+哪些情况下会产生哪些`格式化上下文`?
+-----------------------------------
+TODO:
 
 > 9.1 Introduction to the visual formatting model
 > -----------------------------------------------
@@ -217,7 +217,9 @@ In an inline formatting context, boxes are laid out horizontally, one after the 
 
   The width of a line box is determined by a `containing block`[p.128] and the presence of floats. The height of a line box is determined by the rules given in the section on `line height calculations`[p.189].
   
-  A line box is always tall enough for all of the boxes it contains.
+  A line box is always tall enough for all of the boxes it contains. However, it may be taller than the tallest box it contains (if ,for example, boxes are aligned so that baseline line up). When the height of a box B is less than the height of the line box containing it, the vertical alignment of B within the line box is determined by the `vertical-align` property. When several inline-level boxes cannot fit horizontally within a single line box, they are distributed among two or more vertically-stacked line boxes. Thus, a paragraph is a vertical stack of line boxes. Line boxes are stacked with no vertical separation (except as specified elsewhere) and they never overlap.
+  
+  In general, the left edge of a line box touches the left edge of its containing block and the right edge touches the right edge of its containing block. However, floating boxes may come between the containing block edge and the line box edge. Thus although line boxes in the same inline formatting context generally have the same width (taht of the containing block), they may vary in width if available horizontal space is reduced due to `floats`[p.142]. Line boxes in the same inline formatting context generally vary in height (e.g., one line might contain a tall image while the other contain only text).
  
  
 
