@@ -310,3 +310,31 @@ In an inline formatting context, boxes are laid out horizontally, one after the 
 - The margin is inserted before "emphasized" and after "words".
 - The padding is inserted before, above, and below "emphasized" and after,above,and below "words". A dashed border is rendered on threee sides in each case.
 
+  Example(s):
+  
+  The following three rules are equivalent:
+  
+```css
+div.a8 { position: relative; direction: ltr; left: -1em; right: auto }
+div.a8 { position: relative; direction: ltr; left: auto; right: 1em }
+div.a8 { position: relative; direction: ltr; left: -1em; right: 5em }
+```
+
+The ’top’ and ’bottom’ properties move relatively positioned element(s) up or down without changing their size. ’Top’ moves the boxes down, and ’bottom’ moves them up. Since boxes are not split or stretched as a result of ’top’ or ’bottom’, the used values are always: top = -bottom. If both are ’auto’, their used values are both ’0’. If one of them is ’auto’, it becomes the negative of the other. If neither is ’auto’, ’bottom’ is ignored (i.e., the used value of ’bottom’ will be minus the value of ’top’). Note. Dynamic movement of relatively positioned boxes can produce animation effects in scripting environments (see also the ’visibility’ property). Although relative positioning may be used as a form of superscripting and subscripting, the line height is not automatically adjusted to take the positioning into consideration. See the description of line height calculations [p. 189] for more information.
+
+Examples of relative positioning are provided in the section comparing normal flow, floats, and absolute positioning [p. 154] .
+
+9.5 Floats
+----------
+
+A float is a box that is shifted to the left or right on the current line, The most interesting characteristic of a float (or "floated" or "floating" box) is that content may flow along its side (or be prohibited from doing so by the `clear` property). Content flows down the right side of a left-floated box and down the left side of a right-floated box. The following is an introduction to float positioning and content flow; the exact rules[p.147] governing float behavior are given in the description of the `float` property.
+
+  A floated box is shifted to the left or right untils its outer edge touches the containg block edge or the outer edge of another float. If there is a line box, the outer top of the floated box is aligned with the top of the current line box.
+  
+  If there is not enough horizontal room for the float, it is shifted downward until either it fits or there are no more floats presents.
+
+  Since a float is not in the flow, non-positioned block boxes created before and after the float box flow vertically as if the float did not exist. However, the current and subsequent line boxes created next to the float are shortened as necessary to make room for the margin box of the float.
+  
+(to be continue...)
+  
+  
