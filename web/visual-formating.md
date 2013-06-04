@@ -61,6 +61,7 @@ Just for completeness:
 - `float`不适用于`position:absolute`的元素和根元素 [p.146]
 - ["浮动是个行级的行为，当遇到浮动元素的时候，会首先"假装"它是个行内元素进行排版，排好后就往浮动的方向挤到挤不过去为止（遇到边界或者其它浮动元素）"](http://www.cnblogs.com/winter-cn/archive/2013/05/11/3072929.html)
 - "margin of a float never collapse" [p.144]
+- `width`和`height`不适用于`非替换的行级元素` [p.174 10.2] [p.182]
 
 > 9.1 Introduction to the visual formatting model
 > -----------------------------------------------
@@ -221,7 +222,7 @@ Inline-level elements generate _inline-level boxes_, which are boxes that partic
 
   An _inline box_ is one that is both inline-level and whose contents participate in its containing inline formatting context. A non-replaced element with a `display` value of `inline` generates an inline box. Inline-level boxes that are not inline boxes(such as replaced inline-level elements, inline-block elements, and inline-table elements) are called _atomic inline-level boxes_ because they participate in their inline formating context as a single opaque box.
 
-9.2.2 行级元素和行盒
+9.2.2 行内元素和行内盒
 --------------------
 
 （暂时略过）
