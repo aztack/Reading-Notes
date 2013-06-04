@@ -1,6 +1,8 @@
 参考资料：
 - [Visual formatting model](http://www.w3.org/TR/CSS21/visuren.html)
+- [DOCUMENTATION AND TUTORIALS ABOUT CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 - [Formatting Concepts](http://reference.sitepoint.com/css/formattingcontext)
+- [Understanding Floats](http://phrogz.net/css/understandingfloats.html)
 
 首先需要明确的知识点：
 
@@ -10,7 +12,11 @@
 - 文档元素会生成`盒`，即Box。`盒`是css布局的对象（target）和基本单位。
 - `盒`分为`块级` (block level)和`行内` (inline)。(Run-in box?)
 - `盒`内部会生成一个看不见的`格式化上下文`。这个`格式化上下文`会控制`盒`内部如何布局。
-`格式化上下文`不限于`块级格式化上下文`和`行内格式化上下文`两种，还有`table格式化上下文`，`grid格式化上下文`，`flex格式化上下文`。
+`格式化上下文`不限于`块级格式化上下文`和`行内格式化上下文`两种，还有
+ + `table格式化上下文`
+ + `grid格式化上下文`
+ + `flex格式化上下文`
+ + `stacking上下文`
 以后随着标准的发展可能还会有新的格式化上下文出现。但是，`盒`只有block和inline两种。
 - `盒`+`格式化上下文`，作用于其包含的`盒`，实现布局。
 - HTML元素有默认的display属性，决定了其默认的是块级元素还是行内元素。可以通过修改display属性来改变。`display`为`none`的元素不产生`盒`
@@ -25,7 +31,17 @@
 
 哪些情况下会产生哪些`格式化上下文`?
 -----------------------------------
-TODO:
+
+[A block formatting context is created by one of the following:](https://developer.mozilla.org/en-US/docs/Web/CSS/Block_formatting_context?redirectlocale=en-US&redirectslug=CSS%2FBlock_formatting_context)
+
+- the root element or something that contains it
+- floats (elements where float is not none)
+- absolutely positioned elements (elements where position is absolute or fixed)
+- inline-blocks (elements with display: inline-block)
+- table cells (elements with display: table-cell, which is the default for HTML table cells)
+- table captions (elements with display: table-caption, which is the default for HTML table captions)
+- elements where overflow has a value other than visible
+- flex boxes (elements with display: flex or inline-flex)
 
 [Only the following properties change the standard element's flow](http://stackoverflow.com/posts/11917186/edit):
 
@@ -38,6 +54,13 @@ Just for completeness:
  - `display: none` removes the element of the flow (strictly speaking it does no change the element flow order because the element will not have a flow order at all)
  - `visibility: hidden` will maintain the element on the flow but will not display it.
 
+记住
+----
+
+- 块级元素内的文本会生成匿名行盒！所以，文字按`行级`，外层元素按`块级`考虑布局
+- `float`不适用于`position:absolute`的元素和根元素 [p.146]
+- ["浮动是个行级的行为，当遇到浮动元素的时候，会首先"假装"它是个行内元素进行排版，排好后就往浮动的方向挤到挤不过去为止（遇到边界或者其它浮动元素）"](http://www.cnblogs.com/winter-cn/archive/2013/05/11/3072929.html)
+- "margin of a float never collapse" [p.144]
 
 > 9.1 Introduction to the visual formatting model
 > -----------------------------------------------
