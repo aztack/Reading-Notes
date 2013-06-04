@@ -1,5 +1,6 @@
 参考资料：
-- [Visual formatting model](http://www.w3.org/TR/CSS21/visuren.html)
+- [Visual formatting model(W3C)](http://www.w3.org/TR/CSS21/visuren.html)
+- [Visual formatting model(MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/Visual_formatting_model)
 - [DOCUMENTATION AND TUTORIALS ABOUT CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 - [Formatting Concepts](http://reference.sitepoint.com/css/formattingcontext)
 - [Understanding Floats](http://phrogz.net/css/understandingfloats.html)
@@ -10,20 +11,19 @@
 --------
 
 - 文档元素会生成`盒`，即Box。`盒`是css布局的对象（target）和基本单位。
-- `盒`分为`块级` (block level)和`行内` (inline)。(Run-in box?)
+- `盒`分为`块级盒` (block level)和`行内盒`或称`行级盒` (inline)。(Run-in box?)
 - `盒`内部会生成一个看不见的`格式化上下文`。这个`格式化上下文`会控制`盒`内部如何布局。
-`格式化上下文`不限于`块级格式化上下文`和`行内格式化上下文`两种，还有
+`格式化上下文`不限于`块级格式化上下文`简称**BFC**和`行内格式化上下文`简称**IFC**两种，还有
  + `table格式化上下文`
  + `grid格式化上下文`
  + `flex格式化上下文`
- + `stacking上下文`
-以后随着标准的发展可能还会有新的格式化上下文出现。但是，`盒`只有block和inline两种。
+但是，`盒`只有block和inline两种。
 - `盒`+`格式化上下文`，作用于其包含的`盒`，实现布局。
 - HTML元素有默认的display属性，决定了其默认的是块级元素还是行内元素。可以通过修改display属性来改变。`display`为`none`的元素不产生`盒`
 - `盒`产生的`格式化上下文`会受到display、float、position的影响：比如，position为absolute、设置了float的属性的元素都会创建新的`块级格式化上下文`
 - 请区分`块级元素`和`块级盒`。因为`块级元素`被设置为`display:inline`后，也可以产生`行内盒`
 
-`非替换的元素`和`替换了的元素`?
+`非替换元素`和`替换了的元素`?
 -------------------------------
 
 - Non-replaced elements: 大多数HTML元素都是非替换的，包括起始标签和结束标签，中间的内容就是最终显示的内容。没有被外部其他内容`替换`
@@ -57,7 +57,7 @@ Just for completeness:
 记住
 ----
 
-- 块级元素内的文本会生成匿名行盒！所以，文字按`行级`，外层元素按`块级`考虑布局
+- 块级元素内的文本会生成匿名`行盒`！所以，文字按`行级`，外层元素按`块级`考虑布局
 - `float`不适用于`position:absolute`的元素和根元素 [p.146]
 - ["浮动是个行级的行为，当遇到浮动元素的时候，会首先"假装"它是个行内元素进行排版，排好后就往浮动的方向挤到挤不过去为止（遇到边界或者其它浮动元素）"](http://www.cnblogs.com/winter-cn/archive/2013/05/11/3072929.html)
 - "margin of a float never collapse" [p.144]
@@ -138,22 +138,24 @@ principal box: ’list-item’ elements. These additional boxes are placed with 
 
 > The three terms "block-level box," "block container box," and "block box" are sometimes abbreviated as "block" where unambiguous. 
 
-9.2.1 块级元素和块Box
+9.2.1 块级元素和`块级盒`
 ---------------------
 
 “块级元素”是指源文档中被"绘制”成“块”的元素（比如,段落`<p>`;)。元素的display被设置为
-'block','list-item','table'时，该元素就成为了块级元素。
+'block','list-item','table'时，该元素就成为了`块级元素`。
 
 > 下面这段翻译中的box相关名词相当‘混乱’，得结合英文读好几遍才好理解...
 
-“块级Box”参与“块级格式化(环境)”。
-每个块级元素都会生成一个“主块级Box”，其中包含这个元素的后代的Box和这个元素生成的内容。同时，
-这个“主块级Box”也参与元素的定位。一些块级元素在生成“主Box”的基础上，还会生成“额外的Box”：
-比如'list-item'元素。这些额外的Box会根据“主Box”进行定位。除了table生成的Box和`替换了的元素`
-,“块级Box”同时也是一个“块包含Box”。“块包含Box”要么只包含“块级Box”，要么建立一个“行内格式化环境”并
-只包含“行内Box”。并不是所有的“块包含Box”都是“块级Box”：non-replaced inline blocks和non-replaced
-table cells都是“块包含Box”，但不是“块级Box”。如果“块级Box”同时也是“块包含Box”，称作“块Box”&?
-目前有三个Box属于需要区分：“块级Box”，“块包含Box”和“块Box”。如果没有歧义，都简称为“块”。
+“块级盒”参与“块级格式化(环境)”。
+每个块级元素都会生成一个“主块级盒”，其中包含这个元素的后代产生的盒，以及这个元素生成的内容。同时，
+这个“主盒”也参与元素的定位。一些块级元素在生成“主盒”的基础上，还会生成“额外的盒”：
+比如'list-item'元素。这些额外的盒会根据“主盒”进行定位。除了table生成的盒和`替换了的元素`
+,“块级盒”同时也**可能**是一个“块容器盒”。“块容器盒”要么只包含“块级盒”，要么建立一个“行内格式化环境”并
+只包含“行内盒”。并不是所有的“块容器盒”都是“块级盒”：non-replaced inline blocks和non-replaced
+table cells都是“块容器盒”，但不是“块级盒”。如果“块级盒”同时也是“块容器盒”，称作“块盒”&?
+目前有三个与‘盒’相关的名词需要区分：“块级盒”，“块容器盒”和“块盒”。如果没有歧义，都简称为“块”。
+
+> 注意：`块级盒`和`行级盒`都是盒子的固有'属性'，由display决定。而`块容器盒`、`块盒`都是盒子的“职能”。类比一下：盒的“级”(level)类似于国籍（可以更改），后面几个可以理解为“职位”。
 
 >  9.2.1.1 Anonymouse block boxes
 >  ------------------------------
