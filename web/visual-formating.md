@@ -12,16 +12,34 @@
 
 - 文档元素会生成`盒`，即Box。`盒`是css布局的对象（target）和基本单位。
 - `盒`分为`块级盒` (block level)和`行内盒`或称`行级盒` (inline)。(Run-in box?)
-- `盒`内部会生成一个看不见的`格式化上下文`。这个`格式化上下文`会控制`盒`内部如何布局。
-`格式化上下文`不限于`块级格式化上下文`简称*BFC*和`行内格式化上下文`简称*IFC*两种，还有
- + `table格式化上下文`
- + `grid格式化上下文`
- + `flex格式化上下文`
-但是，`盒`<del>只有</del>*主要有*block和inline两种。[还有...](https://developer.mozilla.org/en-US/docs/Web/CSS/Visual_formatting_model)
-- `盒`+`格式化上下文`，作用于其包含的`盒`，实现布局。
 - HTML元素有默认的display属性，决定了其默认的是块级元素还是行内元素。可以通过修改display属性来改变。`display`为`none`的元素不产生`盒`
 - `盒`产生的`格式化上下文`会受到display、float、position的影响：比如，position为absolute、设置了float的属性的元素都会创建新的`块级格式化上下文`
 - 请区分`块级元素`和`块级盒`。因为`块级元素`被设置为`display:inline`后，也可以产生`行内盒`
+
+
+格式化上下文
+------------
+
+- 以前的理解：
+
+ <del>`盒`内部会生成一个看不见的`格式化上下文`。这个`格式化上下文`会控制`盒`内部如何布局。</del>
+ `格式化上下文`不限于`块级格式化上下文`简称*BFC*和`行内格式化上下文`简称*IFC*两种，还有
+  + <del>`table格式化上下文`</del> [How many CSS formatting contexts are there?](http://stackoverflow.com/questions/16908438/how-many-css-formatting-contexts-are-there/16910066#16910066)
+  + `grid格式化上下文`
+  + `flex格式化上下文`
+ 但是，`盒`<del>只有</del>*主要有*block和inline两种。[还有...](https://developer.mozilla.org/en-US/docs/Web/CSS/Visual_formatting_model)
+ - <del>`盒`+`格式化上下文`，作用于其包含的`盒`，实现布局。</del>
+ 
+
+- 整理更新：
+
+> "In general, a "formatting context" is simply an area in which descendant boxes of a certain kind (e.g. block, inline, flex-item) are laid out (or formatted) in normal flow."
+
+> "A block formatting context is a part of a visual CSS rendering of a Web page. It is the region in which the layout of block boxes occurs and in which floats interact with each other."
+
+格式化上下文是页面中一块渲染区域，产生格式化上下文的盒子的子代盒子在其中进行布局。
+
+CSS2.1中只有 BFC和IFC，CSS3中还增加了GFC和FFC。
 
 `非替换元素`和`替换了的元素`?
 -------------------------------
@@ -31,8 +49,9 @@
 
 哪些情况下会产生哪些`格式化上下文`?
 -----------------------------------
+[Block formatting context](https://developer.mozilla.org/en-US/docs/Web/CSS/Block_formatting_context?redirectlocale=en-US&redirectslug=CSS%2FBlock_formatting_context)
 
-[A block formatting context is created by one of the following:](https://developer.mozilla.org/en-US/docs/Web/CSS/Block_formatting_context?redirectlocale=en-US&redirectslug=CSS%2FBlock_formatting_context)
+A block formatting context is created by one of the following:
 
 - the root element or something that contains it
 - floats (elements where float is not none)
@@ -53,6 +72,32 @@ Just for completeness:
  - `position: relative` does not change the flow order of the element, but changes the element position relative to the normal flow position.
  - `display: none` removes the element of the flow (strictly speaking it does no change the element flow order because the element will not have a flow order at all)
  - `visibility: hidden` will maintain the element on the flow but will not display it.
+
+定位
+----
+
+正常流中的盒一个挨一个的排开。在BFC中盒子纵向依次排开，在IFC中盒子横向排开。当`position`设置为`static`或者`relative`，并且`float`设置为`none`时，正常流被激活。
+
+```
+  static positioning \
+                      +--> normal flow <--- *Float Positioning Scheme* only apply to
+relative positioning /
+```
+-`正常流`包含两种sub-cases：
+ - `static定位`，盒被绘制在正常流定义的位置
+	- `相对定位`，盒在正常流定位的基础上，根据top,bottom,left,right进行偏移
+- `浮动定位`的盒被放置在当前行的开始或结尾处。正常流中的盒子围绕其左/右边缘排列，除非设置了`clear`属性。当`float`属性被设置为非`none`(`left`或`right`)，且`position`设置为`static`或`relative`的时候启用`float`定位。
+
+```
+absolut positioning \
+                     +--> *Absolute Positioning Scheme*
+  fixed positioning /
+```
+
+- `绝对定位`的盒子被从流中移除，并相对它的`包含块`(containing block)依据top,bottom,left,right来进行偏移。
+如果没有指定偏移，那么它保持正常流中的位置，不进行偏移。如果指定了偏移，那么相对最近的`positioned`的父节点产生的盒子定位。如果找不到这么一个父节点，那么就相对根节点`html`偏移。
+- `固定定位`的是一种绝对定位，只不`包含块`是`视口`。
+
 
 记住
 ----
@@ -119,10 +164,10 @@ containing block in which the box lives," not the one it generates. *Each box is
 
 > The following sections describe the types of boxes that may be generated in CSS 2.1. A box’s type affects, in part, its behavior in the visual formatting model. The ’display’ property, described below, specifies a box’s type.
 
-9.2 控制Box的生成
+9.2 控制`盒`的生成
 ----------------
-下面几节描述了CSS2.1中可能的几种Box类型。Box的类型会一定程度上影响它在可视格式化中的行为。
-你可以通过display属性设置一个Box的类型。
+下面几节描述了CSS2.1中可能的几种盒类型。盒的类型会一定程度上影响它在可视格式化中的行为。
+你可以通过display属性设置盒的类型。
 
 > 9.2.1 Block-level elements and block boxes
 > ------------------------------------------
@@ -139,7 +184,7 @@ principal box: ’list-item’ elements. These additional boxes are placed with 
 > The three terms "block-level box," "block container box," and "block box" are sometimes abbreviated as "block" where unambiguous. 
 
 9.2.1 块级元素和`块级盒`
----------------------
+-----------------------
 
 “块级元素”是指源文档中被"绘制”成“块”的元素（比如,段落`<p>`;)。元素的display被设置为
 'block','list-item','table'时，该元素就成为了`块级元素`。
