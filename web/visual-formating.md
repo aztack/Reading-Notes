@@ -13,11 +13,11 @@
 - 文档元素会生成`盒`，即Box。`盒`是css布局的对象（target）和基本单位。
 - `盒`分为`块级盒` (block level)和`行内盒`或称`行级盒` (inline)。(Run-in box?)
 - `盒`内部会生成一个看不见的`格式化上下文`。这个`格式化上下文`会控制`盒`内部如何布局。
-`格式化上下文`不限于`块级格式化上下文`简称**BFC**和`行内格式化上下文`简称**IFC**两种，还有
+`格式化上下文`不限于`块级格式化上下文`简称*BFC*和`行内格式化上下文`简称*IFC*两种，还有
  + `table格式化上下文`
  + `grid格式化上下文`
  + `flex格式化上下文`
-但是，`盒`只有block和inline两种。
+但是，`盒`<del>只有</del>*主要有*block和inline两种。[还有...](https://developer.mozilla.org/en-US/docs/Web/CSS/Visual_formatting_model)
 - `盒`+`格式化上下文`，作用于其包含的`盒`，实现布局。
 - HTML元素有默认的display属性，决定了其默认的是块级元素还是行内元素。可以通过修改display属性来改变。`display`为`none`的元素不产生`盒`
 - `盒`产生的`格式化上下文`会受到display、float、position的影响：比如，position为absolute、设置了float的属性的元素都会创建新的`块级格式化上下文`
@@ -226,6 +226,8 @@ table cells都是“块容器盒”，但不是“块级盒”。如果“块级
 Inline-level elements generate _inline-level boxes_, which are boxes that participate in an inline formatting context.
 
   An _inline box_ is one that is both inline-level and whose contents participate in its containing inline formatting context. A non-replaced element with a `display` value of `inline` generates an inline box. Inline-level boxes that are not inline boxes(such as replaced inline-level elements, inline-block elements, and inline-table elements) are called _atomic inline-level boxes_ because they participate in their inline formating context as a single opaque box.
+  
+![`行级盒`,`参与行内格式化的盒子`和`行盒`的关系](https://developer.mozilla.org/@api/deki/files/6008/=venn_inlines.png)
 
 9.2.2 行内元素和行内盒
 --------------------
