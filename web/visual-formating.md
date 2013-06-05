@@ -4,6 +4,7 @@
 - [DOCUMENTATION AND TUTORIALS ABOUT CSS](https://developer.mozilla.org/en-US/docs/Web/CSS)
 - [Formatting Concepts](http://reference.sitepoint.com/css/formattingcontext)
 - [Understanding Floats](http://phrogz.net/css/understandingfloats.html)
+- ["HasLayout" Overview](http://msdn.microsoft.com/en-us/library/bb250481%28VS.85%29.aspx)
 
 首先需要明确的知识点：
 
