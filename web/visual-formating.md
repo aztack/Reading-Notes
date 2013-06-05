@@ -16,6 +16,29 @@
 - `盒`产生的`格式化上下文`会受到display、float、position的影响：比如，position为absolute、设置了float的属性的元素都会创建新的`块级格式化上下文`
 - 请区分`块级元素`和`块级盒`。因为`块级元素`被设置为`display:inline`后，也可以产生`行内盒`
 
+块级元素和行级元素
+------------------
+- [块级元素](https://developer.mozilla.org/en-US/docs/HTML/Block-level_elements)
+  * `<address>` `<article>` `<aside>` `<audio>` 
+  * `<blockquote>`
+  * `<canvas>` 
+  * `<dd>``<div>``<dl>`
+  * `<fieldset>``<figcaption>` `<figure>` `<footer>` `<form>`
+  * `<h1>`, `<h2>`, `<h3>`, `<h4>`, `<h5>`, `<h6>`
+  * `<header>` `<hgroup>` `<hr>`
+  * `<noscript>`
+  * `<ol>``<output>` 
+  * `<p>``<pre>`
+  * `<section>` 
+  * `<table>``<tfoot>`
+  * `<ul>`
+  * `<video>` 
+
+- [行级元素](https://developer.mozilla.org/en-US/docs/HTML/Inline_elements)
+  * b, big, i, small, tt
+  * abbr, acronym, cite, code, dfn, em, kbd, strong, samp, var
+  * a, bdo, br, img, map, object, q, script, span, sub, sup
+  * button, input, label, select, textarea
 
 格式化上下文
 ------------
