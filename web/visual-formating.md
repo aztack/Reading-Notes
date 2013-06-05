@@ -130,6 +130,7 @@ absolut positioning \
 - ["浮动是个行级的行为，当遇到浮动元素的时候，会首先"假装"它是个行内元素进行排版，排好后就往浮动的方向挤到挤不过去为止（遇到边界或者其它浮动元素）"](http://www.cnblogs.com/winter-cn/archive/2013/05/11/3072929.html)
 - "margin of a float never collapse" [p.144]
 - `width`和`height`不适用于`非替换的行级元素` [p.174 10.2] [p.182]
+- In an inline formatting context, boxes are laid out horizontally, starting at the top of the containing block. Horizontal margins, padding, and borders can exist between the boxes, but *vertical margins are ignored* for inline boxes. *Dimensions (width and height) can’t be specified for inline boxes*(见上一条). [ref](http://reference.sitepoint.com/css/inlineformatting)
 
 > 9.1 Introduction to the visual formatting model
 > -----------------------------------------------
