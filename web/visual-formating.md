@@ -54,6 +54,9 @@
  - <del>`盒`+`格式化上下文`，作用于其包含的`盒`，实现布局。</del>
  
 
+参考：
+[Block formating contexts, ‘hasLayout’ – IE Window vs CSS2.1 browsers: simulations.](http://dev.l-c-n.com/IEW/simulations.php)
+
 - 整理更新：
 
 > "In general, a "formatting context" is simply an area in which descendant boxes of a certain kind (e.g. block, inline, flex-item) are laid out (or formatted) in normal flow."
