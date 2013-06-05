@@ -5,6 +5,7 @@
 - [Formatting Concepts](http://reference.sitepoint.com/css/formattingcontext)
 - [Understanding Floats](http://phrogz.net/css/understandingfloats.html)
 - ["HasLayout" Overview](http://msdn.microsoft.com/en-us/library/bb250481%28VS.85%29.aspx)
+- [Quirksmode:The display declaration](http://quirksmode.org/css/css2/display.html)
 
 首先需要明确的知识点：
 
