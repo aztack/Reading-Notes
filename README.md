@@ -1,2 +1,2 @@
-My Reading Notes
-================
+My Notes
+========
