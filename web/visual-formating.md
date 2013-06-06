@@ -80,6 +80,8 @@ CSS2.1中只有 BFC和IFC，CSS3中还增加了GFC和FFC。
 -----------------------------------
 [Block formatting context](https://developer.mozilla.org/en-US/docs/Web/CSS/Block_formatting_context?redirectlocale=en-US&redirectslug=CSS%2FBlock_formatting_context)
 
+产生BFC的情况：
+
 A block formatting context is created by one of the following:
 
 - the root element or something that contains it
@@ -91,10 +93,20 @@ A block formatting context is created by one of the following:
 - elements where overflow has a value other than visible
 - flex boxes (elements with display: flex or inline-flex)
 
+产生IFC的情况：
+
+- “容器盒”(block container box)中只有行内元素时会建立IFC
+- “匿名行内盒”(anonymouse inline boxes)中会建立IFC
+
+总之，如果包含盒内没有块级盒的时候就建立IFC。
+我在SO上的提问[When does a box establish an inline formatting context?](http://stackoverflow.com/questions/16936297/when-does-a-box-establish-an-inline-formatting-context?noredirect=1#comment24457543_16936297)
+
 [Only the following properties change the standard element's flow](http://stackoverflow.com/posts/11917186/edit):
 
  - `float: right|left`
  - `position: absolute|fixed`
+ 
+ 具有上面属性的盒被称为`out-of-flow`的盒。其他的盒是`in-flow`的盒。
 
 Just for completeness: 
 
