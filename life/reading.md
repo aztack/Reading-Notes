@@ -4,3 +4,6 @@
 
 [学习之道](http://baike.baidu.com/view/5703132.htm)
 [The Art of Learning](http://www.amazon.com/The-Art-Learning-Journey-Performance/dp/0743277465/ref=sr_1_1?ie=UTF8&qid=1370155150&sr=8-1&keywords=josh+waitzkin)
+
+不是所有内容都适合`速读`的，尤其是你不熟悉的领域。
+有些书籍应该精度，多看几次，才能`读懂`
