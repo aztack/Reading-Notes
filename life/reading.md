@@ -14,3 +14,5 @@ Observe-Think-Practice-Think--\
 ```
 
 可以用一些icon来辅助记忆。开始用已有的icon，之后可以自己创造
+
+事件![事件](http://cdn1.iconfinder.com/data/icons/fatcow/32/calendar_edit.png)
