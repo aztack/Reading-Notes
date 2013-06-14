@@ -24,9 +24,11 @@ offsetLeft and offsetTop
 ------------------------
 The left and top position of the element relative to its `offsetParent`. 
 
-offsetParent
+[offsetParent](https://developer.mozilla.org/en-US/docs/Web/API/element.offsetParent?redirectlocale=en-US&redirectslug=DOM%2Felement.offsetParent)
 ------------
 The ancestor element relative to which the offsetLeft/Top are calculated. 
+
+> `offsetParent` returns a reference to the object which is the closest (nearest in the containment hierarchy) positioned containing element. If the element is non-positioned, the nearest table cell or root element (html in standards compliant mode; body in quirks rendering mode) is the offsetParent. `offsetParent returns null when the element has style.display set to "none"`. The offsetParent is useful because offsetTop and offsetLeft are relative to its `padding edge`.
 
 offsetWidth and offsetHeight
 ----------------------------
