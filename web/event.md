@@ -3,28 +3,31 @@
 - [W3C: UIEvent Interface](http://www.w3.org/TR/2000/REC-DOM-Level-2-Events-20001113/events.html#Events-UIEvent)
 - [QuirkModes: Events Properties](http://www.quirksmode.org/js/events_properties.html)
 - [Cross-browser mouse positioning](http://www.jacklmoore.com/notes/mouse-position/)
+
 =================================
 
 *Mouse Event Properties*
 ------------------------
-clientX, clientY
+
+*clientX, clientY*
+------------------
 Standard: W3C Recommendation
-Mouse position relative to the browser's visible viewport.
+Mouse position relative to the browser's **`visible viewport`**.
 
 *screenX, screenY*
 ------------------------
 Standard: W3C Recommendation
-Mouse position relative to the user's physical screen.
+Mouse position relative to the user's physical **`screen`**.
 
 *offsetX, offsetY*
 ------------------------
 Standard: W3C Working Draft
-Mouse position relative to the target element. This is implemented very inconsistently between browsers.
+Mouse position relative to the `target element`. This is implemented very __inconsistently__ between browsers.
 
 *pageX, pageY*
 ------------------------
 Standard: W3C Working Draft
-Mouse position relative to the html document (ie. [layout viewport](http://www.quirksmode.org/mobile/viewports2.html)).
+Mouse position relative to the html `document` (ie. [layout viewport](http://www.quirksmode.org/mobile/viewports2.html)).
 
 *x, y*
 ------------------------
