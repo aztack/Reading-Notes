@@ -1,7 +1,8 @@
-[W3C: Events](http://www.w3.org/TR/2000/REC-DOM-Level-2-Events-20001113/events.html)
-[QuirkModes: Events Properties](http://www.quirksmode.org/js/events_properties.html)
-
-[Cross-browser mouse positioning](http://www.jacklmoore.com/notes/mouse-position/)
+- [W3C: Events](http://www.w3.org/TR/2000/REC-DOM-Level-2-Events-20001113/events.html)
+- [W3C: Event Interface](http://www.w3.org/TR/2000/REC-DOM-Level-2-Events-20001113/events.html#Events-Event)
+- [W3C: UIEvent Interface](http://www.w3.org/TR/2000/REC-DOM-Level-2-Events-20001113/events.html#Events-UIEvent)
+- [QuirkModes: Events Properties](http://www.quirksmode.org/js/events_properties.html)
+- [Cross-browser mouse positioning](http://www.jacklmoore.com/notes/mouse-position/)
 =================================
 
 *Mouse Event Properties*
