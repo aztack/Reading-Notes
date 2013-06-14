@@ -110,6 +110,7 @@ document.body.onclick = function(e) {
 ```
 
 [Calculate LayerX/Y](http://stackoverflow.com/questions/8389156/what-substitute-should-we-use-for-layerx-layery-since-they-are-deprecated-in-web)
+--------------------
 
 > I renamed the function from `getOffset` to `getLayerXY`
 
