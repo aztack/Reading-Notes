@@ -69,3 +69,14 @@ The amount of pixels the entire pages has been scrolled
 screenX and screenY
 -------------------
 The position of the browser window on the screen
+
+
+<hr/>
+
+[jQuery.fn.position](http://jqapi.com/#p=position)
+------------------
+Get the current coordinates of the first element in the set of matched elements, relative to the `offset parent`.
+
+[jQuery.fn.offset](http://jqapi.com/#p=offset)
+----------------
+Get the current coordinates of the first element, or set the coordinates of every element, in the set of matched elements, relative to the document.
