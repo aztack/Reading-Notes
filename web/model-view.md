@@ -6,11 +6,13 @@
 ElementView properties
 ======================
 
-clientLeft and clientTop
+> The `clientTop`, `clientLeft`, `clientWidth`, and `clientHeight` attributes must return zero if the element does not have any associated CSS layout box or if the CSS layout box is **inline**
+
+[clientLeft and clientTop](http://www.w3.org/TR/cssom-view/#dom-element-clienttop)
 ------------------------
 The position of the upper left corner of the content field relative to the upper left corner of the entire element (including borders) 
 
-clientWidth and clientHeight
+[clientWidth and clientHeight](http://www.w3.org/TR/cssom-view/#dom-element-clientwidth)
 ----------------------------
 The width and height of the content field, `excluding border and scrollbar`, but including `padding`
 
@@ -36,7 +38,7 @@ The width and height of the entire element, `including borders`
 
 <hr/>
 
-scrollLeft and scrollTop
+[scrollLeft and scrollTop](http://www.w3.org/TR/cssom-view/#dom-element-scrolltop)
 ------------------------
 The amount of pixels the element has scrolled. **`Read/write`**. 
 
