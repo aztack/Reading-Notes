@@ -6,10 +6,34 @@
 
 There are 4 kinds of left/top/width/height:
 
-- x.offset* : top,left -> offsetParent, width/height -> border edge (including border)
-- x.client* : top,left -> border width, width/height -> content field
-- x.scroll* : top.left -> hidden parts, width/height -> content field, including hidden parts
+- x.offset* : `top,left` -> offsetParent, `width/height` -> border edge (including border)
+- x.client* : `top,left` -> border width, `width/height` -> content field
+- x.scroll* : `top.left` -> hidden parts, `width/height` -> content field, including hidden parts
 - x.style.* : style.left, style.top,style.width,style.height will affect above values
+
+Element Interface:
+```c++
+partial interface Element {
+  ClientRectList getClientRects();
+  ClientRect getBoundingClientRect();
+
+  // scrolling
+  void scrollIntoView(optional boolean top);
+           attribute long scrollTop;   // scroll on setting
+           attribute long scrollLeft;  // scroll on setting
+  readonly attribute long scrollWidth;
+  readonly attribute long scrollHeight;
+
+  readonly attribute long clientTop;
+  readonly attribute long clientLeft;
+  readonly attribute long clientWidth;
+  readonly attribute long clientHeight;
+};
+```
+
+Only `scrollTop` and `scrollLeft` is writable, when it's assigned a new value, it scroll the content and change scroll bar position.
+**To make animation**, you change `element.style.left/top/width/height/margin/padding/...` 
+
 
 ElementView properties
 ======================
