@@ -132,3 +132,88 @@ function getLayerXY(evt) {
   return { x: x, y: y };
 }
 ```
+
+Events Object Normalization
+---------------------------
+
+```javascript
+var EventUtil = {
+    hasFeatureMouseEvents2: document.implementation.hasFeature('MouseEvents','2.0'),
+    addHandler: function(ele,type,handler){
+        //DOM2->IE->DOM0
+        if(ele.addEventListener){
+            ele.addEventListener(type,handler,false);
+        } else if(ele.attachEvent){
+            ele.attachEvent('on' + type, handler);
+        } else {
+            ele['on' + type] = handler;
+        }
+    },
+    removeHandler: function(ele,type,handler){
+        if(ele.removeEventListener){
+            ele.removeEventListener(type,handler,false);
+        } else if(ele.detachEvent){
+            ele.detachEvent('on' + type,handler);
+        } else {
+            ele['on' + type] = null;
+        }
+    },
+    getEvent: function(e){
+        return e ? e : window.event;
+    },
+    getTarget: function(e){
+        return e.target || e.srcElement;
+    },
+    preventDefault: function(e){
+        if(e.preventDefault){
+            e.preventDefault();
+        } else {
+            e.returnValue = false;
+        }
+    },
+    stopPropagation: function(e){
+        if(e.stopPropagation){
+            e.stopPropagation();
+        } else {
+            e.cancelBubble = true;
+        }
+    },
+    getRelatedTarget: function(e){
+        if(e.relatedTarget){
+            return e.relatedTarget;
+        } else if(e.toElement){
+            return e.toElement;
+        } else if(e.fromElement){
+            return e.fromElement;
+        } else {
+            return null;
+        }
+    },
+    getButton: function(e){
+        if(this.hasFeatureMouseEvents2){
+            return e.button;
+        } else {
+            switch(e.button){
+                case 0:
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                    return 0;
+                case 2:
+                case 6:
+                    return 2;
+                case 4:
+                    return 1;
+            }
+        }
+    },
+    getCharCode: function(e){
+        if(typeof e.charCode == 'number'){
+            return e.charCode;
+        } else {
+            return e.keyCode;
+        }
+    }
+};
+```
