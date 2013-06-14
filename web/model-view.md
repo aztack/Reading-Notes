@@ -3,6 +3,14 @@
 - [The CSSOM View Module](http://www.quirksmode.org/blog/archives/2008/02/the_cssom_view.html)
 - [getBoundingClientRect is Awesome](http://ejohn.org/blog/getboundingclientrect-is-awesome/)
 
+
+There are 4 kinds of left/top/width/height:
+
+- x.offset* : top,left -> offsetParent, width/height -> border edge (including border)
+- x.client* : top,left -> border width, width/height -> content field
+- x.scroll* : top.left -> hidden parts, width/height -> content field, including hidden parts
+- x.style.* : style.left, style.top,style.width,style.height will affect above values
+
 ElementView properties
 ======================
 
@@ -11,6 +19,14 @@ ElementView properties
 [clientLeft and clientTop](http://www.w3.org/TR/cssom-view/#dom-element-clienttop)
 ------------------------
 The position of the upper left corner of the content field relative to the upper left corner of the entire element (including borders) 
+
+[element.clientLeft](https://developer.mozilla.org/en-US/docs/Web/API/element.clientLeft?redirectlocale=en-US&redirectslug=DOM%2Felement.clientLeft)
+
+> **`The width of the left border of an element in pixels.`** It includes the width of the vertical scrollbar if the text direction of the element is right–to–left and if there is an overflow causing a left vertical scrollbar to be rendered. clientLeft does not include the left margin or the left padding. clientLeft is read-only.
+
+[element.clientTop](https://developer.mozilla.org/en-US/docs/Web/API/element.clientTop?redirectlocale=en-US&redirectslug=DOM%2Felement.clientTop)
+
+> **`The width of the top border of an element in pixels.`** It does not include the top margin or padding. clientTop is read-only.
 
 [clientWidth and clientHeight](http://www.w3.org/TR/cssom-view/#dom-element-clientwidth)
 ----------------------------
