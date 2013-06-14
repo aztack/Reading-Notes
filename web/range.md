@@ -1,6 +1,6 @@
-[Introduction to Range](http://www.quirksmode.org/dom/range_intro.html)
-[Interface Range (introduced in DOM Level 2)](http://www.w3.org/TR/DOM-Level-2-Traversal-Range/ranges.html#Level-2-Range-idl)
-[TextRange object](http://msdn.microsoft.com/en-us/library/ms535872.aspx)
+- [Introduction to Range](http://www.quirksmode.org/dom/range_intro.html)
+- [Interface Range (introduced in DOM Level 2)](http://www.w3.org/TR/DOM-Level-2-Traversal-Range/ranges.html#Level-2-Range-idl)
+- [TextRange object](http://msdn.microsoft.com/en-us/library/ms535872.aspx)
 
 Introduction to Range
 =====================
