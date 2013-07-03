@@ -1,3 +1,5 @@
+- [Objective-C Runtime Reference](https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/ObjCRuntimeRef/Reference/reference.html#//apple_ref/c/func/class_copyMethodList)
+
 只有那些C语言没有的部分才有那些怪异的语法。而这种怪异语法的标志就是“@，[],:”。
 因为这几个符号在C语言中没有被用到或者容易被赋予更多的含义。
 
@@ -134,3 +136,18 @@ objc: [obj methodForSelector:sel]
 
 ruby的obj.method(:name)发放返回:name对应的Method对象，调用其call相当于在obj上调用该方法。
 objc的`methodForSelector`返回一个函数指针，所以可以用函数调用的语法直接调用：第一个参数是对象指针，第二个参数是selector。之后的参数是该函数对应的参数。
+
+获取实例的方法列表
+==================
+ruby:
+```ruby
+  "hello".class.instance_methods
+```
+objc:
+```objective-c
+  int unsigned numMethods;
+  Method *methods = class_copyMethodList([@"hello" class], &numMethods);
+  for (int i = 0; i < numMethods; i++) {
+      NSLog(@"%@", NSStringFromSelector(method_getName(methods[i])));
+  }
+```
