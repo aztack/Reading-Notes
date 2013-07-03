@@ -91,5 +91,21 @@ objc:用`isKindOfClass`方法
   f([[NSArray alloc] init]);
 ```
 
+通过方法名调用对应的方法
+========================
+
+ruby: send(:method)
+```ruby
+  "hello".send(:captialize)
+```
+
+objc: performSelector
+```objective-c
+  SEL sel = NSSelectorFromString(@"capitalizedString");
+  NSLog(@"%@",[@"hello" performSelector: sel]);
+```
+
+ruby中发送消息，消息用symbol表示。objc中的消息叫做`selector`。`selector`对应的数据类型是`SEL`。
+`SEL`可以通过`NSSelectorFromString`构造。构造出来的东西和任何实例方法都没有关系。可以类比ruby的symbole来理解。
 
 
