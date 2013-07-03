@@ -113,4 +113,24 @@ objc: performSelector
 ruby中发送消息，消息用symbol表示。objc中的消息叫做`selector`。`selector`对应的数据类型是`SEL`。
 `SEL`可以通过`NSSelectorFromString`构造。构造出来的东西和任何实例方法都没有关系。可以类比ruby的symbole来理解。
 
+得到方法对象并调用
+==================
 
+ruby：obj.method(:name)
+```ruby
+  h = "hello"
+  m = h.method(:capitalize)
+  m.call == "Hello"
+  h == "hello"
+```
+
+objc: [obj methodForSelector:sel]
+```objective-c
+  NSString* h = @"hello";
+  SEL sel = @selector(capitalizedString);
+  IMP m = [h methodForSelector:sel];
+  NSLog(@"%@,%@",m(h,sel),h);//Hello,hello
+```
+
+ruby的obj.method(:name)发放返回:name对应的Method对象，调用其call相当于在obj上调用该方法。
+objc的`methodForSelector`返回一个函数指针，所以可以用函数调用的语法直接调用：第一个参数是对象指针，第二个参数是selector。之后的参数是该函数对应的参数。
