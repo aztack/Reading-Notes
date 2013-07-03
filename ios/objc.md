@@ -96,13 +96,18 @@ objc:用`isKindOfClass`方法
 
 ruby: send(:method)
 ```ruby
-  "hello".send(:captialize)
+  h = "hello"
+  sel = :capitalize
+  h.send(sel) if h.response_to? sel
 ```
 
 objc: performSelector
 ```objective-c
+  NSString *h = @"hello";
   SEL sel = NSSelectorFromString(@"capitalizedString");
-  NSLog(@"%@",[@"hello" performSelector: sel]);
+  if([h respondsToSelector:sel]){
+    NSLog(@"%@",[@"hello" performSelector: sel]);  
+  }
 ```
 
 ruby中发送消息，消息用symbol表示。objc中的消息叫做`selector`。`selector`对应的数据类型是`SEL`。
