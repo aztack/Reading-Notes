@@ -8,10 +8,10 @@ Objective-C 为 ANSI C 添加了下述语法和功能
 - 块 (block)，已封装的、可在任何时候执行的多段代码
 - 基本语言的扩展，例如协议和类别
 
-- 在定义实例方法时，类型都用括号括起来
+> - 在定义实例方法时，类型都用括号括起来
 - “@”开头的，比如@interface，被称为指令
 
-Category是如何实现的？
+[How are categories implemented in Objective C?](http://stackoverflow.com/questions/7026259/how-are-categories-implemented-in-objective-c)
 =====================
 可以想象，Category的实现肯定是在方法列表结构(类似vtable)上做文章。
 下面是SO上的一个回答：
@@ -21,12 +21,23 @@ When loading a category onto a class the `categories method list is prepended to
 This setup of categories is done lazily, from static data, when the class is first accessed. And can be re-done if loading a bundle with executable code.
 In short it is a bit more low level than `class_replaceMethod()`.
 
-[How are categories implemented in Objective C?](http://stackoverflow.com/questions/7026259/how-are-categories-implemented-in-objective-c)
 
 从上面回复中可以印证，Category就是将其中的函数增加到vtable的前部。本质和Ruby、JavaScript中的method lookup是一样的。
 
 
-- [Objective-C Runtime Reference](https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/ObjCRuntimeRef/Reference/reference.html#//apple_ref/c/func/class_copyMethodList)
+[Difference between Category and Class Extension?](http://stackoverflow.com/questions/3499704/difference-between-category-and-class-extension)
+===
+
+> A category is a way to add methods to existing classes. They usually reside in files called "Class+CategoryName.h", like "NSView+CustomAdditions.h" (and .m, of course).
+A class extension is a category, except for 2 main differences:
+
+- 1. The category has no name.
+- 2. The implementation of the extension must be in the main @implementation block of the file.
+
+It's quite common to see a class extension at the top of a .m file declaring more methods on the class, that are then implemented below in the main @implementation section of the class. This is a way to declare "pseudo-private" methods (pseudo-private in that they're not really private, just not externally exposed).
+
+[Objective-C Runtime Reference](https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/ObjCRuntimeRef/Reference/reference.html#//apple_ref/c/func/class_copyMethodList)
+===
 
 只有那些C语言没有的部分才有那些怪异的语法。而这种怪异语法的标志就是“@，[],:”。
 因为这几个符号在C语言中没有被用到或者容易被赋予更多的含义。
