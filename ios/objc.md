@@ -188,7 +188,7 @@ NSLog(@"%@",[@"hello" cap]); //output "hacked"
 
 替换已有实例方法
 ================
-
+ruby: method alias
 ```ruby
 class String
   alias bakcup_cap caplitalize
@@ -197,6 +197,9 @@ class String
   end
 end
 ```
+
+objc:
+[Method Swizzle](http://stackoverflow.com/questions/1637604/method-swizzle-on-iphone-device/1638940#1638940)
 
 ```objective-c
 void Swizzle(Class c, SEL orig, SEL new)
