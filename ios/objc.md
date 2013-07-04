@@ -11,6 +11,21 @@ Objective-C 为 ANSI C 添加了下述语法和功能
 - 在定义实例方法时，类型都用括号括起来
 - “@”开头的，比如@interface，被称为指令
 
+Category是如何实现的？
+=====================
+可以想象，Category的实现肯定是在方法列表结构(类似vtable)上做文章。
+下面是SO上的一个回答：
+
+> Each class has a list of methods, when doing a method lookup the method list is scanned from beginning to end. If no method is found the superclass' list is scanned, etc. until reaching the root class. Found methods are cached for faster lookup next time.
+When loading a category onto a class the `categories method list is prepended to the existing list`, and caches are flushed. Since the list is searched sequentially this means that the categories method will be found before the original method on next search.
+This setup of categories is done lazily, from static data, when the class is first accessed. And can be re-done if loading a bundle with executable code.
+In short it is a bit more low level than `class_replaceMethod()`.
+
+[How are categories implemented in Objective C?](http://stackoverflow.com/questions/7026259/how-are-categories-implemented-in-objective-c)
+
+从上面回复中可以印证，Category就是将其中的函数增加到vtable的前部。本质和Ruby、JavaScript中的method lookup是一样的。
+
+
 - [Objective-C Runtime Reference](https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/ObjCRuntimeRef/Reference/reference.html#//apple_ref/c/func/class_copyMethodList)
 
 只有那些C语言没有的部分才有那些怪异的语法。而这种怪异语法的标志就是“@，[],:”。
