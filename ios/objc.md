@@ -159,8 +159,10 @@ objc:
   }
 ```
 
-[Customizing Existing Classes](http://developer.apple.com/library/ios/#documentation/cocoa/conceptual/ProgrammingWithObjectiveC/CustomizingExistingClasses/CustomizingExistingClasses.html)
-向已有类中增加方法
+为已有类增加方法
+================
+
+[Customizing Existing Classes](http://developer.apple.com/library/ios/#documentation/cocoa/conceptual/ProgrammingWithObjectiveC/CustomizingExistingClasses/CustomizingExistingClasses.html) 
 
 ruby:
 ```ruby
