@@ -6,6 +6,13 @@
 下面的目标是，正确理解Objc新增的语法，并能实现类似Ruby的元编程。
 我暂且认为“能熟练使用元编程”是“掌握这门语言的标志”。下面从Ruby入手，列举一些元编程实例，然后寻找Objc的实现方法、对应实现。
 
+在你的代码前面需要加上：
+
+```objective-c
+#import <objc/runtime.h>
+#import <objc/message.h>
+```
+
 从动态创建类实例开始
 ====================
 
@@ -172,9 +179,39 @@ objc:
 
 @implementation NSString(Capitalization)
 -(NSString*) cap{
-    return [self capitalizedString];
+    return @"hacked";
 }
 @end
 
-NSLog(@"%@",[@"hello" cap]);
+NSLog(@"%@",[@"hello" cap]); //output "hacked"
+```
+
+替换已有实例方法
+================
+
+```ruby
+class String
+  alias bakcup_cap caplitalize
+  def capitalize
+    "hacked"
+  end
+end
+```
+
+```objective-c
+void Swizzle(Class c, SEL orig, SEL new)
+{
+    Method origMethod = class_getInstanceMethod(c, orig);
+    Method newMethod = class_getInstanceMethod(c, new);
+    if(class_addMethod(c, orig, method_getImplementation(newMethod), method_getTypeEncoding(newMethod))){
+      class_replaceMethod(c, new, method_getImplementation(origMethod), method_getTypeEncoding(origMethod));
+    } else {
+      method_exchangeImplementations(origMethod, newMethod);
+    }
+}
+
+Swizzle([NSString class], @selector(capitalizedString), @selector(_cap));
+
+NSLog(@"%@",[@"hello" capitalizedString]); //output "hacked"
+NSLog(@"%@",[@"hello" cap]); //output "Hello"
 ```
