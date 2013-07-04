@@ -151,3 +151,30 @@ objc:
       NSLog(@"%@", NSStringFromSelector(method_getName(methods[i])));
   }
 ```
+
+[Customizing Existing Classes](http://developer.apple.com/library/ios/#documentation/cocoa/conceptual/ProgrammingWithObjectiveC/CustomizingExistingClasses/CustomizingExistingClasses.html)
+向已有类中增加方法
+
+ruby:
+```ruby
+class String
+  def cap
+    self.capitalize
+  end
+end
+```
+
+objc:
+```objective-c
+@interface NSString (Capitalization)
+-(NSString*) cap;
+@end
+
+@implementation NSString(Capitalization)
+-(NSString*) cap{
+    return [self capitalizedString];
+}
+@end
+
+NSLog(@"%@",[@"hello" cap]);
+```
