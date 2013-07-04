@@ -1,3 +1,16 @@
+Objective-C 为 ANSI C 添加了下述语法和功能
+==========================================
+- 定义新的类
+- 类和实例方法
+- 方法调用（称为发消息）
+- 属性声明（以及通过它们自动合成存取方法）
+- 静态和动态类型化
+- 块 (block)，已封装的、可在任何时候执行的多段代码
+- 基本语言的扩展，例如协议和类别
+
+- 在定义实例方法时，类型都用括号括起来
+- “@”开头的，比如@interface，被称为指令
+
 - [Objective-C Runtime Reference](https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/ObjCRuntimeRef/Reference/reference.html#//apple_ref/c/func/class_copyMethodList)
 
 只有那些C语言没有的部分才有那些怪异的语法。而这种怪异语法的标志就是“@，[],:”。
