@@ -43,7 +43,7 @@ It's quite common to see a class extension at the top of a .m file declaring mor
 因为这几个符号在C语言中没有被用到或者容易被赋予更多的含义。
 
 下面的目标是，正确理解Objc新增的语法，并能实现类似Ruby的元编程。
-我暂且认为“能熟练使用元编程”是“掌握这门语言的标志”。下面从Ruby入手，列举一些元编程实例，然后寻找Objc的实现方法、对应实现。
+我暂且认为“能熟练使用元编程、函数式编程（如果可以的话）”是“掌握这门语言的标志”。下面从Ruby入手，列举一些元编程实例，然后寻找Objc的实现方法、对应实现。
 
 在你的代码前面需要加上：
 
@@ -258,4 +258,43 @@ Swizzle([NSString class], @selector(capitalizedString), @selector(_cap));
 
 NSLog(@"%@",[@"hello" capitalizedString]); //output "hacked"
 NSLog(@"%@",[@"hello" cap]); //output "Hello"
+```
+
+
+不定参数
+========
+
+ruby:
+```ruby
+def f(*args)
+  args.each{|e|puts e}
+end
+```
+
+objc:
+```objective-c
+//args is array of ids
+void log_each(NSArray* args){
+  for(int i = 0; i < [args count]; ++i){
+    id item = [args objectAtIndex:i];
+    NSLog(@"%@",item);
+  }
+}
+
+log_each([NSArray arrayWithObjects:@"hello",@"world", [NSNumber numberWithInt:42], nil]);
+
+void log_each2(id first, ...){
+    va_list arguments;
+    id item;
+    if (first != nil) {
+        NSLog(@"%@",first);//handle first argument
+        va_start(arguments, first);
+        while ((item = va_arg(arguments, id))) {
+            NSLog(@"%@",item);
+        }
+        va_end(arguments);
+    }
+}
+
+log_each2(@"hello", @"world", [NSNumber numberWithInt:42], nil);
 ```
