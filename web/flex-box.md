@@ -11,3 +11,53 @@ CSS 2.1 定义了四种布局模型 - 四种基于`盒`与兄弟节点、祖先�
 - 行内布局，用于布局文本
 - 表格布局，用于在表格中布局二维数据
 - 定位布局，用于非常明确的定位，与文档中的其他元素几乎无关
+
+
+[A gentle introduction to CSS3 Flexible Box Module](http://www.the-haystack.com/2010/01/23/css3-flexbox-part-1/)
+ 
+> flexbox: arranging elements horizontally or vertically on the screen
+
+It implies two important things:
+
+- No more abusing floats, and no more getting abused by floats
+- We can create true flexible layouts, and the browser will do the calculations for us
+
+Flexbox gives us a new value for the display property (the box value), and eight new properties:
+
+> display: box;
+
+- box-orient
+- `box-flex`
+- box-align
+- box-direction
+- box-flex-group
+- box-lines
+- box-ordinal-group
+- box-pack
+
+
+```html
+
+<div id="products">
+    <p id="phones">First child</p>
+    <p id="computers">Second child</p>
+    <p id="last"></p>
+</div>
+
+```
+
+```csss
+#products { 
+  display:-webkit-box; /* 子元素使用box模型布局 */
+	box-orient: horizontal; /* box模型水平布局 */
+}
+p{
+	border:1px solid red; /* box型中的p元素按inline布局 */
+}
+#computers{
+	-webkit-box-flex:4; /* 之中p#computer将被水平撑开，占据inline不居中没有被占据的空间的五分之四 */
+}
+#last{
+  -webkit-box-flex:1; /* p#last占据五分之一 */
+}
+```
