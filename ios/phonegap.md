@@ -16,3 +16,23 @@ config.xml:
 ```xml
 <preference name="DisallowOverscroll" value="true" />
 ```
+
+在html中`不要`设置meta width=device-height!
+
+```objective-c
+- (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
+  ...
+  [self.window setRootViewController:self.viewController];
+  [self.window addSubview:self.viewController.view];//这样UIWebView中html的100%高度就不包括statusbar了
+  [self.window makeKeyAndVisible];
+
+  // aztack
+  [[UIApplication sharedApplication] setStatusBarHidden:YES];
+  CGRect appBounds = [[UIScreen mainScreen] applicationFrame];
+
+  //调整webView的高度
+  CGRect viewport = CGRectMake(0, appBounds.origin.y, screenBounds.size.width, appBounds.size.height);
+  self.viewController.view.frame = viewport;
+  self.viewController.webView.frame = CGRectMake(0, 0, appBounds.size.width, appBounds.size.height);
+}
+```
