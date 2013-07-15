@@ -25,3 +25,13 @@ if (!plist) {
     [plist writeToFile:plistFile atomically:YES];
 }
 ````
+
+Access `User-Defined-RunTime-Attribute` in code
+====
+
+在IB中，你可以为拖放到界面编辑器中控件设置自定义属性，类似Delphi和.NET中的Tag。
+在代码中，可以这样获取自定义属性的值：
+
+```objective-c
+id value = [control valueForKey:key];
+```
