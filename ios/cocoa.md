@@ -35,3 +35,17 @@ Access `User-Defined-RunTime-Attribute` in code
 ```objective-c
 id value = [control valueForKey:key];
 ```
+
+Fadein UIImageView
+===
+
+```objective-c
+- (void)fadeInImage 
+{
+    [UIView beginAnimations:@"fade in" context:nil];
+    [UIView setAnimationDuration:1.0];
+    imageView.alpha = 1.0;
+    [UIView commitAnimations];
+
+}
+```
