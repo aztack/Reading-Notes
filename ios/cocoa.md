@@ -8,3 +8,20 @@ AppDelegate
 ViewController
 ==============
 `ViewController`是某个View的Controller（废话..）。View对应一个xib文件，在identity inspector面板为这个view指定对应的Controller，即`Custom Controller`。这样 `view-xib-view_controller`就对应起来了。这个对应关系保存在xib文件中。
+
+
+Load data from plist
+====================
+
+```objective-c
+NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                    NSUserDomainMask, YES); 
+self.plistFile = [[paths objectAtIndex:0]
+                    stringByAppendingPathComponent:@"example.plist"];
+
+self.plist = [[NSMutableDictionary alloc] initWithContentsOfFile:plistFile];
+if (!plist) {
+    self.plist = [NSMutableDictionary new];
+    [plist writeToFile:plistFile atomically:YES];
+}
+````
