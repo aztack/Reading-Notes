@@ -17,6 +17,11 @@ config.xml:
 <preference name="DisallowOverscroll" value="true" />
 ```
 
+```objective-c
+  self.viewController.webView.scrollView.bounces = NO;
+  self.viewController.webView.scrollView.scrollEnabled = NO;
+```
+
 在html中`不要`设置meta width=device-height!
 
 ```objective-c
