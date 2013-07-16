@@ -9,6 +9,30 @@ ViewController
 ==============
 `ViewController`是某个View的Controller（废话..）。View对应一个xib文件，在identity inspector面板为这个view指定对应的Controller，即`Custom Controller`。这样 `view-xib-view_controller`就对应起来了。这个对应关系保存在xib文件中。
 
+Difference between AppDelegate.m and View Controller.m
+===
+
+> `ViewController.h/m` define a view controller class that manages a hierarchy of views(screen and controls in it)  basically, one screen of an application. You might have multiple screens that each have their own view controller. `ViewController` is responsible of controlling the connection between your model and your view
+
+`Module` -> `ViewController` -> `View`(Screen,Controls or Views)
+
+> `AppDelegate.h/m` define a class that manages the application overall. The app will create one instance of that class and send that object messages that let the delegate influence the app's behavior at well-defined times. 
+
+> `ViewController` -> `Form.cs`, `AppDelegate` -> `Program.cs`
+
+`AppDelegate` is responsible for the `life-cycle` of your application. What to do when the user press the home button and exit your app, what to do when the app enter background. Things like this.
+
+Avoid calling AppDelegate method from ViewController.
+Keep AppDelegate for the following:
+
+- `initialization`: whatever needs to be done on the very first launch (after an install or an update)
+- `data migration` from version to version (e.g. if you use CoreData and migrations)
+- `configuration of objects linked via IBOutlets from MainWindow.xib`
+- determining the `initial orientation` to launch in
+- `saving uncommitted data/state` prior to the application being terminated or entering background mode
+- `registering for the Apple Push Notification Service` and `sending the device token` to our server
+- `opening one of the supported application URLs` (e.g. maps://)
+
 
 Load data from plist
 ====================
