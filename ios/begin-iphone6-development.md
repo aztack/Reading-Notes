@@ -19,7 +19,7 @@ What's the difference about coding for iOS?
 
 - Limited screen size
 
-	> iPhone,`40x960`;iPad,`1024x768`;iMac,`1920x1080`;27inchLED,`2560x1440`
+	> iPhone,`480x960`;iPad,`1024x768`;iMac,`1920x1080`;27inchLED,`2560x1440`
 
 - Limited system resources
 
@@ -94,7 +94,7 @@ Outlets & Actions
 -----------------
 
 - Controller class can reference object in nib file by using a special instance variable called **`outlet`**. Youn can think outlet as a `pointer` pointing to object instances in nib file that is loaded into memory when application launched.
-	> `Controller -> IBOutlet -> nib object instance`
+	> Model -> `Controller` -> `IBOutlet` -> `nib object instance(Views)`
 
 	> using `Assistant Editor` in Xcode, ctrl+drag UI control to *.h can create outlets.
 
