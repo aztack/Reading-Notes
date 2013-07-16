@@ -94,6 +94,7 @@ Outlets & Actions
 -----------------
 
 - Controller class can reference object in nib file by using a special instance variable called **`outlet`**. Youn can think outlet as a `pointer` pointing to object instances in nib file that is loaded into memory when application launched.
+	> `Controller -> IBOutlet -> nib object instance`
 
 	> using `Assistant Editor` in Xcode, ctrl+drag UI control to *.h can create outlets.
 
@@ -123,3 +124,4 @@ Using the Application Delegate
 
 - The application delegate let us do things at predefined time on behalf of the `UIApplication` class
 - Every iPhone application has one and only one instance of `UIApplication` which responsible for the application run loop and application-level functionality.
+
