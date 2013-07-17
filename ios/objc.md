@@ -38,6 +38,9 @@ A class extension is a category, except for 2 main differences:
 
 It's quite common to see a class extension at the top of a .m file declaring more methods on the class, that are then implemented below in the main @implementation section of the class. This is a way to declare "pseudo-private" methods (pseudo-private in that they're not really private, just not externally exposed).
 
+> - Class Category可以给已有的任何类增加方法，包括没有源码的类。
+- Class Extension（added in objc2）, 也叫Anonymouse Category。只能给有源码的类增加私有方法、属性。且必须在被扩展类的@implementation部分实现（这也是为什么必须得有源码）。
+
 [Objective-C Runtime Reference](https://developer.apple.com/library/mac/#documentation/Cocoa/Reference/ObjCRuntimeRef/Reference/reference.html#//apple_ref/c/func/class_copyMethodList)
 ===
 
