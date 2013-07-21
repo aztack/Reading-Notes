@@ -1,6 +1,8 @@
 Concetps & Questions & Answers
 ==
 
+很多iOS开发中遇到的问题都和工程设置有关。最好先看一下官方关于工程设置的文档：[Configure Your Project](http://developer.apple.com/library/ios/#documentation/ToolsLanguages/Conceptual/Xcode_User_Guide/025-Configure_Your_Project/configure_project.html)
+
 How to Remove entire xcode?
 ===================
 `sudo /Developer/Library/uninstall-devtools --mode=all`
