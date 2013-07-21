@@ -1,8 +1,11 @@
-Remove entire xcode
+Concetps & Questions & Answers
+==
+
+How to Remove entire xcode?
 ===================
 `sudo /Developer/Library/uninstall-devtools --mode=all`
 
-Manually download Xcode
+How to manually download Xcode?
 =======================
 [https://developer.apple.com/downloads/index.action](https://developer.apple.com/downloads/index.action)
 
@@ -31,4 +34,19 @@ Tutorial:
 Beginning Storyboards in iOS 5
 - [Part1](http://www.raywenderlich.com/5138/beginning-storyboards-in-ios-5-part-1)
 - [Part2](http://www.raywenderlich.com/5138/beginning-storyboards-in-ios-5-part-2)
+
+Bundle identifier grayed out and can not be changed
+====
+
+这是因为在project.plist文件中加入了工程名变量。类似custom-bundle-id{project-name}。
+所以不管你怎么改变bundle id，xcode都会在后面加上工程名。
+
+解决：直接修改plist文件中的bundle id
+
+Could not change executable permissions on the application
+====
+
+这是因为在你的设备上有同一个bundle id的应用，并且不同于当前工程。
+
+解决：删除设备上的同id的引用
 
