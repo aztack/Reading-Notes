@@ -38,7 +38,7 @@ Beginning Storyboards in iOS 5
 Bundle identifier grayed out and can not be changed
 ====
 
-这是因为在project.plist文件中加入了工程名变量。类似custom-bundle-id{project-name}。
+这是因为在project.plist文件中加入了工程名变量。类似com.company.${PRODUCT_NAME:rfc1034identifier} 。
 所以不管你怎么改变bundle id，xcode都会在后面加上工程名。
 
 解决：直接修改plist文件中的bundle id
@@ -50,3 +50,9 @@ Could not change executable permissions on the application
 
 解决：删除设备上的同id的引用
 
+Could not read CBundleIdentifier from info.plist
+====
+
+这个问题一般是因为plist文件中（或者在工程设置，Targets，Info中）的`Bundle Identifier`被误删除导致的
+
+解决： 在Target->Info中增加 Bundle Identifier，并设置正确的id。
