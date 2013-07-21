@@ -32,6 +32,17 @@ Keep AppDelegate for the following:
 - `saving uncommitted data/state` prior to the application being terminated or entering background mode
 - `registering for the Apple Push Notification Service` and `sending the device token` to our server
 - `opening one of the supported application URLs` (e.g. maps://)
+- 
+
+Cocoa中的事件处理与.NET中的事件处理设计上的不同之处
+===
+.NET/VCL/MFC中的设计是通过继承已有类，并重写响应的事件响应函数来处理事件的。
+比如，你在子类中重写CustomApplication::onExit，来处理程序退出事件。
+本质上讲，CustomApplication的实例，就是程序对应的唯一Application实例。
+
+Cocoa中的设计，你编写一个实现了`UIApplicationDelegate`接口的AppDelegate类，在其中实现类似onExit这样的接口，来处理事件的。
+UIApplication会在适当的时候，调用delegate的响应方法。你的AppDelegate还可以实现其他接口，从而同时响应其他事件。
+本质上讲，AppDelegate只是一个实现了某些借口的任何类，并不是UIApplication的子类。而UIApplication的唯一实例也是事先由框架实现好的。
 
 
 Load data from plist
