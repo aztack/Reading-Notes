@@ -19,6 +19,8 @@ transition:  [ <transition-property> ||
 
 时长很好理解。`transition-property`是什么呢？它能是什么呢？这里是MDN对它的解释：[transition-property](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-property)
 
+这里是css属性中可以作为`transition-property`的完整列表：[list of animatable properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties?redirectlocale=en-US&redirectslug=CSS%2FCSS_animated_properties)
+
 
 
 Tools：
