@@ -91,3 +91,30 @@ It takes mobile Safari about a third of a second (300 milliseconds) to decide th
 Have you ever noticed that translucent gray highlight mobile Safari puts on links and buttons when they are clicked? It is a dead giveaway that your app is not native, but you can get rid of it by making the highlight color completely transparent:
 -webkit-tap-highlight-color:rgba(0,0,0,0);
 Overall we're loving PhoneGap at Outbox. Hopefully these tips will help make a few more happy PhoneGappers!
+```
+
+在JavaScript中响应软键盘隐藏/显示事件
+===
+
+思路在原声代码中增加响应键盘隐藏/显示的函数，在这个函数中调用UIWebView实例的`stringByEvaluatingJavaScriptFromString`函数，在其中调用JavaScript中的某个函数。
+
+```objective-c
+[[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(onKeyboardHide:) name:UIKeyboardWillHideNotification object:nil];
+[[NSNotificationCenter defaultCentler]addObserver:self selector:@selector(onKeyboardShow:) name:UIKeyboardWillShowNotification object:nil];
+
+...
+
+-(void)onKeyboardHide:(NSNotification *)notification
+{
+    [self.viewController.webView stringByEvaluatingJavaScriptFromString:@"window.onKeyboardHide && onKeyboardHide()"];
+}
+```
+
+```javascript
+window.onKeyboardHide = function(){
+  //响应键盘即将隐藏
+};
+window.onKeyboardShow = function(){
+  //响应键盘即将显示
+};
+```
