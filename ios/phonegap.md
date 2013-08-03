@@ -6,6 +6,7 @@ Miller's Article about Phongap and HTML5 mobile development
 
 Debugging in PhoneGap
 ---------------------
+- iOS6以上的设备支持在Mac Safari中调试设备上的网页和嵌由WebView的程序
 - [使用weinre调试Web应用及PhoneGap应用](http://www.donglongfei.com/2012/03/debug-phonegap-app-using-weinre/?utm_source=rss&utm_medium=rss&utm_campaign=debug-phonegap-app-using-weinre)
 - [Debugging in PhoneGap](https://github.com/phonegap/phonegap/wiki/Debugging-in-PhoneGap)
 
