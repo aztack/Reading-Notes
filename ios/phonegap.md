@@ -41,6 +41,7 @@ config.xml:
   self.viewController.view.frame = viewport;
   self.viewController.webView.frame = CGRectMake(0, 0, appBounds.size.width, appBounds.size.height);
 }
+
 ```
 
 [10 tips for getting that native iOS feel with PhoneGap](http://www.mikedellanoce.com/2012/09/10-tips-for-getting-that-native-ios.html)
@@ -95,15 +96,16 @@ Overall we're loving PhoneGap at Outbox. Hopefully these tips will help make a f
 ```
 
 在JavaScript中响应软键盘隐藏/显示事件
-===
+======
+
 
 思路在原声代码中增加响应键盘隐藏/显示的函数，在这个函数中调用UIWebView实例的`stringByEvaluatingJavaScriptFromString`函数，在其中调用JavaScript中的某个函数。
+
 
 ```objective-c
 [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(onKeyboardHide:) name:UIKeyboardWillHideNotification object:nil];
 [[NSNotificationCenter defaultCentler]addObserver:self selector:@selector(onKeyboardShow:) name:UIKeyboardWillShowNotification object:nil];
 
-...
 
 -(void)onKeyboardHide:(NSNotification *)notification
 {
@@ -118,4 +120,17 @@ window.onKeyboardHide = function(){
 window.onKeyboardShow = function(){
   //响应键盘即将显示
 };
+```
+
+
+PhoneGap splash screen image file name:
+
+```
+Default-568h@2x~iphone.png
+Default-Landscape@2x~ipad.png
+Default-Landscape~ipad.png
+Default-Portrait@2x~ipad.png
+Default-Portrait~ipad.png
+Default@2x~iphone.png
+Default~iphone.png
 ```
