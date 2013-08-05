@@ -126,11 +126,11 @@ window.onKeyboardShow = function(){
 PhoneGap splash screen image file name:
 
 ```
-Default-568h@2x~iphone.png
-Default-Landscape@2x~ipad.png
-Default-Landscape~ipad.png
-Default-Portrait@2x~ipad.png
-Default-Portrait~ipad.png
-Default@2x~iphone.png
-Default~iphone.png
+Default-568h@2x~iphone.png, 640x1136
+Default-Landscape@2x~ipad.png, 2048x1496
+Default-Landscape~ipad.png, 1024x748
+Default-Portrait@2x~ipad.png, 1536x2008
+Default-Portrait~ipad.png, 768x1004
+Default@2x~iphone.png, 640x1136
+Default~iphone.png, 640x960
 ```
