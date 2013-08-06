@@ -2,3 +2,7 @@
 
 - http://www.idev101.com/code/User_Interface/sizes.html
 - http://www.idev101.com/code/User_Interface/launchImages.html
+
+
+How to reconstruct ui when device rotated?
+===
