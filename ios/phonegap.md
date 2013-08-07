@@ -134,3 +134,10 @@ Default-Portrait~ipad.png, 768x1004
 Default@2x~iphone.png, 640x1136
 Default~iphone.png, 640x960
 ```
+
+Date.parse不支持横线分割的日期(遇到问题的iOS版本5.1.1)
+===
+
+需要将`2013-08-01`改为`2013/08/01`
+
+参见[Invalid date in safari](http://stackoverflow.com/questions/4310953/invalid-date-in-safari)
