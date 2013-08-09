@@ -141,3 +141,7 @@ Date.parse不支持横线分割的日期(遇到问题的iOS版本5.1.1)
 需要将`2013-08-01`改为`2013/08/01`
 
 参见[Invalid date in safari](http://stackoverflow.com/questions/4310953/invalid-date-in-safari)
+
+
+[Creating apps with PhoneGap: Lessons learned](http://www.adobe.com/devnet/phonegap/articles/creating-apps-with-phonegap-lessons.html)
+[Developing Better PhoneGap Apps](http://floatlearning.com/2011/03/developing-better-phonegap-apps/)
