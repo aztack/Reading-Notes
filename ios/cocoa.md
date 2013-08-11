@@ -96,3 +96,10 @@ Fadein UIImageView
 出于性能考虑，table view的数据源应该在 tableView:cellForRowAtIndexPath 中重用 UITableViewCell对象。每个table view 维护一个 UITableViewCell 实例的队列或者列表。当队列中有可用对象时，这个方法会将队头对象出队并返回，如果没有可用对象，则根据你事先注册的class或者nib文件创建一个并返回。如果你没有注册，则返回nil。
 
 如果你为特定的identifier注册了一个class。当需要创建的cell的时候，这个方法会调用 initWithStyle:reuseIdentifier: 方法创建一个cell。对于基于nib的cell，这个方法加载你提供的nib文件以创建cell。如果有可复用的cell，那么这个方法则会调用cell的 prepareForReuse方法。
+
+下面是SO上的一个帖子：[iPhone - dequeueReusableCellWithIdentifier usage](http://stackoverflow.com/questions/2928873)
+
+> The purpose of dequeueReusableCellWithIdentifier is to use less memory. If the screen can fit 4 or 5 table cells, then with reuse you only need to have 4 or 5 table cells allocated in memory even if the table has 1000 entries.
+
+我的理解：
+UITableView实例维护一个cell复用队列。当第一次创建table view的时候，根据一屏显示的cell的数目，比如说5个，创建出5个cell。当向下滚动的时候，第六个cell露出一部分，此时屏幕上有6个cell，有的只显示了一部分。这是table view会再创建第六个。此时队列中有六个可服用的cell。继续向下滚动（此时一屏最多显示六个），调用dequeueReusableCellWithIdentifier会返回队列中的第一个cell。返回的这个cell有着你创建它时的text和高度。虽然你可以不改变这些属性直接返回cell。但通常都会的。这样一来，内存中只有6个cell。
