@@ -108,3 +108,24 @@ UITableView实例维护一个cell复用队列。当第一次创建table view的�
 [UITableView dequeueReusableCellWithIdentifier Theory](http://stackoverflow.com/questions/3552343)
 
 > When a cell disappears from the screen it will be put in the TableView reuse que. When a new cell is needed it looks in the que if a cell with the same identifier is available, it invokes prepareForReuse method on that cell and it removes itself from the que.
+
+接下来我的问题是：identifier做什么用呢？
+
+看下面一段代码：这段代码说明UITableView中的复用队列中的cell是被打上了identifier的标签。`dequeueReusableCellWithIdentifier`会在队列中查找第一个标记有identifier的cell并返回。
+
+```objective-c
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *SimpleTableIndentifier1 = @"SimpleTableIdentifier1";
+    static NSString *SimpleTableIndentifier2 = @"SimpleTableIdentifier2";
+    NSString *ident = indexPath.row % 2 == 0 ? SimpleTableIndentifier1 : SimpleTableIndentifier2;
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ident];
+    if(cell == nil) {
+        NSLog(@"%d",indexPath.row);
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier: SimpleTableIndentifier1];
+    }
+    NSString *text = [NSString stringWithFormat:@"%@ %d",self.tableData[indexPath.row],indexPath.row];
+    cell.textLabel.text = text;
+    return cell;
+}
+```
