@@ -129,3 +129,10 @@ UITableView实例维护一个cell复用队列。当第一次创建table view的�
     return cell;
 }
 ```
+
+下面是 《Beginning iOS6 Development》中的一段话：
+
+> This string(这里只identifier) will be used as a key to represent the type of our table cell. Our table will use only a single
+type of cell.
+
+所以identifier可以理解为cell的类型。
