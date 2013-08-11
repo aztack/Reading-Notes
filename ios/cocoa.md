@@ -84,3 +84,15 @@ Fadein UIImageView
 
 }
 ```
+
+`UITableView`的`dequeueReusableCellWithIdentifier:`是怎么工作的？
+====
+官方文档：
+
+> For performance reasons, a table view's data source should generally reuse UITableViewCell objects when it assigns cells to rows in its tableView:cellForRowAtIndexPath: method. A table view maintains a queue or list of UITableViewCell objects that the data source has marked for reuse. Call this method from your data source object when asked to provide a new cell for the table view. This method dequeues an existing cell if one is available or creates a new one using the class or nib file you previously registered. If no cell is available for reuse and you did not register a class or nib file, this method returns nil.
+
+> If you registered a class for the specified identifier and a new cell must be created, this method initializes the cell by calling its initWithStyle:reuseIdentifier: method. For nib-based cells, this method loads the cell object from the provided nib file. If an existing cell was available for reuse, this method calls the cell’s prepareForReuse method instead.
+
+出于性能考虑，table view的数据源应该在 tableView:cellForRowAtIndexPath 中重用 UITableViewCell对象。每个table view 维护一个 UITableViewCell 实例的队列或者列表。当队列中有可用对象时，这个方法会将队头对象出队并返回，如果没有可用对象，则根据你事先注册的class或者nib文件创建一个并返回。如果你没有注册，则返回nil。
+
+如果你为特定的identifier注册了一个class。当需要创建的cell的时候，这个方法会调用 initWithStyle:reuseIdentifier: 方法创建一个cell。对于基于nib的cell，这个方法加载你提供的nib文件以创建cell。如果有可复用的cell，那么这个方法则会调用cell的 prepareForReuse方法。
