@@ -44,6 +44,7 @@ Cocoa中的设计，你编写一个实现了`UIApplicationDelegate`接口的AppD
 UIApplication会在适当的时候，调用delegate的响应方法。你的AppDelegate还可以实现其他接口，从而同时响应其他事件。
 本质上讲，AppDelegate只是一个实现了某些借口的任何类，并不是UIApplication的子类。而UIApplication的唯一实例也是事先由框架实现好的。
 
+Cocoa中的事件不像.NET那样通过继承实现。而是通过代理和protocol实现的。你实现某个*Delegate的部分接口，Cocoa会在适当的时候调用。大多数是optional的。.NET则是通过重写父类的onEvent方法实现的。如果你没有重写，则调用父类的方法。
 
 Load data from plist
 ====================
