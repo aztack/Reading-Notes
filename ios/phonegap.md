@@ -150,4 +150,3 @@ Date.parse不支持横线分割的日期(遇到问题的iOS版本5.1.1)
 `deviceready` NOT fired?!
 =========================
 
-in `AndroidManifest.xml` 将android:targetSdkVersion 设置为'16'就收到了..
