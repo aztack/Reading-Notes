@@ -145,3 +145,9 @@ Date.parse不支持横线分割的日期(遇到问题的iOS版本5.1.1)
 
 [Creating apps with PhoneGap: Lessons learned](http://www.adobe.com/devnet/phonegap/articles/creating-apps-with-phonegap-lessons.html)
 [Developing Better PhoneGap Apps](http://floatlearning.com/2011/03/developing-better-phonegap-apps/)
+
+
+`deviceready` NOT fired?!
+=========================
+
+in `AndroidManifest.xml` 将android:targetSdkVersion 设置为'16'就收到了..
