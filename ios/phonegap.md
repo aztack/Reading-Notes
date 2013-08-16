@@ -1,3 +1,6 @@
+至关重要的一个Tip：Tip #1 - Test on old hardware。如果你的应用在老设备和低端安卓上的速度可以接受。那你可以继续。
+如果不行，绝对不要用。
+
 Miller's Article about Phongap and HTML5 mobile development
 ---
 - [Phonegap + HTML5 开发经验小结](http://varnow.org/?p=354)
@@ -147,6 +150,27 @@ Date.parse不支持横线分割的日期(遇到问题的iOS版本5.1.1)
 [Developing Better PhoneGap Apps](http://floatlearning.com/2011/03/developing-better-phonegap-apps/)
 
 
-`deviceready` NOT fired?!
-=========================
+JC研究所项目总结
+================
+
+- 0.  一定要在初期就要在各种设备上测试样式效果！！
+- 1. CSS中尽量使用相对尺寸：em, % 
+- 2. font-size:0在有些安卓的webkit上是无效的！
+- 3. 按钮设计要足够大！请UI设计同学查一下，移动设备上的按钮有一个最小尺寸。小于改尺寸的按钮是非常难点到的。
+- 4. 不要使用需要image sprite。作为一个phonegap项目，图片资源都在本地。使用个毛sprite啊！各种设备对齐背景特么会死人的啊！sprite是为了减少请求数。本地资源不用考虑！
+- 5. 输入框是phonegap的硬伤。输入框获取焦点后，webview会无条件上移（整个body都会上移）。输入框的显示和消失是没有js事件的！！需要原生开发
+- 6. 不要使用大于半个屏幕的图片，会非常卡，且无解。唯一能缓解的办法是，在图片不显示的时候display:none或者visibility:hidden.蛋疼死了。
+- 7. retina屏幕的一个像素相当于一般屏幕的1/4个像素。所以写css的时候如果用px时有个2倍的系数。background-size也得注意。
+- 8. 现在最好的移动端webview中滚动列表的解决方案是iScroll。很多坑。需要各种setTimeout，请查看官方。
+- 9. phonegap的deviceready有时候是不触发的。device的属性都是null。navigator.connection.type在有些安卓机器上是unkown，无法确定是wifi还是3g、2g。
+- 10. Phonegap 在安卓下需要处理back键。因为只有一个activity，所以会出现按back就退出程序的问题。再碰上无法响应backbutton事件，就歇菜。这个问题花费了一天的时间。
+- 11. 需要为安卓（或ios）单独创建一个android.css和android.js来处理差异
+- 12. 部分尺寸问题可以用zoom来解决
+- 13. 就算使用sprite作为背景。设计师将多个图标整齐等宽排列，行列数最好为偶数。builder写css得时候background-position的时候不需要用px为单位。直接用%就可以了。比如两个图标。第二个图标可以直接用50%就好了。这个值永远是正确的，不需要修改 
+- 14. Phonegap改名叫Cordova。apache开源项目下。cordova 3.0开始，以前内置的js对象（比如device）都变成以插件形式支持了。默认是没有的！所以js里device.available总是false。又一天费掉了。做iphone版本的时候还是2.9。做android版本升级到3.0.。。。cordova是用命令行生成工程模板的。所以总是最新版。。
+- 15. Cordova 3.0 开始。自带插件的package从org.apache.cordova变为org.apache.cordova.core。在cofnig.xml中做更改！官方也没有migration guide，坑爹啊。
+- 16. phonegap 在android上是无法向iphone那样在safari里单步调试的。也就是说。如果出了问题，你又不知道哪里出了问题。就得打一堆的alert，console.log。
+- 17. 建议以后如果用phonegap开发，一开始就要将要支持的版本（ios，android）的工程都生成出来。js和css文件要拆分细一点，在工程中再根据设备合并需要的文件。这就需要多设备要同时推进。否者就会出现。后做的设备上的js代码和之前的代码有很大差异。目前的状况就是安卓上的index.js已经和ios上的差不少了。这完全违背了用phonegap开发的本意。
+- 18. phonegap在低端安卓设备上非常卡。至少在测试机和我的小米1上，点击列表页后要1秒才能打开详情页！！
+- 19.对于需要原生支持，但又犯不着写一个插件的问题可以通过webview的 loadUrl("javascript:….")的方法，将原生方法获取的信息传给js环境。但从js环境触发原生代码就得写插件了。
 
