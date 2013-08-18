@@ -350,3 +350,28 @@ Array:
 ```objective-c
 NSArray *array = @[ @"Hello", NSApp, @42];
 ```
+
+[Property](http://developer.apple.com/library/ios/documentation/cocoa/conceptual/ProgrammingWithObjectiveC/EncapsulatingData/EncapsulatingData.html)
+==========
+
+@property 关键字为你生成一个下划线开头的属性。
+@synthesize 关键字辅助你自定义生成setter和getter方法，指定保存property的instance variable。
+setter的名字是`set`加首字母大写的property名字，getter的名字和property名字相同。
+
+```objective-c
+@synthesize firstName;
+```
+
+上面的代码不会生成`_firstName`。对应的ivar名字也是`firstName`。
+
+实现一个与setter，getter签名一样的函数将会导致编译器不生成setter，getter，而是使用你写的。
+
+其中@proerpty还有一组相关的关键字：`strong, weak; atomic, nonatomic; readonly, readwrite;`
+
+proeprty默认是`atomic`的，就是说在多线程环境下，保证对property的访问是原子的。
+
+> Because the internal implementation and synchronization of atomic accessor methods is private, it’s not possible to combine a synthesized accessor with an accessor method that you implement yourself. You’ll get a compiler warning if you try, for example, to provide a custom setter for an atomic, readwrite property but leave the compiler to synthesize the getter.
+
+
+
+
