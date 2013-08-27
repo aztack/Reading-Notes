@@ -34,3 +34,7 @@ StrictMode.setVmPolicy(
     .penaltyDeath()
     .build());
 ```
+
+- [FrameLayout margin not working](http://stackoverflow.com/questions/5401952/framelayout-margin-not-working)
+- [Background ListView becomes black when scrolling](http://stackoverflow.com/questions/2833057/background-listview-becomes-black-when-scrolling)
+- [How can I put a ListView into a ScrollView without it collapsing?](http://stackoverflow.com/questions/3495890/how-can-i-put-a-listview-into-a-scrollview-without-it-collapsing)
