@@ -1,8 +1,8 @@
-Useful resources from StackOverflow:
-======
-android:
+Useful resources from StackOverflow
+====================================
+
 - [background image not repeating in android layout](http://stackoverflow.com/questions/4077487/background-image-not-repeating-in-android-layout)
-- [How to align Button by center and make offset](http://stackoverflow.com/questions/13501891/how-to-align-button-by-center-and-make-offset)
+- [★CHow to align Button by center and make offset](http://stackoverflow.com/questions/13501891/how-to-align-button-by-center-and-make-offset)
 - [Layout params of loaded view are ignored](http://stackoverflow.com/questions/5288435/layout-params-of-loaded-view-are-ignored)
 - [Android: Vertical alignment for multi line EditText (Text area)](http://stackoverflow.com/questions/2446544/android-vertical-alignment-for-multi-line-edittext-text-area)
 - [★Custom XML Attributes For Your Custom Android Widgets](http://kevindion.com/2011/01/custom-xml-attributes-for-android-widgets/)
@@ -23,10 +23,10 @@ or `listView.setDescendantFocusability(ViewGroup.FOCUS_BLOCK_DESCENDANTS);`
 
 [see also](http://www.cnblogs.com/ycmoon/archive/2011/04/25/2027728.html)
 
-自定义ListView的Item之间有黑线
+自定义ListView的一些问题
 ==============================
-将divider的颜色设置为和背景一样(设置dividerHeight为0，貌似不管用)
-
+ - 将divider的颜色设置为和背景一样(设置dividerHeight为0，貌似不管用)
+ - 去掉ListView被点击的时候有高亮背景
 ```xml
     <com.comapny.project.ListViewExt
         android:id="@+id/question_detail_list"
@@ -37,10 +37,11 @@ or `listView.setDescendantFocusability(ViewGroup.FOCUS_BLOCK_DESCENDANTS);`
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:cacheColorHint="@null"
-        android:fadingEdge="none"
-        android:dividerHeight="0dp"
-        android:divider="#ffffff"
-        android:listSelector="@android:color/transparent" >
+        android:fadingEdge="none" <!--上下渐变阴影-->
+        android:dividerHeight="0dp" <!--去黑线-->
+        android:divider="#ffffff" <!--去黑线-->
+	android:cacheColorHint="@null" <!--去高亮-->
+	android:listSelector="@android:color/transparent" <!--去高亮-->
     </com.comapny.project.ListViewExt>
 ```
 
