@@ -6,6 +6,15 @@ Websites
 - [Testflightapp.com](https://testflightapp.com)
 - [www.cocoacontrols.com](https://www.cocoacontrols.com/)
 
+
+[7 Great Ways to Learn iOS Development](http://virtuousgiant.com/7-ways-to-learn-ios-development/)
+
+- [Treehouse](http://bit.ly/treehs)
+- [Design then Code](http://designthencode.com/)
+- [Peepcode](http://peepcode.com)
+- [Ray Wenderlich](http://raywenderlich.com)
+- [Mobile Tuts](http://mobile.tutsplus.com/)
+
 Components
 ==========
 
