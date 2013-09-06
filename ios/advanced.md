@@ -1,0 +1,21 @@
+[Advanced iOS Programming from Big Nerd Ranch](http://www.bignerdranch.com/classes/advanced_ios_programming)
+==================
+- Upon completion of Advanced iOS Programming, the student will be able to:
+- Store documents, application data, and settings in iCloud
+- Write concurrent applications using Grand Central Dispatch and NSOperationQueue
+- Customize Storyboard view transitions
+- Use GLKit based controllers for OpenGL 3D rendering
+- Process images and find faces using Core Image
+- Asynchronously communicate with and parse data from JSON based web services
+- Print, email and share from your app with the Social framework
+- Access the accelerometer, gyroscope and compass using Core Motion
+- Create and process audio in real time using Core Audio
+- Display real time video on 3D objects with AVFoundation and OpenGL ES
+- Display content on external displays using AirPlay streaming and wired video connections
+- Use web views to render content and pass information and events between Javascript and Objective-C
+- Master the iOS performance optimization tools and LLDB debugger
+- Pull-to-refresh and other Table View paradigms
+- Record video using AVFoundation
+- Use Collection Views with custom layouts
+- Understand the internals of the Objective-C runtime and message passing
+- Automating app testing with the UI Automation instrument
