@@ -1,2 +1,2 @@
-My Notes
-========
+- [iOS vs. Android Development](http://www.infoq.com/news/2013/08/ios-vs-android-development)
+- [Learning iOS as an Android developer](http://blog.sqisland.com/2013/02/learning-ios-as-android-developer.html)
