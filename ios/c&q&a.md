@@ -58,3 +58,9 @@ Could not read CBundleIdentifier from info.plist
 这个问题一般是因为plist文件中（或者在工程设置，Targets，Info中）的`Bundle Identifier`被误删除导致的
 
 解决： 在Target->Info中增加 Bundle Identifier，并设置正确的id。
+
+
+[ios - Include non-ARC library in an ARC app? - Stack Overflow](http://stackoverflow.com/questions/8969634/include-non-arc-library-in-an-arc-app)
+====
+
+> You need to add -fno-objc-arc to the compiler options for each file that doesn't / can't use ARC. Within Xcode you do this from the 'Compile Sources' build phase of your target. Double click the file and add -fno-objc-arc to the box that pops up.
