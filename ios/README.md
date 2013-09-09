@@ -29,8 +29,10 @@ Pull to refresh:
 [Top 10 Most Useful iOS Libraries to Know and Love](http://www.raywenderlich.com/21987/top-10-most-useful-ios-libraries-to-know-and-love)
 
 - [CocoaLumberJack - A fast & simple, yet powerful & flexible logging framework for Mac and iOS](https://github.com/robbiehanson/CocoaLumberjack)
-- [CorePlot)](http://code.google.com/p/core-plot/)
-- ...
+- [domesticcatsoftware/DCIntrospect](https://github.com/domesticcatsoftware/DCIntrospect)
+- [SSToolkit](http://sstoolk.it/)
+- [RestKit](http://restkit.org/)
+- [HockeyKit](http://hockeykit.net/)
 
 Sidebar (Swipey):
 
