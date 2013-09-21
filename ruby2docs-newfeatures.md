@@ -1,9 +1,61 @@
 String & Symbol
 ===============
 > - Symbol array literal
-- String#b 
+- String#b & Range#b
 - String#lines, #chars, etc return an Array
 
+Symbol array literal
+--------------------
+
+```ruby
+%i{hello world !}   #=> [:an, :array, :of, :symbols]
+#=> [:hello, :world, :!]
+
+questionmark = "?"
+%I<hello world#{questionmark}>
+#=> [:hello, :world?]
+```
+
+String#b & Range#b
+------------------
+
+You can use this method in two use cases: a find-minimum mode and a find-any mode. In either case, the elements of the array must be monotone (or sorted) with respect to the block.
+
+In find-minimum mode (this is a good choice for typical use case), the block must return true or false, and there must be an index i (0 <= i <= ary.size) so that:
+
+the block returns false for any element whose index is less than i, and
+
+the block returns true for any element whose index is greater than or equal to i.
+
+This method returns the i-th element. If i is equal to ary.size, it returns nil.
+
+```ruby
+ary = [0, 4, 7, 10, 12]
+ary.bsearch {|x| x >=   4 } #=> 4
+ary.bsearch {|x| x >=   6 } #=> 7
+ary.bsearch {|x| x >=  -1 } #=> 0
+ary.bsearch {|x| x >= 100 } #=> nil
+```
+
+In find-any mode (this behaves like libc’s bsearch(3)), the block must return a number, and there must be two indices i and j (0 <= i <= j <= ary.size) so that:
+
+the block returns a positive number for ary if 0 <= k < i,
+
+the block returns zero for ary if i <= k < j, and
+
+the block returns a negative number for ary if j <= k < ary.size.
+
+Under this condition, this method returns any element whose index is within i…j. If i is equal to j (i.e., there is no element that satisfies the block), this method returns nil.
+
+```ruby
+ary = [0, 4, 7, 10, 12]
+# try to find v such that 4 <= v < 8
+ary.bsearch {|x| 1 - x / 4 } #=> 4 or 7
+# try to find v such that 8 <= v < 10
+ary.bsearch {|x| 4 - x / 2 } #=> nil
+```
+
+You must not mix the two modes at a time; the block must always return either true/false, or always return a number. It is undefined which value is actually picked up at each iteration.
 
 Array & Hash
 ============
