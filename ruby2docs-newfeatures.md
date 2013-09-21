@@ -5,7 +5,7 @@ String & Symbol
 - String#lines, #chars, etc return an Array
 
 Symbol array literal
---------------------
+----
 
 ```ruby
 %i{hello world !}   #=> [:an, :array, :of, :symbols]
@@ -17,7 +17,7 @@ questionmark = "?"
 ```
 
 String#b
---------
+----
 
 ```ruby
 s = "hello world!"
@@ -69,6 +69,7 @@ open.to_h
 
 Array#bsearch & Range&bsearch
 ----
+
 You can use this method in two use cases: a find-minimum mode and a find-any mode. In either case, the elements of the array must be monotone (or sorted) with respect to the block.
 
 In find-minimum mode (this is a good choice for typical use case), the block must return true or false, and there must be an index i (0 <= i <= ary.size) so that:
@@ -188,39 +189,38 @@ Module#prepend
 
 ```ruby
 module M
-	def fn
-		puts "M#fn"
-		super
-	end
+  def fn
+    puts "M#fn"
+    super
+  end
 end
 
 class A
-	def fn
-		puts "A#fn"
-	end
+  def fn
+    puts "A#fn"
+  end
 end
 
 class B
-
-	def fn
-		puts "B#fn"
-	end
+  def fn
+    puts "B#fn"
+  end
 end
 
 class AChild < A
-	include M
-	def fn
-		puts "AChild#fn"
-		super
-	end
+  include M
+  def fn
+    puts "AChild#fn"
+    super
+  end
 end
 
 class BChild < B
-	prepend M
-	def fn
-		puts "BChild#fn"
-		super
-	end
+  prepend M
+  def fn
+    puts "BChild#fn"
+    super
+  end
 end
 
 AChild.new.fn
@@ -229,15 +229,15 @@ puts AChild.ancestors.join(">")
 BChild.new.fn
 puts BChild.ancestors.join(">")
 
-#=>	AChild#fn
-#	M#fn
-#	A#fn
-#	AChild>M>A>Object>Kernel>BasicObject
+#=> AChild#fn
+# M#fn
+# A#fn
+# AChild>M>A>Object>Kernel>BasicObject
 
-#=>	M#fn
-#	BChild#fn
-#	B#fn
-#	M>BChild>B>Object>Kernel>BasicObject
+#=> M#fn
+# BChild#fn
+# B#fn
+# M>BChild>B>Object>Kernel>BasicObject
 ```
 
 `Module#prepend` works just like `Module#include`, but it inserts the module in to the inheritance chain as if it were a subclass rather than a superclass.
@@ -304,6 +304,21 @@ puts (1..10000000).lazy.map{|e|e*10}.take(10).to_a.join(",")
 real	0m0.033s
 user	0m0.027s
 sys	0m0.005s</pre>
+
+Another example
+
+```ruby
+require 'date'
+ETERNITY = Float::INFINITY
+puts (Date.today..ETERNITY).lazy.select {|d| (d.day == 13) && d.friday?}.
+take(5).force
+
+#=> 2013-09-13
+# 2013-12-13
+# 2014-06-13
+# 2015-02-13
+# 2015-03-13
+```
 
 - Lazy Enumerator#size and Range#size
 - const_get understands namespaces
