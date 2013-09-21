@@ -1,29 +1,40 @@
-New features of Ruby 2.0.0
-==========================
-
 String & Symbol
----------------
-- Symbol array literal
+===============
+> - Symbol array literal
 - String#b 
 - String#lines, #chars, etc return an Array
 
 
-Array&Hash
------------
-- Hash#default_proc= now accepts nil
+Array & Hash
+============
+> - Hash#default_proc= now accepts nil
 - #to_h
 - #bsearch
 - Array#values_at returns nil for each value that is out-of-range
 - Array#shuffle! and #sample
 
 Class & Module & Method & Proc
-------------
-- Keyword arguments
+=============================
 
-
+> - Keyword arguments
 - Module#refine & Kernel#using
+- Unbound methods ?
+- Enumerable#lazy
+- Lazy Enumerator#size and Range#size
+- const_get understands namespaces
+- Protected methods treated like private for #respond_to?
+- #inspect no longer calls #to_s
+- Top level define_method
+- Proc#== and #eql? removed
 
-> You can think `Refinements` as limited monkey-patching.
+Keyword arguments
+-----------------
+
+
+Module#refine & Kernel#using
+----------------------------
+
+> You can think `Refinements` as limited, more safe monkey-patching.
 
 ```ruby
 module StringRefinement
@@ -53,7 +64,7 @@ StringSayHello.new.hello
 #=> hello!
 ```
 
-using `using` in lambda or Proc
+Using `using` in lambda or Proc
 
 ```ruby
 ->{
@@ -63,7 +74,8 @@ using `using` in lambda or Proc
 #=> hello!
 ```
 
-- Module#prepend
+Module#prepend
+--------------
 
 ```ruby
 module M
@@ -133,8 +145,9 @@ So method `M#fn` is called before `BChild#fn`.
 
 
 Miscellaneous
-------------
-- Default UTF-8 encoding
+=============
+
+>- Default UTF-8 encoding
 - Time#to_s change encoding to US-ASCII
 - warn supports multiple parameters
 - LoadError#path
@@ -142,7 +155,7 @@ Miscellaneous
 
 Removed
 =======
-- CSV::dump and ::load removed
+>- CSV::dump and ::load removed
 - Iconv removed
 - Syck removed
 
