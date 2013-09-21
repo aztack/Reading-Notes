@@ -169,7 +169,33 @@ fn.bind(Foo.new("world")).call
 #=> hello world!
 ```
 
-- Enumerable#lazy
+Enumerable#lazy
+-----------------
+
+`Enumerable#lazy` will return a lazy enumerator, which doesn’t perform any calculations untill it is forced to.
+
+Without calling `#lazy`, `e*10` is evaluated on every element of `(1..10000000)` thus takes more time:
+
+```ruby
+puts (1..10000000).map{|e|e*10}.take(10).to_a.join(",")
+```
+
+> <pre>10,20,30,40,50,60,70,80,90,100
+real	0m1.417s
+user	0m1.372s
+sys	0m0.036s</pre>
+
+With `#lazy` called on `(1..10000000)`, only first 10 element are calculated:
+
+```ruby
+puts (1..10000000).lazy.map{|e|e*10}.take(10).to_a.join(",")
+```
+
+> <pre>10,20,30,40,50,60,70,80,90,100
+real	0m0.033s
+user	0m0.027s
+sys	0m0.005s</pre>
+
 - Lazy Enumerator#size and Range#size
 - const_get understands namespaces
 - Protected methods treated like private for #respond_to?
