@@ -1,7 +1,7 @@
 String & Symbol
 ===============
 > - Symbol array literal
-- String#b & Range#b
+- String#b
 - String#lines, #chars, etc return an Array
 
 Symbol array literal
@@ -16,9 +16,59 @@ questionmark = "?"
 #=> [:hello, :world?]
 ```
 
-String#b & Range#b
-------------------
+String#b
+--------
 
+```ruby
+s = "hello world!"
+s.encoding     #=> #<Encoding:UTF-8>
+s.b.encoding   #=> #<Encoding:ASCII-8BIT>
+```
+
+
+String#lines, #chars, etc return an Array
+----
+
+```ruby
+#$ rvm use 1.9.3
+"a\nb\nc\n".lines
+#=> #<Enumerator: "a\nb\nc\n":lines>
+
+#$ rvm use 2.0.0
+"a\nb\nc\n".lines
+#=> ["a\n", "b\n", "c\n"]
+```
+Array & Hash
+============
+- #to_h
+- Array#bsearch & Range&bsearch
+- Array#values_at returns nil for each value that is out-of-range
+
+#to_h
+----
+
+Hash, ENV, nil, Struct, and OpenStruct get a #to_h method which returns a hash
+
+```ruby
+{:hello => "world"}.to_h               
+#=> {:hello=>"world"}
+
+nil.to_h                           
+#=> {}
+
+Struct.new(:hello).new("world").to_h   
+#=> {:hello=>"world"}
+
+require "ostruct"
+open = OpenStruct.new
+open.hello = "world"
+open.to_h   
+#=> {:hello=>"world"}
+
+```
+
+Array#bsearch & Range&bsearch
+----
 You can use this method in two use cases: a find-minimum mode and a find-any mode. In either case, the elements of the array must be monotone (or sorted) with respect to the block.
 
 In find-minimum mode (this is a good choice for typical use case), the block must return true or false, and there must be an index i (0 <= i <= ary.size) so that:
@@ -57,13 +107,20 @@ ary.bsearch {|x| 4 - x / 2 } #=> nil
 
 You must not mix the two modes at a time; the block must always return either true/false, or always return a number. It is undefined which value is actually picked up at each iteration.
 
-Array & Hash
-============
-> - Hash#default_proc= now accepts nil
-- #to_h
-- #bsearch
-- Array#values_at returns nil for each value that is out-of-range
-- Array#shuffle! and #sample
+Array#values_at
+-----
+
+`Array#values_at` returns nil for every value that is out of range.
+
+```ruby
+#ruby 1.9.3
+[1,3,5,7,9,11,13].values_at(2..10)
+#=> [5, 7, 9, 11, 13, nil]
+
+#ruby 2.0.0
+[1,3,5,7,9,11,13].values_at(2..10)
+#=> [5, 7, 9, 11, 13, nil, nil, nil, nil]
+```
 
 Class & Module & Method & Proc
 =============================
