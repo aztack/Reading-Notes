@@ -134,7 +134,41 @@ puts BChild.ancestors.join(">")
 `Module#prepend` works just like `Module#include`, but it inserts the module in to the inheritance chain as if it were a subclass rather than a superclass.
 So method `M#fn` is called before `BChild#fn`.
 
-- Unbound methods ?
+bind UnboundedMethod to object
+------------------------------
+
+```ruby
+module Foo
+  def bar
+    "bar"
+  end
+end
+
+bar_method = Foo.instance_method(:bar)
+#=> #<UnboundMethod: Bar#bar>
+bar_method.bind(Object.new).call
+#=> "bar"
+```
+
+```ruby
+class Foo
+  def initialize(name)
+    @name = name
+  end
+	
+  def fn
+    puts "hello #{@name}!"
+  end
+end
+
+fn = Foo.instance_method(:fn)
+fn.bind(Object.new).call
+#=> bind argument must be an instance of Foo
+
+fn.bind(Foo.new("world")).call
+#=> hello world!
+```
+
 - Enumerable#lazy
 - Lazy Enumerator#size and Range#size
 - const_get understands namespaces
