@@ -19,6 +19,8 @@ questionmark = "?"
 String#b
 ----
 
+`String#b` as a shortcut to get an ASCII-8BIT copy of a string
+
 ```ruby
 s = "hello world!"
 s.encoding     #=> #<Encoding:UTF-8>
@@ -140,6 +142,28 @@ Class & Module & Method & Proc
 Keyword arguments
 -----------------
 
+```ruby
+def tag(tag_name, tag_begin:"<", tag_end:">")
+  "#{tag_begin}#{tag_name}#{tag_end}"
+end
+
+tag('html') 
+#=> "<html>"
+
+tag('div',tag_begin:'</') 
+#=> "</div>"
+
+tag('img',tag_end:' />',tag_begin:'<') 
+#=> "<img />"
+```
+
+```ruby
+def fn(**options)
+  options
+end
+
+fn(first:1,last:99) #=> {:first=>1, :last=>99}
+```
 
 Module#refine & Kernel#using
 ----------------------------
@@ -320,13 +344,72 @@ take(5).force
 # 2015-03-13
 ```
 
-- Lazy Enumerator#size and Range#size
-- const_get understands namespaces
-- Protected methods treated like private for #respond_to?
-- #inspect no longer calls #to_s
-- Top level define_method
-- Proc#== and #eql? removed
+const_get understands namespaces
+----
 
+```ruby
+#ruby1.93
+Object.const_get("Net::HTTP")
+#=> NameError: wrong constant name Net::HTTP
+
+Object.const_get("Net").const_get("HTTP")
+#=> Net::HTTP
+
+
+#ruby2.0.0
+Object.const_get("Net::HTTP")
+#=> Net::HTTP
+````
+
+- Protected methods treated like private for #respond_to?
+
+```ruby
+class Klass
+  protected
+  def f;end
+end
+
+#ruby1.9.3
+Klass.new.respond_to?(:f)
+#=> true
+
+#ruby2.0.0
+Klass.new.respond_to?(:f)
+#=> false
+```
+
+#inspect no longer calls #to_s
+----
+
+```ruby
+class Klass
+  def to_s;"Klass";end
+end
+
+#ruby1.9.3
+Klass.new.inspect
+#=> => "Klass"
+
+#ruby2.0.0
+Klass.new.inspect
+#=> "#<Klass:0x007ffd4518ba88>"
+```
+
+- Top level define_method
+
+```ruby
+define_method(:f){puts 'f'}
+
+#ruby1.9.3
+#=> NoMethodError: undefined method `define_method' for main:Object
+
+#ruby2.0.0
+define_method(:f){'f'}
+#=> #<Proc:0x007faddc806b00@(irb):2 (lambda)>
+
+f()
+#=> "f"
+```
 
 Miscellaneous
 =============
@@ -342,4 +425,4 @@ Removed
 >- CSV::dump and ::load removed
 - Iconv removed
 - Syck removed
-
+- Proc#== and #eql? removed
