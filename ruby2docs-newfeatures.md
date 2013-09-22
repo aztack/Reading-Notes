@@ -344,7 +344,7 @@ take(5).force
 # 2015-03-13
 ```
 
-const_get understands namespaces
+`const_get` supports namespaces
 ----
 
 ```ruby
@@ -361,7 +361,8 @@ Object.const_get("Net::HTTP")
 #=> Net::HTTP
 ````
 
-- Protected methods treated like private for #respond_to?
+Protected methods treated like private for `#respond_to?`
+----
 
 ```ruby
 class Klass
@@ -378,7 +379,7 @@ Klass.new.respond_to?(:f)
 #=> false
 ```
 
-#inspect no longer calls #to_s
+`#inspect` no longer calls `#to_s`
 ----
 
 ```ruby
@@ -395,7 +396,8 @@ Klass.new.inspect
 #=> "#<Klass:0x007ffd4518ba88>"
 ```
 
-- Top level define_method
+Top level define_method
+----
 
 ```ruby
 define_method(:f){puts 'f'}
@@ -419,6 +421,94 @@ Miscellaneous
 - warn supports multiple parameters
 - LoadError#path
 - OpenStruct can act like a hash
+
+
+Default UTF-8 encoding
+----
+
+Now you can use characters which are not in US-ASCII in your code without magic encoding comments:
+
+```ruby
+#ruby1.9.3
+# encoding: UTF-8
+# coding: UTF-8
+# -*- coding: UTF-8 -*-
+
+man = "男人"
+
+#ruby2.0.0
+
+women = "女人"
+
+```
+
+Time#to_s change encoding to US-ASCII
+----
+
+```ruby
+#ruby1.9.3
+Time.now.to_s.encoding
+#=> #<Encoding:ASCII-8BIT>
+
+#ruby2.0.0
+ Time.new.to_s.encoding
+#=> #<Encoding:US-ASCII>
+```
+
+warn supports multiple parameters
+----
+
+```ruby
+#ruby1.9.3
+warn("don't","do","that!")
+#=> ArgumentError: wrong number of arguments(3 for 1)
+
+#ruby2.0.0
+warn("don't","do","that!")
+# don't
+# do
+# that!
+#=> nil
+```
+
+LoadError#path
+----
+
+Load error now has a #path method to retrieve the path of the file that couldn’t be loaded
+
+```ruby
+begin
+  require_relative "foo"
+rescue LoadError => e
+  e.message   #=> "cannot load such file -- /Users/aztack/ruby2docs/rb/foo"
+  e.path      #=> "/Users/aztack/ruby2docs/rb/foo"
+end
+```
+
+OpenStruct can act like a hash
+----
+
+```ruby
+require 'ostruct'
+
+os = OpenStruct.new
+os.name = 'aztack'
+
+#ruby1.9.3
+os[:name]
+#=> oMethodError: undefined method `[]' for #<OpenStruct...>
+
+os.marshal_dump[:name]
+#=> "aztack"
+
+os.instance_variable_get('@table')[:name]
+#=> "aztack"
+
+#ruby2.0.0
+os[:name]
+#=> "aztack"
+```
+
 
 Removed
 =======
