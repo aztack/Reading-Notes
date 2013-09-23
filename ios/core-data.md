@@ -60,10 +60,47 @@ Core Data 基础
 
 数据抓取请求三要素：
 
-- 实体名称
-- 查询条件
-- 结果排序方式
+- 实体名称 Entity Name
+- 查询条件 Predicate
+- 多个结果排序方式 Sort Orderings
+
 ![Figure 3: An example fetch request]
 (https://developer.apple.com/library/ios/documentation/cocoa/conceptual/CoreData/Art/fetch_request_2x.png)
+
+你向托管对象上下文发出一个数据抓取请求，它会返回多个或零个符合条件的对象。
+
+持久存储协调器 Persistent Store Coordinator
+====
+
+前面提到过，Core Data提供的这组对象组成了一个持久栈，栈顶是`托管对象上下文`，栈低是`持久存储`。他们之间就是`持久存储协调器`。
+`持久存储协调器`作为`托管对象上下文`的门面(façade)。将多个`持久存储`虚拟为单个存储。之后，`托管对象上下文`通过它创建一个`对象图`(objects graph)。
+
+![Figure 4:Advanced persistence stack]
+(https://developer.apple.com/library/ios/documentation/cocoa/conceptual/CoreData/Art/advanced_persistence_stack_2x.png)
+
+持久存储 Persistent Stores
+====
+
+Your application code should not make any assumptions about the persistent store in which data may reside
+
+持久化文档 Persistent Documents
+====
+
+NSPersistentDocument继承自NSDocument。它建立一个自己的持久栈，包括一个托管对象和一个一对一的(one-to-one)持久对象存储。
+
+托管对象和托管对象模型
+====
+
+为了可以管理`对象图`并提供对象持久化，Core Data要求使用托管对象模型来描述它要操作的对象。
+
+![Figure 5: Managed object model with two entities]
+(https://developer.apple.com/library/ios/documentation/cocoa/conceptual/CoreData/Art/managed_object_model_2x.png)
+
+对象的属性和对象之间的关系用响应的描述符描述
+
+![Figure 6: Entity description with two attributes and a relationship]
+(https://developer.apple.com/library/ios/documentation/cocoa/conceptual/CoreData/Art/entity_description_2x.png)
+
+
 
 
