@@ -15,8 +15,8 @@ W3C和IE对盒模型不同的解释
 ![助记图](box-model.png)
 
 - IE5.5以及以前的版本的IE使用IE盒模型。IE6在standards compliant mode会使用W3C的盒模型
-- css3引入了控制盒模型的属性：`box-sizing = [border-box|content-box|padding-box|inherit]`
-
+- css3引入了控制盒模型的属性：`box-sizing = [border-box|content-box|__padding-box__|inherit]`
+- `padding-box`目前只有Firefox支持
 
 display有哪些属性
 =================
@@ -57,16 +57,22 @@ display: [
 Thus, the table model consists of **tables, captions, rows, row groups (including header groups and footer groups), columns, column groups, and cells**.
 **The CSS model does not require that the document language include elements that correspond to each of these components. For document languages (such as XML applications) that do not have pre-defined table elements, authors must map document language elements to table elements; this is done with the 'display' property**. 
 
+助记2：
 ```
-table    { display: table }
-tr       { display: table-row }
+caption  { display: table-caption }
+table    { display: table|inline-table }
+
 thead    { display: table-header-group }
-tbody    { display: table-row-group }
 tfoot    { display: table-footer-group }
+
+tr       { display: table-row }
+tbody    { display: table-row-group }
+
 col      { display: table-column }
 colgroup { display: table-column-group }
+
 td, th   { display: table-cell }
-caption  { display: table-caption
+
 ```
 
 
@@ -90,7 +96,7 @@ position有哪些可选值
 float有哪些可选值
 =================
 
-`float : [left|right]`
+`float : [left|right|none|inherit]`
 
 有哪些css选择符
 ===============
@@ -108,3 +114,27 @@ Pseudo-elements/classes
 助记:`Put Cai AD` `放菜广告`
 注意：有两个A，Ajacent和Attribute；将AD及一位Ajacent和Descendant，都是表示关系的。
 
+如何将一个DIV垂直方向充满整个窗口
+=================================
+
+首先设置body,html的高度为100%，之后设置该DIV的高度为100%
+```css
+body,html {
+  height:100%;
+  margin:0px;
+}
+```
+
+比较新的方法是使用css3中的[视口百分比](http://www.w3.org/TR/css3-values/#viewport-relative-lengths)宽度/高度：
+
+```css
+body { margin:0; /* This is used to reset any browser-default margins */ }
+
+div {
+    height:100vh; //视口的100%高度
+    background:#f00;
+    color:#fff;
+}
+```
+
+参考:[Make div 100% height of browser window](http://stackoverflow.com/questions/1575141/make-div-100-height-of-browser-window)
