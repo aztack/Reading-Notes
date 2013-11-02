@@ -1,3 +1,23 @@
+http://dmitrysoshnikov.com/ecmascript/chapter-2-variable-object/#phases-of-processing-the-context-code
+
+执行上下文代码分为两个基本的步骤：
+- 1.进入执行上下文环境(execution context)
+- 2.执行代码
+
+第一阶段：进入执行上下文环境
+----
+
+在进入执行上下文环境时（执行代码之前），填充VO的属性：
+
+- 为每个形参在VO上创建一个属性，并用传入的值赋值
+- 为每个函数声明在VO上创建一个属性，并用对应函数赋值
+- 为每个变量声明在VO上创建一个属性，初始值为undefined
+
+第二阶段：执行代码
+----
+
+执行代码可能会修改上面创建的VO属性的值
+
 http://dmitrysoshnikov.com/ecmascript/chapter-4-scope-chain/#function-life-cycle
 
 - 闭包=函数体+[[scope]]
