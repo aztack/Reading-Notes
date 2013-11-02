@@ -103,16 +103,28 @@ float有哪些可选值
 ```
 Universal selector
 Type selectors
-Descendant selectors
-Child selectors
-Ajacent sibling selectors
-Attribute selectors
+Descendant selectors  - `a b` - 后代节点选择符
+Child selectors - `a > b` -直接子节点选择符，助记`a>b>c 目录层级`
+Ajacent sibling selectors - `a + b` -兄弟节点选择符，助记`parent > a + b + c`
+Attribute selectors - `a[attr]`
 ID selectors
 Pseudo-elements/classes
 ```
 
 助记:`Put Cai AD` `放菜广告`
 注意：有两个A，Ajacent和Attribute；将AD及一位Ajacent和Descendant，都是表示关系的。
+
+关于Attribute selector：
+```
+a[attr]      有属性
+a[attr*=val] 包含
+a[attr=val] 等于
+a[attr~=val] 空白符等于
+
+a[attr|=val] 等于或等于val-
+```
+助记：有属性 和 包含 很好记忆。`|=`又很少用到。所以只需记忆`~=`,把波浪号想象成空白符。
+因为空白符等于总不能携程 `a[attr =val]`，因为无法和`a[attr=val]`区分开来。所以用波浪线代表空白符。
 
 如何将一个DIV垂直方向充满整个窗口
 =================================
