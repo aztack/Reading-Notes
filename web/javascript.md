@@ -1,4 +1,5 @@
-http://dmitrysoshnikov.com/ecmascript/chapter-2-variable-object/#phases-of-processing-the-context-code
+[JS函数执行步骤](http://dmitrysoshnikov.com/ecmascript/chapter-2-variable-object/#phases-of-processing-the-context-code)
+====
 
 执行上下文代码分为两个基本的步骤：
 - 1.进入执行上下文环境(execution context)
@@ -18,16 +19,16 @@ http://dmitrysoshnikov.com/ecmascript/chapter-2-variable-object/#phases-of-proce
 
 执行代码可能会修改上面创建的VO属性的值
 
-http://dmitrysoshnikov.com/ecmascript/chapter-4-scope-chain/#function-life-cycle
+[闭包](http://dmitrysoshnikov.com/ecmascript/chapter-4-scope-chain/#function-life-cycle)
+====
 
 - 闭包=函数体+[[scope]]
 - [[scope]] 是在函数的internal的属性。在函数被创建的时候创建。包含所在上下文的‘作用域’（Scope）
 - 某个函数执行时的 Scope = AO + [[scope]]
 
 
-测验题目 http://dmitrysoshnikov.com/ecmascript/the-quiz/
-
-第九题解释：
+[测验题目#9解答](http://dmitrysoshnikov.com/ecmascript/the-quiz/)
+====
 
 ```javascript
 ({
