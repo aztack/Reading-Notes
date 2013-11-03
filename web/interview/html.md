@@ -20,8 +20,11 @@ HTML5的新加的内容
 	4）用Id属性代替name属性。
 	5）所有XHTML文档必须进行文件类型声明。
 
-外链引入CSS有哪些方式，这些方式的性能有区别吗？
-====
 
 CSS引入的方式有哪些? link和@import的区别是
-====
+==========================================
+link是HTML的引入机制
+@import是CSS的引入机制
+前者的性能优于后者
+
+参考：[don’t use @import | High Performance Web Sites](http://www.stevesouders.com/blog/2009/04/09/dont-use-import/)
