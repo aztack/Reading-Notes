@@ -19,7 +19,23 @@ IE和W3C的DOM兼容性
 
 DOM怎样添加、移除、移动、复制、创建和查找节点
 =============================================
+[](http://www.w3.org/TR/REC-DOM-Level-1/idl-definitions.html)
+```javascript
+parentNode.appendChild(node);
+parentNode.insertBefore(newNode,refNode);
+parentNode.replaceChild(newNode,oldNode);
+node.parentNode.removeChild(node);
+node.cloneNode();
+document.createElement("<div>");
+document.createDocumentFragment();
 
+node.getElementById('id');
+node.getElementsByTagName('div');
+node.getElementsByClassName('name');
+node.querySelector('selector');
+node.querySelectorAll('selector');
+
+```
 
 结合<span id="outer"><span id="inner">text</span></span>这段结构，谈谈innerHTML outerHTML innerText之间的区别
 ====
@@ -35,3 +51,9 @@ firefox不支持innerText ，但是可以用textContent作为替代方案。
 inner不包括标签本身，outer包括标签本身；
 HTML返回HTML文本，text取出标签后的文本
 所以outerText，先取出包括标签本身的文本，在去掉所有标签。结果和innerText是一样的。但是设置的时候不一样
+
+异步加载JavaScript脚本的方案
+============================
+
+如何解决Ajax跨域的问题
+======================
