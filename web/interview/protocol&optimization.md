@@ -4,3 +4,9 @@ HTTP协议的状态消息都有哪些?
 简述下cookie的操作，还有cookie的属性都知道哪些
 ==============================================
 
+网站优化
+========
+
+- 减少HTTP请求次数：CSS Spirit，Data URI
+- JavaScript,CSS,HTML压缩
+
