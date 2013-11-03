@@ -135,9 +135,16 @@ absolut positioning \
   fixed positioning /
 ```
 
-- `绝对定位`的盒子被从流中移除，并相对它的`包含块`(containing block)依据top,bottom,left,right来进行偏移。
+- `absolute`的盒子被从流中移除，并相对它的`包含块`(containing block)依据top,bottom,left,right来进行偏移。
 如果没有指定偏移，那么它保持正常流中的位置，不进行偏移。如果指定了偏移，那么相对最近的`positioned`的父节点产生的盒子定位。如果找不到这么一个父节点，那么就相对根节点`html`偏移。
-- `固定定位`的是一种绝对定位，只不`包含块`是`视口`。
+- `fixed`也是一种绝对定位，只不`包含块`是`视口`。
+
+助记：
+```
+`相对定位`相对 元素本身的位置
+`绝对定位`相对 最近的positioned父节点
+`固定定位`相对 视口
+```
 
 
 记住
