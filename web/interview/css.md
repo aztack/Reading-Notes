@@ -113,6 +113,18 @@ Pseudo-elements/classes
 
 助记:`Put Cai AD` `放菜广告`
 注意：有两个A，Ajacent和Attribute；将AD及一位Ajacent和Descendant，都是表示关系的。
+```
+Selector PUT CAI AD `选择符放菜广告`
+
+Pseudo Element and Class 伪元素、伪类
+Universal Selector 通用选择符
+Type Selector 类型选择符
+Child selector 子节点选择符
+Attributes selector 属性选择符 `菜的id和属性`
+Id selector ID选择符
+Ajacent Sibling selector 兄弟节点选择符
+Descedant selector 后代选择符
+```
 
 关于Attribute selector：
 ```
