@@ -1,11 +1,11 @@
 常见里浏览器内核和对应的调试工具
 ================
 
-Gecko - Firefox - Firebug
-Webkit - Chrome/Safari - Chrome Develop Tool
-Trident - IE - IE Dev Tool
-Presto - Opera - Dragonfly
-Blink - Chrome/Opera - Chrome Develop Tool
+- Gecko - Firefox - Firebug
+- Webkit - Chrome/Safari - Chrome Develop Tool
+- Trident - IE - IE Dev Tool
+- Presto - Opera - Dragonfly
+- Blink - Chrome/Opera - Chrome Develop Tool
 
 ![浏览器内核时间表](http://upload.wikimedia.org/wikipedia/en/timeline/289e79fa1f4b53cf0adc8128d646766b.png)
 
@@ -54,6 +54,29 @@ HTML返回HTML文本，text取出标签后的文本
 
 异步加载JavaScript脚本的方案
 ============================
+
+1. defer
+2. async
+3. dynamic create script tag
+
+```javascript
+function loadScript(src,callback) {
+	var script = document.createElement("script"),
+		loaded = false;
+
+	script.type = "text/javascript";
+	script.src = src;
+	script.onload = function(){
+		if(!loaded && (!this.readyState || this.readyState == "complete")){
+			loaded = true;
+			callback();
+		}
+	};
+	document.getElementsByTagName("head")[0].appendChild(script);
+}
+```
+
+[Dynamically inject javascript file - why do most examples append to head?](http://stackoverflow.com/questions/12113412/dynamically-inject-javascript-file-why-do-most-examples-append-to-head/12113657#12113657)
 
 如何解决Ajax跨域的问题
 ======================
