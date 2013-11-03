@@ -11,14 +11,72 @@
 HTML5的新加的内容
 ================
 
+http://html5test.com/
+
+```
+Parsing Rules
+  HTML5 tokenizer
+  HTML5 tree buiding
+
+Canvas
+Video
+Audio
+Forms
+User interaction
+History and navigation
+Microdata
+Web application
+Security
+Location and Orientation
+Communication
+  Cross-document messaging
+  Server-Sent Events
+  WebSocket
+Files
+  File API
+Storage
+  Session Storage
+  Local Storage
+  IndexedDB
+Workers
+  Web Workers
+  Shared Workers
+Notification
+  Web Notification
+```
+
+简单记几个
+
+```
+
+WebSocket
+Video
+
+New Form Elements
+
+Canvas
+Local Storage
+Audio
+Notification
+Geolocation
+
+
+```
+
+助记: `WV N CLANG`
+> 注意：两个N，一个是Notification。另一个不好记忆，是New Form Element。用N助记有些牵强。其实应该用F(orms)助记
+
 说几条XHTML规范的内容
 =====================
  
-	1）标签名必须用小写字母。
-	2）所有标签都必须被关闭，包括空标签。
-	3）属性值必须加引号。
-	4）用Id属性代替name属性。
-	5）所有XHTML文档必须进行文件类型声明。
+* 标签名必须用小写字母。
+* 所有标签都必须被关闭，包括空标签。
+* 属性值必须加引号。
+* 用Id属性代替name属性。
+* 所有XHTML文档必须进行文件类型声明。
+* 
+
+典型错误师范：`<P name=ID>XHTML`
 
 
 CSS引入的方式有哪些? link和@import的区别是
