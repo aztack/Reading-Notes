@@ -2,6 +2,47 @@
 ==========================
 类似题目：严格模式与混杂模式-如何触发这两种模式
 
+HTML 5
+HTML 4.01 - strict/transitional/frameset
+XHTML 1.0 - strict/transitional/frameset
+XHTML 1.1
+```
+类型           | 所有HTML元素和属性  | presentational和deprecated的元素  | frameset
+strict        | √                   | ×                                 | ×
+transitional  | √                   | √                                 | ×
+frameset      | √                   | √                                 | √
+```
+
+```
+<!DOCTYPE HTML>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+```
+
+助记：
+<!DOCTYPE html PUBLIC "?" "?">
+
+```
+    W3C   DTD HTML 4.01   EN
+-//    //              //
+```
+
+```
+http://www.w3.org/TR/______/______.dtd
+html4			strict/loose/frameset
+
+xhtml1/DTD/xhtml1-	strict/transitional/frameset
+xhtml11/DTD/xhtml11
+```
+
 你真的了解HTML吗?
 =================
 
