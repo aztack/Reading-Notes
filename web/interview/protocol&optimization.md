@@ -38,3 +38,13 @@ IS red cold sausage (是红冷肠儿，哈尔滨红肠)
 - 减少HTTP请求次数：CSS Spirit，Data URI
 - JavaScript,CSS,HTML压缩
 
+同源策略
+========
+[Same-origin policy - Wikipedia, the free encyclopedia](http://en.wikipedia.org/wiki/Same-origin_policy)
+[Same-origin policy - JavaScript | MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Same_origin_policy_for_JavaScript)
+[Same Origin Policy - Web Security](http://www.w3.org/Security/wiki/Same_Origin_Policy)
+
+Quick Answer:
+```
+An origin is defined by the scheme, host, and port of a URL. Generally speaking, documents retrieved from distinct origins are isolated from each other. For example, if a document retrieved from http://example.com/doc.html tries to access the DOM of a document retrieved from https://example.com/target.html, the user agent will disallow access because the origin of the first document, (http, example.com, 80), does not match the origin of the second document (https, example.com, 443).
+```
