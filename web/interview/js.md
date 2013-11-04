@@ -16,6 +16,7 @@ There are five primitive data types in JavaScript:
 typeof
 ======
 
+```
 typeof(NaN) == 'number'
 typeof(Infinity) == 'number'
 
@@ -29,12 +30,38 @@ NaN > NaN //false
 null == undefined //true
 null >= undefined //false
 null <= undefined //false
+```
 
 编写一个函数实现功能
 ===================
 
 parseQueryString
 ----------------
+
+```javascript
+function getQueryString(url){
+  var a = document.createElement('a'), query, result = {},i,j,pairs,kv,len,k;
+  a.href = url;
+  query = a.search;
+  if (query && query.indexOf('#') ==0 ) {
+    pairs = query.substr(1).split('&');
+    for(i=0;i<pairs.length;++i) {
+      kv = pairs[i].split("=");
+      k = kv[0];
+      if(k.indexOf('[]')) {
+        k = k.replace('[]','');
+        if(typeof result[k] == 'undefined') {
+          result[k] = [kv[1]];
+        } else {
+          result[k].push(kv[1]);
+        }
+      } else {
+        result[kv[0]] = kv[1];
+      }
+    }
+  } else return result;
+}
+```
 
 验证email
 ---------
