@@ -127,3 +127,22 @@ link是HTML的引入机制
 前者的性能优于后者
 
 参考：[don’t use @import | High Performance Web Sites](http://www.stevesouders.com/blog/2009/04/09/dont-use-import/)
+
+写出一个上传文件的form表单和input
+=================================
+```html
+<form action="upload.php" method="post" enctype="multipart/form-data">
+  <input type="file"/>
+</form>
+```
+
+如果form中有`input[type=file]`，那么enctype必须为`multipart/form-data`
+默认为`application/x-www-form-urlencoded`
+
+enctype = application/x-www-form-urlencoded
+    |multipart/form-data"
+    |application/json
+    |application/json-patch+json
+
+参考：[What does enctype='multipart/form-data' mean?](http://stackoverflow.com/questions/4526273/what-does-enctype-multipart-form-data-mean)
+
