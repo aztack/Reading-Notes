@@ -1,3 +1,12 @@
+jQuery如何检测DOM ready?
+========================
+
+1.`DOMContentLoaded`事件的浏览器注册一个处理函数`DOMContentLoaded`；E注册`onreadystatechange`事件的处理函数
+2.两面两种情况都会用onload事件做一个fallback处理
+3.在IE中还需要定时检测`document.documentElement.doScroll('left')`是否调用成功。一旦成功，就说明dom ready了。
+[参考](http://www.cnblogs.com/yupeng/archive/2012/03/16/2397263.html)
+
+
 常见里浏览器内核和对应的调试工具
 ================
 
