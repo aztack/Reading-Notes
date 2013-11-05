@@ -67,6 +67,7 @@ function loadScript(src,callback) {
 	script.type = "text/javascript";
 	script.src = src;
 	script.onload = function(){
+		//重点记忆这里
 		if(!loaded && (!this.readyState || this.readyState == "complete")){
 			loaded = true;
 			callback();
