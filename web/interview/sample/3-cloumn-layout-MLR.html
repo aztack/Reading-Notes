@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--
+ 左中右三栏，左右两栏顶宽度。中间栏自适应宽度。
+ 但是在HTML中中间栏出现在第一个。
+ （以往中间栏出现在最后一个。将左右两栏分别float左右后即可）
+-->
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>RunJS</title>
+		<style>
+			html,body{margin:0;}
+			div{height:200px;}
+			#M{
+				position:relative;
+				border:1px solid red;
+				left:100;
+				margin-right:100px;
+				padding-left:100px;
+			}
+			#L{
+				width:100px;
+				border:1px solid blue;
+				position:absolute;
+				left:0;
+				top:0;
+			}
+			#R{
+				width:100px;
+				border:1px solid green;
+				position:absolute;
+				right:0;
+				top:0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="M">main</div>
+			<div id="L">left</div>
+			<div id="R">right</div>			
+		</div>
+	</body>
+</html>
