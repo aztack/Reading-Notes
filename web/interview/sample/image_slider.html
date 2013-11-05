@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>RunJS</title>
+	<script type="text/javascript" class="library" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	</head>
+	<body>
+		
+		<!-- slide -->
+		<div class="slide">
+			<div class="container">
+				<img src="http://ww4.sinaimg.cn/square/936f130djw1eaad1stil0j20hs0npmxp.jpg"/>
+				<img src="http://ww3.sinaimg.cn/square/936f130djw1eaad2hzxh3j20hs0npaaw.jpg"/>
+				<img src="http://ww4.sinaimg.cn/square/bcc7a9c9jw1ea7petfj33j20c607q0tz.jpg" />
+			</div>
+		</div>
+		
+		<style>
+		.slide{
+    	width:80px;
+    	height:80px;
+    	overflow:hidden;
+    }
+    .slide .container{
+    	width:160px;
+    	position:relative;
+    }
+    .slide img{
+    	float:left;
+    }
+		</style>
+		
+		<script>
+			/**
+			 * 1.注意html结构。slide的overflow为hidden，宽度为每个图片的宽度
+			 * 2.slide里面用container包容所有的图片，用animte改变container的left。container的
+			 * position设置为relative
+			 * 3.所有图片float:left,否则图片之间会因为回车生成的TextNode而产生一个间隔
+			 */
+			
+			$(function(){
+				//移动间隔时间5秒，那么setIntertval的第二个参数应该是5+animate的时间，即6秒
+				setInterval(function(){
+					var slide = $('.slide'), container = slide.find('.container');
+					container.animate({left:'-80px'},1000,function(){
+						container.find('img').first().appendTo(container);
+						container.css({left:'0px'});
+					});
+				},6000);
+      });
+		</script>
+	</body>
+</html>
