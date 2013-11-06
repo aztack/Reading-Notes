@@ -1,6 +1,6 @@
 <!DOCTYPE>标签的定义与用法
 ==========================
-类似题目：严格模式与混杂模式-如何触发这两种模式
+类似题目：严格模式与混杂模式-如何触发这两种模式，如何判断是在混杂模式
 
 HTML 5
 HTML 4.01 - strict/transitional/frameset
@@ -29,6 +29,18 @@ frameset      | √                   | √                                 | �
 
 助记：
 <!DOCTYPE html PUBLIC "?" "?">
+
+触发IE6的quirks模式：在doctype前加xml生命
+触发IE7的quirks模式：在xml声明和doctype之间再加上一行html注释
+
+判断是在混杂模式
+```javascript
+if(document.compatMode == 'CSS1Compat'){
+    alert("Standards mode");
+}else{
+    alert("Quirks mode");
+}
+```
 
 ```
     W3C   DTD HTML 4.01   EN
