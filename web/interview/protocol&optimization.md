@@ -45,6 +45,18 @@ IS red cold sausage (是红冷肠儿，哈尔滨红肠)
 [Same Origin Policy - Web Security](http://www.w3.org/Security/wiki/Same_Origin_Policy)
 
 Quick Answer:
-```
-An origin is defined by the scheme, host, and port of a URL. Generally speaking, documents retrieved from distinct origins are isolated from each other. For example, if a document retrieved from http://example.com/doc.html tries to access the DOM of a document retrieved from https://example.com/target.html, the user agent will disallow access because the origin of the first document, (http, example.com, 80), does not match the origin of the second document (https, example.com, 443).
-```
+> An origin is defined by the scheme, host, and port of a URL. Generally speaking, documents retrieved from distinct origins are isolated from each other. For example, if a document retrieved from http://example.com/doc.html tries to access the DOM of a document retrieved from https://example.com/target.html, the user agent will disallow access because the origin of the first document, (http, example.com, 80), does not match the origin of the second document (https, example.com, 443).
+
+一个origin通过scheme，host，port定义。从不同origins得到的documents之间是相互隔绝。比如，UA会禁止一个`http://example.com/doc.html`的document访问`https://example.com/target.html`的DOM。因为二者不同源。不同源是因为二者的shceme不同，一个是http另一个是https。
+
+HTTP GET的最大长度
+==================
+
+不同浏览器的URL最大长度
+=======================
+
+HTTP1.1协议没有明确限制URL的长度。但是不同的浏览器和HTTP服务器有自己的限制。
+比如IE的URL不能超过2083个字符。
+最佳实践是不要让URL超过2000个字符。
+
+[What is the maximum length of a URL in different browsers?](http://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers/417180#417180)
