@@ -199,3 +199,16 @@ CSS selector 确定度算法
 
 
 CSS3有哪些新内容
+================
+
+如何给inline元素设置宽高？
+=========================
+span这类内联元素时无法设置宽高的。需要将其display设置为inline-block的。
+但是IE6/7不支持inline-block。你需要设置`zoom:1`来trigger其hashLayout
+```css
+.inline-block {
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+```
