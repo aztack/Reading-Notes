@@ -52,6 +52,12 @@ Quick Answer:
 HTTP GET的最大长度
 ==================
 
+多数服务器的限制是8字节，这个值是可以配置的。
+MSIE和Safari的限制是2K左右，Opera是4K，Firefox是8K。
+所以255字节以内是比较安全的
+
+[web services - maximum length of HTTP GET request? - Stack Overflow](http://stackoverflow.com/questions/2659952/maximum-length-of-http-get-request)
+
 不同浏览器的URL最大长度
 =======================
 
@@ -60,3 +66,4 @@ HTTP1.1协议没有明确限制URL的长度。但是不同的浏览器和HTTP服
 最佳实践是不要让URL超过2000个字符。
 
 [What is the maximum length of a URL in different browsers?](http://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers/417180#417180)
+
