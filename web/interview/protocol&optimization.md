@@ -81,3 +81,58 @@ HTTP头中的HOST作用是什么？
 
 描述一下cookie机制
 ==================
+
+高性能网站
+==========
+
+协议相关的优化方法
+------------------
+
+- Reduce DNS Lookups
+- Make few HTTP Request
+  - Image Map
+  - CSS Sprites
+  - Inline Images
+  - Combined Scripts and Stylesheets
+- Gzip
+- CDN
+
+- Add Expires Header
+- Configure ETags
+- Avoid Redirection
+
+
+**助记：三减少，增避配**
+
+- 3减少：减少HTTP请求、减少DNS查询、压缩以减少资源尺寸 
+- 增避配：增加过期头、避免重定向，配置ETags
+
+助记图
+```
+Browser->DNS->HTTP->CDN---\
+                            Server 增避配
+Browser<-----Gzip---------/
+```
+
+
+HTML、JavaScript、CSS先关的优化方法
+-----------------------------------
+- External JS/CSS
+- Remove Duplicated JS/CSS
+- Stylesheets at Top
+- Scripts at Bottom
+
+- Minify JavaScript
+- Make Ajax Cachable
+
+- Avoid CSS expressions
+
+助记：
+
+- JS/CSS:**外部化，别重复，样式头，脚本尾**
+- JS: **Minify，缓存Ajax**
+- CSS:**避免css表达式**
+
+
+高性能JavaScript
+================
