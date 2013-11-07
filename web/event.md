@@ -6,6 +6,8 @@
 
 =================================
 
+![Mouse Event Coordinates](mouse-event-coordinate.png)
+
 *Mouse Event Properties*
 ------------------------
 
