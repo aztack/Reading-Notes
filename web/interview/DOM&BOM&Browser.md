@@ -90,3 +90,46 @@ function loadScript(src,callback) {
 
 如何解决Ajax跨域的问题
 ======================
+
+鼠标事件对象的坐标属性
+=====================
+[参考](https://github.com/aztack/Reading-Notes/blob/master/web/event.md)
+[Interface MouseEvent (introduced in DOM Level 2)](http://www.w3.org/TR/DOM-Level-2-Events/events.html#Events-MouseEvent)
+```
+// Introduced in DOM Level 2:
+interface MouseEvent : UIEvent {
+  readonly attribute long             screenX;
+  readonly attribute long             screenY;
+  readonly attribute long             clientX;
+  readonly attribute long             clientY;
+  readonly attribute boolean          ctrlKey;
+  readonly attribute boolean          shiftKey;
+  readonly attribute boolean          altKey;
+  readonly attribute boolean          metaKey;
+  readonly attribute unsigned short   button;
+  readonly attribute EventTarget      relatedTarget;
+  void               initMouseEvent(in DOMString typeArg, 
+                                    in boolean canBubbleArg, 
+                                    in boolean cancelableArg, 
+                                    in views::AbstractView viewArg, 
+                                    in long detailArg, 
+                                    in long screenXArg, 
+                                    in long screenYArg, 
+                                    in long clientXArg, 
+                                    in long clientYArg, 
+                                    in boolean ctrlKeyArg, 
+                                    in boolean altKeyArg, 
+                                    in boolean shiftKeyArg, 
+                                    in boolean metaKeyArg, 
+                                    in unsigned short buttonArg, 
+                                    in EventTarget relatedTargetArg);
+};
+```
+
+W3C的鼠标事件对象中与坐标相关的属性有：
+
+- `clientX/Y`：相对viewport的坐标
+- `screenX/Y`：相对屏幕的坐标
+
+所以，要获得鼠标相对于被点击元素的坐标。需要用`event.clientX/Y - element.offset.left`
+这个offset怎么求呢？`offset = event.target.getBoundingClientRect()`
