@@ -9,12 +9,12 @@
 *Mouse Event Properties*
 ------------------------
 
-*clientX, clientY*
+*clientX, clientY* [W3C]
 ------------------
 Standard: W3C Recommendation
 Mouse position relative to the browser's **`visible viewport`**.
 
-*screenX, screenY*
+*screenX, screenY* [W3C]
 ------------------------
 Standard: W3C Recommendation
 Mouse position relative to the user's physical **`screen`**.
@@ -39,7 +39,8 @@ Equivalent to clientX, clientY, but is unsupported by some browsers. Use clientX
 No Standard
 Mouse position relative to the closest positioned ancestor element. If none of the ancestor elements have positioning, the mouse position is relative to the document (like pageX, pageY). LayerX, layerY have an [uncertain future](https://bugs.webkit.org/show_bug.cgi?id=21868#c21).
 
-QuirksMode has a great [compatibility table](http://www.quirksmode.org/dom/w3c_cssom.html#mousepos) that details inconsistencies in the non-standard properties. Know that only clientX, clientY, screenX, and screenY are part of the W3C Spec.
+QuirksMode has a great [compatibility table](http://www.quirksmode.org/dom/w3c_cssom.html#mousepos) that details inconsistencies in the non-standard properties. 
+**Know that only clientX, clientY, screenX, and screenY are part of the W3C Spec**.
 
 Normalization
 =============
