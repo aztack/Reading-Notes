@@ -62,8 +62,77 @@ MSIE和Safari的限制是2K左右，Opera是4K，Firefox是8K。
 =======================
 
 HTTP1.1协议没有明确限制URL的长度。但是不同的浏览器和HTTP服务器有自己的限制。
-比如IE的URL不能超过2083个字符。
+比如IE的URL不能超过*2083个*字符。
 最佳实践是不要让URL超过2000个字符。
 
 [What is the maximum length of a URL in different browsers?](http://stackoverflow.com/questions/417142/what-is-the-maximum-length-of-a-url-in-different-browsers/417180#417180)
 
+
+列举HTTP请求的头有哪些内容
+==========================
+
+HTTP头中的HOST作用是什么？
+=========================
+按说在浏览器得到远端server IP之后就可以直接用IP来发送数据了，为什么还需要HOST字段呢？
+因为一个IP上可能有多个虚拟主机对应于不同的域名。根据域名来判断是要访问哪个虚拟主机。
+
+描述一下HTTP服务器session机制
+=============================
+
+描述一下cookie机制
+==================
+
+高性能网站
+==========
+
+协议相关的优化方法
+------------------
+
+- Reduce DNS Lookups
+- Make few HTTP Request
+  - Image Map
+  - CSS Sprites
+  - Inline Images
+  - Combined Scripts and Stylesheets
+- Gzip
+- CDN
+
+- Add Expires Header
+- Configure ETags
+- Avoid Redirection
+
+
+**助记：三减少，增避配**
+
+- 3减少：减少HTTP请求、减少DNS查询、压缩以减少资源尺寸 
+- 增避配：增加过期头、避免重定向，配置ETags
+
+助记图
+```
+Browser->DNS->HTTP->CDN---\
+                            Server 增避配
+Browser<-----Gzip---------/
+```
+
+
+HTML、JavaScript、CSS先关的优化方法
+-----------------------------------
+- External JS/CSS
+- Remove Duplicated JS/CSS
+- Stylesheets at Top
+- Scripts at Bottom
+
+- Minify JavaScript
+- Make Ajax Cachable
+
+- Avoid CSS expressions
+
+助记：
+
+- JS/CSS:**外部化，别重复，样式头，脚本尾**
+- JS: **Minify，缓存Ajax**
+- CSS:**避免css表达式**
+
+
+高性能JavaScript
+================

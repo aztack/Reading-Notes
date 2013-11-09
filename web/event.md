@@ -6,6 +6,8 @@
 
 =================================
 
+![Mouse Event Coordinates](mouse-event-coordinate.png)
+
 *Mouse Event Properties*
 ------------------------
 
@@ -14,27 +16,27 @@
 Standard: W3C Recommendation
 Mouse position relative to the browser's **`visible viewport`**.
 
+> *x, y*
+------------------------
+Standard: W3C Working Draft
+Equivalent to clientX, clientY, but is unsupported by some browsers. Use clientX, clientY instead.
+
 *screenX, screenY* [W3C]
 ------------------------
 Standard: W3C Recommendation
 Mouse position relative to the user's physical **`screen`**.
 
-*offsetX, offsetY*
+*offsetX, offsetY* [Calculation needed]
 ------------------------
 Standard: W3C Working Draft
 Mouse position relative to the `target element`. This is implemented very __inconsistently__ between browsers.
 
-*pageX, pageY*
+*pageX, pageY* [Calculation needed]
 ------------------------
 Standard: W3C Working Draft
 Mouse position relative to the html `document` (ie. [layout viewport](http://www.quirksmode.org/mobile/viewports2.html)).
 
-*x, y*
-------------------------
-Standard: W3C Working Draft
-Equivalent to clientX, clientY, but is unsupported by some browsers. Use clientX, clientY instead.
-
-*layerX, layerY*
+*layerX, layerY* [Calculation needed]
 ------------------------
 No Standard
 Mouse position relative to the closest positioned ancestor element. If none of the ancestor elements have positioning, the mouse position is relative to the document (like pageX, pageY). LayerX, layerY have an [uncertain future](https://bugs.webkit.org/show_bug.cgi?id=21868#c21).
@@ -44,37 +46,6 @@ QuirksMode has a great [compatibility table](http://www.quirksmode.org/dom/w3c_c
 
 Normalization
 =============
-
-
-Calculating pageX, pageY
-------------------------
-
-The only major browser that does not support these properties is IE8. If you are doing event handling with jQuery, it will automatically normalize pageX and pageY for you. If you are not using jQuery's normalized events but still have access to the jQuery, you can use jQuery.event.fix to normalize the event object. Example:
-
-```javascript
-document.body.onclick = function(e) {
-    e = e || window.event;
-    e = jQuery.event.fix(e);
-    console.log([e.pageX, e.pageY]);
-};
-```
-
-Without jQuery, the clientX and clientY properties can be added to the viewports scrollLeft and scrollTop to calculate the pageX and pageY values. see also [QuirksMode: Event properties](http://www.quirksmode.org/js/events_properties.html)
-
-```javascript
-document.body.onclick = function(e) {
-    e = e || window.event;
-
-    var pageX = e.pageX;
-    var pageY = e.pageY;
-    if (pageX === undefined) {
-        pageX = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
-        pageY = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
-    }
-
-    console.log([pageX, pageY]);
-};
-```
 
 Calculating offsetX, offsetY
 ----------------------------
@@ -111,6 +82,37 @@ document.body.onclick = function(e) {
         offsetY = e.clientY - borderTopWidth - rect.top;
 
     console.log([offsetX, offsetY]);
+};
+```
+
+
+Calculating pageX, pageY
+------------------------
+
+The only major browser that does not support these properties is IE8. If you are doing event handling with jQuery, it will automatically normalize pageX and pageY for you. If you are not using jQuery's normalized events but still have access to the jQuery, you can use jQuery.event.fix to normalize the event object. Example:
+
+```javascript
+document.body.onclick = function(e) {
+    e = e || window.event;
+    e = jQuery.event.fix(e);
+    console.log([e.pageX, e.pageY]);
+};
+```
+
+Without jQuery, the clientX and clientY properties can be added to the viewports scrollLeft and scrollTop to calculate the pageX and pageY values. see also [QuirksMode: Event properties](http://www.quirksmode.org/js/events_properties.html)
+
+```javascript
+document.body.onclick = function(e) {
+    e = e || window.event;
+
+    var pageX = e.pageX;
+    var pageY = e.pageY;
+    if (pageX === undefined) {
+        pageX = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
+        pageY = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
+    }
+
+    console.log([pageX, pageY]);
 };
 ```
 
