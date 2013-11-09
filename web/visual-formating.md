@@ -1,3 +1,7 @@
+[盒模型](http://www.crossbrowser.net/82/internet-explorer-box-model-is-not-a-bug/)
+
+![Box Model](w3c_and_internet_explorer_box_models.png)
+
 参考资料：
 - [Visual formatting model(W3C)](http://www.w3.org/TR/CSS21/visuren.html)
 - [Visual formatting model(MDN)](https://developer.mozilla.org/en-US/docs/Web/CSS/Visual_formatting_model)
