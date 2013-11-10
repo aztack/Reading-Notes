@@ -212,3 +212,44 @@ span这类内联元素时无法设置宽高的。需要将其display设置为inl
     *display: inline;
 }
 ```
+
+CSS IE hacks
+=============
+_width=1px	// 6
+*width=1px	// 67
++width=1px	// 7
+width:1px\0	// 8
+width:1px\9	/// 6789...
+
+书写顺序：
+其他浏览器
+IE7
+IE6
+
+css样式层叠顺序,优先级由低到高
+===============
+user agent
+external style sheet
+internal style sheet
+inline style sheet
+
+列举一些css兼容性问题
+=====================
+div的垂直居中问题
+margin加倍的问题
+浮动ie产生的双倍距离
+IE与宽度和高度的问题
+DIV浮动IE文本产生3象素的bug
+IE6下为什么图片下有空隙产生
+
+css3新增了那些内容
+==================
+text-shadown:
+box-shadown:
+linear-gradient:
+radial-gradient:
+RGBA(alpha)
+border-radius:
+transform(变形)
+transition(一定时间平滑过渡)
+animation(动画)
