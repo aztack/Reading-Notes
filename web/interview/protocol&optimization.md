@@ -4,11 +4,11 @@ HTTP协议的状态消息都有哪些?
 `"ruby\lib\ruby\2.0\webrick\httpstatus.rb"`
 
 ```ruby
-      when 100...200; parent = Info
-      when 200...300; parent = Success
-      when 300...400; parent = Redirect
-      when 400...500; parent = ClientError
-      when 500...600; parent = ServerError
+      when [100,200) parent = Info
+      when [200,300) parent = Success
+      when [300,400) parent = Redirect
+      when [400,500) parent = ClientError
+      when [500,600) parent = ServerError
 ```
 
 助记：
@@ -16,18 +16,22 @@ HTTP协议的状态消息都有哪些?
 12345
 ISRCS
 
-IS red cold sausage (是红冷肠儿，哈尔滨红肠)
+I Suck Red Cold Sausage
 
-200-> 1-2->I(nfo)
-304-> 3-4->R(edirect)
 ```
 
 常用的
 - 200 OK
+- 301 永久重定向
+- 302 临时重定向
 - 304 未修改
 - 404 请求的资源不存在   
-- 503 服务器暂时不可用   
 - 500 服务器内部错误  
+- 502 Bad Gateway
+- 503 服务器暂时不可用
+
+[HTTP状态码](http://zh.wikipedia.org/wiki/HTTP%E7%8A%B6%E6%80%81%E7%A0%81)
+
 
 简述下cookie的操作，还有cookie的属性都知道哪些
 ==============================================
