@@ -133,3 +133,12 @@ W3C的鼠标事件对象中与坐标相关的属性有：
 
 所以，要获得鼠标相对于被点击元素的坐标。需要用`event.clientX/Y - element.offset.left`
 这个offset怎么求呢？`offset = event.target.getBoundingClientRect()`
+
+常见节点类型
+============
+>
+- 元素element	1
+- 属性attr	2
+- 文本text	3
+- 注释comments	8
+- 文档document	9
