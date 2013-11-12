@@ -1,3 +1,6 @@
+[jQuery 2.0.3](http://code.jquery.com/jquery-2.0.3.js)
+[jQuery download](http://jquery.com/download/)
+
 写一个`jQuery.each`
 ===================
 
