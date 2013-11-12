@@ -131,3 +131,20 @@ function getQueryString(url){
     return str.length + (a ? a.length : 0);
   }
 ```
+
+Array.prototype.slice和splice的区别；实现一个删除数组某个元素的函数
+====
+
+```javascript
+//immutable:以数组形式返回[start,end)之间的元素的拷贝
+Array.prototype.slice = function(start,end){};
+
+//mutable:从index处开始，删除count个元素，并把之后的参数加到index处
+Array.prototype.splice = function(index,count,...){};
+```
+
+```javascript
+function deleteAt(ary,i){
+  ary.splice(i,0);
+}
+```
