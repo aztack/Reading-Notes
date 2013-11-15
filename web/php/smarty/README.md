@@ -1,4 +1,5 @@
 [Smarty中文文档](http://www.smarty.net/docs/zh_CN/what.is.smarty.tpl)
+
 **业务逻辑**和**显示逻辑**分离，是Smarty的一个设计理念
 
 显示用的逻辑代码，例如：
@@ -63,6 +64,27 @@ array (size=1)
 ```
 
 2. foreach
+
+```html
+<!DOCTYPE html>
+<html>
+<body>
+	<ul style="border:1px solid red">
+	{foreach item=x from=$collection}
+		<li>{$x}</li>
+	{/foreach}
+	</ul>
+</body>
+</html>
+```
+
+或者
+```
+{foreach $collection as $k=>$x}
+	<li>{$x}</li>
+{/foreach}
+```
+
 
 条件判断
 --------
