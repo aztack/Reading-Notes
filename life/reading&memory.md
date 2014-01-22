@@ -30,3 +30,18 @@ Observe-Think-Practice-Think--\
 学习、看书根据不同的目的和情况需要有不同的模式：
 * 研究模式：慢，细致研究，多方考证，追求本质、原理
 * 解决棘手问题模式：快速理解，hack，解决问题
+
+[Speed Reading](http://www.scotthyoung.com/blog/2007/03/10/double-your-reading-rate/)
+====
+- reading is always non-linear, you don't have to read from start to the end of the book.
+- stop reading in your mind -- subvocalization, means read every word in your mind. when you read very fast you can also hear your are reading some words inside your head, this is not subvocalization, it's your brain assembling the information.
+- practice read(just read, no comprehension) with a timer, count the words you read per minute.
+- use a pointer(index finger) to speed-up reading and stay focus.
+- eliminate distractions from external and internal(thinking other things while reading)
+- find the motivation of reading, avoid feeling boring
+
+reading is like driving, you can accelerate or slow down.
+rapid reading is not always neccessary, like you don't have to drive 100mph to a nearby shop
+
+@see http://www.scotthyoung.com/blog/2007/03/22/speed-reading-follow-up/
+
