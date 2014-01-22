@@ -34,14 +34,23 @@ Observe-Think-Practice-Think--\
 [Speed Reading](http://www.scotthyoung.com/blog/2007/03/10/double-your-reading-rate/)
 ====
 - reading is always non-linear, you don't have to read from start to the end of the book.
-- stop reading in your mind -- subvocalization, means read every word in your mind. when you read very fast you can also hear your are reading some words inside your head, this is not subvocalization, it's your brain assembling the information.
+- stop reading in your mind -- sub-vocalization, means read every word in your mind. when you read very fast you can also hear your are reading some words inside your head, this is not subvocalization, it's your brain assembling the information.
 - practice read(just read, no comprehension) with a timer, count the words you read per minute.
-- use a pointer(index finger) to speed-up reading and stay focus.
+- use a pointer(index finger) to speed-up reading and stay focused.
 - eliminate distractions from external and internal(thinking other things while reading)
 - find the motivation of reading, avoid feeling boring
 
 reading is like driving, you can accelerate or slow down.
-rapid reading is not always neccessary, like you don't have to drive 100mph to a nearby shop
+rapid reading is not always necessary, like you don't have to drive 100 mph to a nearby shop
 
 @see http://www.scotthyoung.com/blog/2007/03/22/speed-reading-follow-up/
+
+[How to read 70+ books in a Year](http://www.scotthyoung.com/blog/2007/08/06/how-to-read-70-books-in-a-year/)
+====
+
+- learn **Speed Reading** first, use pointer, stay focused
+- **one book at a time** keep you focused. switching between books make you forget details you've read.
+- **fill gap time with** reading, reduce time on web-surfing and TV. make reading the habit when you don't have something plan
+- **keep a To-Read list**
+
 
