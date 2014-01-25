@@ -54,14 +54,42 @@
 在RubyMine中：
 Run/Debug Configurations -> Configration -> IP address change to LAN IP, e.g: 192.168.1.100
 
+5.accepts_nested_attributes_for in Post model?
+----------------------------------------------
 
+6.如何增加一个静态页面
+------------------
 
+增加route:
+get "/about" => "home#about"
+将/about映射到HomeController#about方法
+在about方法中不用写任何代码
+然后再/views/home/创建一个模板about.html.erb
+这样，在访问/about的时候，会调用about方法，并渲染about.html.erb模板
+还有一种选择：
+在about方法中读取数据库，获得相关数据。然后再模板中展现
+相关插件
+- [FriendlyId](https://github.com/FriendlyId/friendly_id)
+- [Hight Voltage](https://github.com/thoughtbot/high_voltage)
+7.如何在View中生成连接
+--------------------
 猜测或结论
 =========
-1.ActionView Helpers中的函数在View中都可以用
+- ActionView Helpers中的函数在View中都可以用
+- Controller中的create,destroy方法都要自己写（废话..)，但有些是生成的，哪些来着?
+- /views/CONTROLLER/METHOD.html.erb 会在 CONTROLLER#METHOD中自动调用
 
+代码片段
+=======
+```
+    def show
+        @page = Page.find(params[:id])
+        render 'shared/404', :status => 404 if @page.nil?
+    end
+```
 参考
 ====
 - [Ruby on Rails Guides (v3.2.13)](http://guides.rubyonrails.org/)
+- [Rails API](http://apidock.com/rails)
 - [ActionView Helpers](file:///D:/prog/rb/railsinstaller/Ruby1.9.3/lib/ruby/gems/1.9.1/gems/actionpack-3.2.11/lib/action_view/helpers)
 
