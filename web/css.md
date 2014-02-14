@@ -1,3 +1,19 @@
+
+- .all IE{property:value\9;}
+- .gte IE 8{property:value\0;}
+- .lte IE 7{*property:value;}
+- .IE 8/9{property:value\0;}
+- .IE 9{property:value\9\0;}
+- .IE 7{+property:value;}
+- .IE 6{_property:value;}
+- .not IE{property//:value;}
+- lte：就是Less than or equal to的简写，也就是小于或等于的意思。
+
+>- lt ：就是Less than的简写，也就是小于的意思。
+>- gte：就是Greater than or equal to的简写，也就是大于或等于的意思。
+>- gt ：就是Greater than的简写，也就是大于的意思。
+>- !  ：就是不等于的意思，跟javascript里的不等于判断符相同
+
 - [Internet Explorer User Agent Style Sheets](http://www.iecss.com/)
 - [A modern, HTML5-ready alternative to CSS resets](http://necolas.github.io/normalize.css/)
 
