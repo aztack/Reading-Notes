@@ -1,3 +1,5 @@
+IE CSS Hack 
+===========
 
 - .all IE{property:value\9;}
 - .gte IE 8{property:value\0;}
@@ -13,6 +15,39 @@
 >- gte：就是Greater than or equal to的简写，也就是大于或等于的意思。
 >- gt ：就是Greater than的简写，也就是大于的意思。
 >- !  ：就是不等于的意思，跟javascript里的不等于判断符相同
+
+CSS Hack Targeting IE8 and Below
+----
+```css
+div {
+  border: 2px solid #aaa; /* for all browsers */
+  border: 2px solid #f009; /* IE8 and below - red border */
+}
+```
+
+CSS Hack Targeting IE7 and Below
+----
+```css
+div {
+  border: 2px solid #aaa; /* for all browsers */
+  border: 2px solid #f009; /* IE8 and below - red border */
+  *border: 2px solid #0f0; /* IE7 and below - green border */
+}
+```
+
+CSS Hack Targeting IE6 and Below
+----
+```css
+div {
+  border: 2px solid #aaa; /* for all browsers */
+  border: 2px solid #f009; /* IE8 and below - red border */
+  *border: 2px solid #0f0; /* IE7 and below - green border */
+  _border: 2px solid #00f; /* IE6 and below - blue border */
+}
+```
+
+Other
+=====
 
 - [Internet Explorer User Agent Style Sheets](http://www.iecss.com/)
 - [A modern, HTML5-ready alternative to CSS resets](http://necolas.github.io/normalize.css/)
