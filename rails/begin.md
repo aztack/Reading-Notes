@@ -1,3 +1,20 @@
+搭建ubuntu虚拟机开发环境
+========================
+- 下载Vagrant：`https://dl.bintray.com/mitchellh/vagrant/Vagrant_1.4.3.msi`
+- 下载Rails开发虚拟机：`https://github.com/rails/rails-dev-box`
+- 开启虚拟机：进入虚拟机git目录，`vagrant up`启动虚拟机， `vagrant ssh`ssh连接到虚拟机
+
+-----------------------------------------------------------------------------------------
+
+- 修改ubuntu软件源：`vim /etc/apt/sources.list` 将“us”改为“cn”(sohu的源)
+- 修改gem的源：参考`http://ruby.taobao.org/`（淘宝的源）
+- 下载rvm： `curl -L get.rvm.io | bash -s stable`
+- 安装ruby的依赖：`rvm requirements`
+- 安装ruby：`rvm install 2.1` `rvm --default use 2.1`
+- 安装rails：`gem install rails`
+- 安装mysql开发包: `sudo apt-get install libmysqlclient-dev`
+- 安装mysql2：`gem install mysql2`
+
 常用命令
 ========
 * rails new APPLICATION_NAME 创建应用
