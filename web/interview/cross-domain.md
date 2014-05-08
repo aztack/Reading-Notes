@@ -121,3 +121,22 @@ Target中再次创建iframe指向A域下的Proxy.html。Proxy和From同域，可
 
 原文来自[imququ](http://www.imququ.com/post/cross-origin-resource-sharing.html)
 
+```ruby
+require 'sinatra'
+set :port, 80
+set :allow_origin, :any
+before do
+	content_type :json
+	headers 'Access-Control-Allow-Origin' => 'http://wwh.lianmeng.360.cn',
+		'Access-Control-Allow-Methods' => ['OPTIONS','GET', 'POST']
+
+	if request.request_method == "POST"
+		params.merge!(JSON.parse(request.body.read))
+	end
+	pp params
+end
+
+options '/*' do
+	response["Access-Control-Allow-Headers"] = "origin, x-requested-with, content-type"
+end
+```
