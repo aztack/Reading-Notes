@@ -4,7 +4,7 @@
 - [getBoundingClientRect is Awesome](http://ejohn.org/blog/getboundingclientrect-is-awesome/)
 
 
-There are 4 kinds of left/top/width/height:
+There are 4 kinds of measurement (left/top/width/height):
 
 - x.offset* : `top,left` -> offsetParent, `width/height` -> border edge (including border)
 - x.client* : `top,left` -> border width, `width/height` -> content field
