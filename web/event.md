@@ -76,12 +76,14 @@ document.body.onclick = function(e) {
 
     var target = e.target || e.srcElement,
         rect = target.getBoundingClientRect(),
-        offsetX = e.clientX - rect.left,
+        //鼠标事件距离视口水平距离 - target左边框距离视口书评距离
+        offsetX = e.clientX - rect.left, 
         offsetY = e.clientY - rect.top;
 
     console.log([offsetX, offsetY]);
 };
 ```
+
 
 If you wanted to normalize to the W3C draft spec, then the border width needs to be subtracted from the previously calculated offsetX and offsetY:
 
@@ -94,6 +96,7 @@ document.body.onclick = function(e) {
         borderLeftWidth = parseInt(style['borderLeftWidth'], 10),
         borderTopWidth = parseInt(style['borderTopWidth'], 10),
         rect = target.getBoundingClientRect(),
+        //W3C：鼠标事件距离视口水平距离 - target左边框距离视口书评距离 - 左边框宽
         offsetX = e.clientX - borderLeftWidth - rect.left,
         offsetY = e.clientY - borderTopWidth - rect.top;
 
