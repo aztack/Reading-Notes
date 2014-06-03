@@ -31,6 +31,17 @@ partial interface Element {
 };
 ```
 
+HTMLElement Interface:
+```c++
+partial interface HTMLElement {
+  readonly attribute Element? offsetParent;
+  readonly attribute double offsetTop;
+  readonly attribute double offsetLeft;
+  readonly attribute double offsetWidth;
+  readonly attribute double offsetHeight;
+};
+```
+
 Only `scrollTop` and `scrollLeft` is writable, when it's assigned a new value, it scroll the content and change scroll bar position.
 **To make animation**, you change `element.style.left/top/width/height/margin/padding/...` 
 
