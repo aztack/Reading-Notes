@@ -29,3 +29,24 @@ node.inner_html = xml #xml format will be messed up, use .content instead
 node.content = xml
 ```
 
+增加节点
+========
+```ruby
+class ::Nokogiri::XML::Element
+	def append_newline
+		self.add_next_sibling self.document.create_text_node("\n")
+	end
+
+	def prepend_newline
+		self.add_previous_sibling self.document.create_text_node("\n")
+	end
+
+	def append_comment(comment)
+		self.add_next_sibling self.document.create_comment(comment)
+	end
+
+	def prepend_comment(comment)
+		self.add_previous_sibling self.document.create_comment(comment)
+	end
+end
+```
