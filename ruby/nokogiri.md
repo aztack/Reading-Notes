@@ -50,3 +50,9 @@ class ::Nokogiri::XML::Element
 	end
 end
 ```
+
+阻止中文被转义
+====
+```ruby
+doc.to_html(:encoding => 'utf-8')
+```
