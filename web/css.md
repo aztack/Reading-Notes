@@ -1,8 +1,19 @@
+http://probablyprogramming.com/2009/03/15/the-tiniest-gif-ever
+
+```html
+<!-- 一像素透明gif -->
+<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+
+<!-- 一像素黑色gif -->
+<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=">
+
+<img src="data:image/gif;base64,R0lGODlhAQABAIABAP///wAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+```
 IE CSS Hack 
 ===========
-http://browserhacks.com/
-http://www.paulirish.com/2009/browser-specific-css-hacks/
-http://css-tricks.com/how-to-create-an-ie-only-stylesheet/
+- http://browserhacks.com/
+- http://www.paulirish.com/2009/browser-specific-css-hacks/
+- http://css-tricks.com/how-to-create-an-ie-only-stylesheet/
 
 - .all IE{property:value\9;} //常用
 - .gte IE 8{property:value\0;}
