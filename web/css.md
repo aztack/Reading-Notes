@@ -1,13 +1,16 @@
 IE CSS Hack 
 ===========
+http://browserhacks.com/
+http://www.paulirish.com/2009/browser-specific-css-hacks/
+http://css-tricks.com/how-to-create-an-ie-only-stylesheet/
 
-- .all IE{property:value\9;}
+- .all IE{property:value\9;} //常用
 - .gte IE 8{property:value\0;}
-- .lte IE 7{*property:value;}
+- .lte IE 7{*property:value;} //常用
 - .IE 8/9{property:value\0;}
 - .IE 9{property:value\9\0;}
-- .IE 7{+property:value;}
-- .IE 6{_property:value;}
+- .IE 7{+property:value;} //常用
+- .IE 6{_property:value;} //常用
 - .not IE{property//:value;}
 - lte：就是Less than or equal to的简写，也就是小于或等于的意思。
 
