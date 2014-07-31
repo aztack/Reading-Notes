@@ -4,6 +4,14 @@
 - [QuirkModes: Events Properties](http://www.quirksmode.org/js/events_properties.html)
 - [Cross-browser mouse positioning](http://www.jacklmoore.com/notes/mouse-position/)
 
+
+[Javascript: Which events do not bubble?](http://stackoverflow.com/questions/5574207/javascript-which-events-do-not-bubble)
+
+和发生事件的元素紧密相关的事件不会冒泡，比如：
+submit, focus, blur, load, unload, change, reset, scroll
+大多数DOM events(DOMFocusIn, DOMFocusOut, DOMNodeRemoved)不会冒泡，比如 mouseenter, mouseleave
+所以在实现时间代理的时候要对这些事件做特殊处理。做事件监听时要监听捕获阶段。
+
 =================================
 
 ![Mouse Event Coordinates](mouse-event-coordinate.png)
