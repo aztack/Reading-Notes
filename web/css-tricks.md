@@ -33,6 +33,18 @@ devicePixelRatio大于2的设备用css画1px的直线
 }
 ```
 
+还有一种更简单的方法：将一个像素高的元素（伪元素）`scaleY(0.5)`，如果是垂直方向就`scaleX(0.5)`
+
+```css
+.line:before {
+	content: "";
+	display: block;
+	height: 1px;
+	border-bottom: 1px solid #e6e6e6;
+	-webkit-transform: translate3d(0,6px,0) scaleY(0.5); /* 关键 */
+}
+```
+
 去掉没有src的<img>的边框
 ====
 img标签如果没有src或者src为空（[千万不要为空](http://www.nczonline.net/blog/2009/11/30/empty-image-src-can-destroy-your-site/))时，浏览器会自动加上一个灰色边框，影响美观。下面的方法可以去掉。
