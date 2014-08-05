@@ -1,3 +1,10 @@
+去掉移动设备上<a>的outline
+====
+网上搜到的`a:focus{outline:0;}`不管用。可能是touch的时候focus还未出发。
+```css
+a { -webkit-tap-highlight-color: rgba(0,0,0,0); }
+```
+
 devicePixelRatio大于2的设备用css画1px的直线
 ====
 
