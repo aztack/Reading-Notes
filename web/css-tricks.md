@@ -25,3 +25,21 @@ devicePixelRatio大于2的设备用css画1px的直线
 	}
 }
 ```
+
+去掉没有src的<img>的边框
+====
+img标签如果没有src或者src为空（[千万不要为空](http://www.nczonline.net/blog/2009/11/30/empty-image-src-can-destroy-your-site/))时，浏览器会自动加上一个灰色边框，影响美观。下面的方法可以去掉。
+
+```css
+.photo[src=''] {
+	content:''; /* 关键 */
+	display: inline-block;
+	text-align: center;
+	background: url(../images/img-placeholder-bg.png) repeat 0 0;
+	background-size: 3px 3px;
+}
+/* css的属性匹配没有"!="，但是可以用not来代替 */
+.photo:not([src='']) {
+	display:inline-block; /* 关键 */
+}
+```
