@@ -8,6 +8,36 @@ html {
 	-webkit-filter: grayscale(100%);
 }
 ```
+@see https://developer.mozilla.org/en-US/docs/Web/CSS/filter
+
+```
+The syntax is:
+
+.filter-me {
+  filter: <filter-function> [<filter-function>]* | none
+}
+```
+Where is one of:
+
+blur() 模糊
+
+brightness() 亮度
+
+contrast() 对比度
+
+url() `The url() function takes the location of an XML file that specifies an SVG filter, and may include an anchor to a specific filter element.`
+
+drop-shadow() 投影
+
+grayscale() 灰度
+
+hue-rotate()色调旋转
+
+invert() 反色
+
+opacity() 透明度
+
+sepia() 深褐色彩
 
 去掉移动设备上<a>的outline
 ====
