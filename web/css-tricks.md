@@ -1,3 +1,14 @@
+页面变灰
+========
+出现灾难需要默哀时会用到
+
+```css
+html {
+	filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
+	-webkit-filter: grayscale(100%);
+}
+```
+
 去掉移动设备上<a>的outline
 ====
 网上搜到的`a:focus{outline:0;}`不管用。可能是touch的时候focus还未出发。
