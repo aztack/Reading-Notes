@@ -1,3 +1,22 @@
+`text-overflow:ellipsis`不起作用
+================================
+
+```html
+<a style="width:2em;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;">
+  <div>...</div>
+  文字文字文字
+</a>
+```
+某些版本的安卓Webkit无法正常为上面的结构加省略号。因为里面有一个div。去掉div或者改为下面的接口就可以了
+
+```html
+<a>
+  <div>...</div>
+  <span style="width:2em;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;">文字文字文字</span>
+</a>
+```
+
+
 一个奇怪的问题，原因未知
 ========================
 为<a>增加背景图，display设置为inline-block，伪装成一个按钮。
@@ -18,3 +37,17 @@ if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
     WebView.setWebContentsDebuggingEnabled(true);
 }
 ```
+
+使用[Weinre](http://people.apache.org/~pmuellr/weinre-docs/latest/)远程调试Android WebView
+=================================
+```sh
+> npm instal weinre
+> weinre --httpPort 8080 --boundHost 192.168.1.xxx
+```
+
+```html
+<script sample type="text/javascript" src="http://192.168.1.xxx:8080/target/target-script-min.js"></script>
+
+```
+
+浏览器打开 `http://192.168.xxx:8080/`开始调试
