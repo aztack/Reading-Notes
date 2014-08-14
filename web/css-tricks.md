@@ -104,3 +104,81 @@ img标签如果没有src或者src为空（[千万不要为空](http://www.nczonl
 	display:inline-block; /* 关键 */
 }
 ```
+
+```javascript
+	/**
+	 * 图片延时加载
+	 */
+	! function(window) {
+		var $q = function(q, res) {
+				if (document.querySelectorAll) {
+					res = document.querySelectorAll(q);
+				} else {
+					var d = document,
+						a = d.styleSheets[0] || d.createStyleSheet();
+					a.addRule(q, 'f:b');
+					for (var l = d.all, b = 0, c = [], f = l.length; b < f; b++)
+						l[b].currentStyle.f && c.push(l[b]);
+
+					a.removeRule(0);
+					res = c;
+				}
+				return res;
+			},
+			addEventListener = function(evt, fn) {
+				window.addEventListener ? this.addEventListener(evt, fn, false) : (window.attachEvent) ? this.attachEvent('on' + evt, fn) : this['on' + evt] = fn;
+			},
+			_has = function(obj, key) {
+				return Object.prototype.hasOwnProperty.call(obj, key);
+			};
+
+		function loadImage(el, fn) {
+			var img = new Image(),
+				src = el.getAttribute('data-src');
+			img.onload = function() {
+				$(el).removeClass('lazy error loading').addClass('native-call');
+				if (!!el.parent) {
+					el.parent.replaceChild(img, el)
+				} else {
+					el.src = src;
+					$(el).removeClass('lazy');
+				}
+
+				fn && fn();
+			};
+			img.onerror = function(){
+				var e = $(el);
+				e.addClass('error lazy')
+					.removeClass('native-call loading')
+					.off('tap').tap(function(){
+						/* 点击图片重新加载 */
+						e.addClass('loading');
+						loadImage(el, fn);
+					});
+			};
+			img.src = src;
+		}
+
+		function elementInViewport(el) {
+			var rect = el.getBoundingClientRect()
+
+			return (
+				rect.top >= 0 && rect.left >= 0 && rect.top <= (window.innerHeight || document.documentElement.clientHeight)
+			)
+		}
+
+		function loadImageInScreen() {
+			var images = Array.prototype.slice.call($q('img.lazy'), 0);
+			for (var i = 0; i < images.length; i++) {
+				if (elementInViewport(images[i])) {
+					loadImage(images[i], function() {
+						images.splice(i, i);
+					});
+				}
+			};
+		}
+		addEventListener('scroll', loadImageInScreen);
+		window.lazyLoadImage = loadImageInScreen;
+	}(this);
+```
+在首屏显示时需要调用一下lazyLoadImage
