@@ -51,6 +51,52 @@ file:int(123)
    局部变量严格地只能在声明它的函数里可见。函数之间pass parameter by value,是拷贝一份。如果要pass by reference要加上&符号来取引用。
 
 
+eval、create_function和匿名函数
+=====================
+eval是在所在上线文中执行给定字符串中的代码。这段代码可以方位所在处可见的变量。并且eval的字符串可以return一个值作为eval的返回值。
+
+create_function创建一个lambda对象。相当于一个可以传递的函数对象。
+
+
+PHP5.3引入匿名函数
+
+匿名函数会创建一个闭包。要想在匿名函数中访问外层的变量要用use来声明，并且use会拷贝一份使用到的对象。除非use引用：
+
+```php
+$var = array();
+$f1 = function() use($var) {
+    var_dump($var);
+};
+$f2 = function() use(&$var) {
+    var_dump($var);
+    $var []= 2;
+};
+$var []= 1;
+$f1();
+$f2();
+var_dump($var)
+```
+
+输出
+
+```php
+array(0) {
+}
+array(1) {
+  [0] =>
+  int(1)
+}
+array(2) {
+  [0] =>
+  int(1)
+  [1] =>
+  int(2)
+}
+
+```
+
+对于new出来的实例对象，一律使用use引用。
+
 
 字符串常用操作
 ==============
