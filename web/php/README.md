@@ -10,6 +10,38 @@ PHP中的变量作用域
 注意：本地作用域对函数来说就是函数作用域，函数外不可访问。对远程代码来说就是就是页面作用域。
 因为在php中可以include一个远程的php！
 
+```php
+$a = 123;
+function f() {
+    static $a;
+    $a = 234;
+    function a(){
+        global $a;
+        echo 'a:';
+        var_dump($a);
+        
+        function b(){
+            echo 'b:';
+            @var_dump($a);
+        }
+        b();
+    }
+    return a();
+}
+
+f();
+echo 'file:';
+var_dump($a);
+```
+输出
+
+```
+a:int(123)
+b:NULL
+file:int(123)
+
+```
+
 字符串常用操作
 ==============
 - PHP中双引号里的变量会被插值。单引号不会。
