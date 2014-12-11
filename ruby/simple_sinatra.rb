@@ -6,8 +6,11 @@ require 'pp'
 # Start up Sinatra
 #
 set :port, 80
+set :bind, '0.0.0.0'
 set :allow_origin, :any
 set :protection, false
+set :public_folder, Dir.pwd
+set :views, Dir.pwd
 
 def json(file)
 	File.read("#{file}.json",:encoding => 'utf-8')
@@ -44,3 +47,10 @@ get '/table' do
 	ok :list => JSON.parse(File.read('MOCK_DATA.csv'))
 end
 
+
+post '/page/save' do
+    data = CGI::parse(request.body.read)
+    #...
+    content_type :json
+    {msg:"succ"}.to_json
+end
