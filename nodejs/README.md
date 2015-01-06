@@ -16,8 +16,9 @@ set NODE_APTH="d:\prog\js\nodejs\node_global"
 - Comppress [Archiver](https://github.com/ctalkington/node-archiver)
 - Base64 [Buffer](http://nodejs.org/docs/latest/api/buffer.html#buffer_buffer)
 - FFI [FFI](https://github.com/node-ffi/node-ffi)
+- [CSS parser / stringifier for Node.js](https://github.com/reworkcss/css)
 
 
 Win32 Package
 - [Performance Moniter](https://github.com/markitondemand/node-perfmon)
-- [Windows API]((https://github.com/Benvie/node-Windows)
+- [Windows API](https://github.com/Benvie/node-Windows)
