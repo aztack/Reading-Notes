@@ -1,0 +1,33 @@
+- **Boolean**   System::Boolean, bool
+- **ShortInt**   signed char
+- **SmallInt**   System::SmallInt, short
+- **Integer**   System::Integer, int
+- **Byte**   System::Byte, unsigned char
+- **Word**   System::Word, unsigned short
+- **Cardinal**   System::Cardinal, unsigned
+- **Int64**   __int64
+- **UInt64**   unisgned __int64
+- **NativeInt**   int (x32), __int64 (x64)
+- **NativeUInt**   unsigned (x32), unsigned __int64 (x64)
+- **Single**   float
+- **Double**   double
+- **Extended**   System::Extended. long double
+- **Currency**   System::Currency, System::CurrencyBase
+- **Comp**   System::Comp, System::CompBase
+- **Real**   NOT SUPPORTED
+- **ShortString**   System::ShortString, System::ShortStringBase
+- **OpenString**   char* const, System::OpenString
+- **File**   System::file, void*
+- **System::Text**, **void***   System::TextFile, void*
+- **ByteBool**   System::ByteBool, unsigned char
+- **WordBool**   System::WordBool, unsigned short
+- **LongBool**   unsigned int
+- **Real48**   not supported in C
+- **Pointer**   void*
+- **PWideChar**   System::WideChar*, wchar_t*(Windows), char16_t*(OSX)
+- **PAnsiChar**   char*
+- **Variant**   System::Variant
+- **System::OleVariant**   System::OleVariant
+- **LongInt**   int
+- **LongWord**   unsigned
+- **TextFile**   System::TextFile, void*
