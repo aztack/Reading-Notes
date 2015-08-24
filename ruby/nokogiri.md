@@ -5,6 +5,12 @@
 Nokogiri:XML(html,&:noblanks)
 ```
 
+强制UTF8编码
+============
+```ruby
+doc = Nokogiri::XML(a, nil, "UTF-8")
+```
+
 搜索文本节点
 ===
 ```ruby
