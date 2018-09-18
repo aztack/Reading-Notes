@@ -6,4 +6,4 @@ ListPlot3D[list, InterpolationOrder -> 0, ColorFunction -> Hue,
  Mesh -> None, Filling -> Axis]
 ```
 
- 
+<img src="image.png" width="400px">
